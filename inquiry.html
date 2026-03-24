@@ -443,21 +443,19 @@
   async function loadBoard() {
     const list = document.getElementById('iq-board-list');
     const countEl = document.getElementById('iq-count');
-    let items = [];
+    // localStorage를 기본으로, Supabase 성공 시 덮어씀
+    let items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
 
-    try {
-      const cfg = getSB();
-      if (cfg) {
+    const cfg = getSB();
+    if (cfg) {
+      try {
         const r = await sbReq('/inquiries?select=*&order=created_at.desc', {
           headers: { Accept: 'application/json' }
         });
         if (r) items = await r.json();
-      } else {
-        items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
+      } catch (e) {
+        console.warn('Supabase fetch failed, using localStorage:', e);
       }
-    } catch (e) {
-      console.warn('Fetch failed, falling back to localStorage', e);
-      items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
     }
 
     countEl.textContent = '총 ' + items.length + '개';
@@ -522,21 +520,22 @@
     btn.textContent = '등록 중...';
 
     try {
+      // 1. localStorage에 항상 먼저 저장 (즉시 반영)
+      const items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
+      items.unshift({ id: Date.now(), nickname: nick, title, content, created_at: new Date().toISOString() });
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(items));
+
+      // 2. Supabase는 백그라운드로 시도 (실패해도 무시)
       const cfg = getSB();
       if (cfg) {
-        await sbReq('/inquiries', {
+        sbReq('/inquiries', {
           method: 'POST',
           headers: { Prefer: 'return=minimal' },
           body: JSON.stringify({ nickname: nick, title, content })
-        });
-      } else {
-        // localStorage fallback
-        const items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
-        items.unshift({ id: Date.now(), nickname: nick, title, content, created_at: new Date().toISOString() });
-        localStorage.setItem(LOCAL_KEY, JSON.stringify(items));
+        }).catch(e => console.warn('Supabase save failed, stored locally:', e));
       }
 
-      // Clear form
+      // 3. 항상 성공 처리
       document.getElementById('iq-nick').value = '';
       document.getElementById('iq-title').value = '';
       document.getElementById('iq-content').value = '';
