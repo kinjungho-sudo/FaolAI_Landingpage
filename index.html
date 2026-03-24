@@ -1081,6 +1081,135 @@
       .philosophy-section{ padding: 80px 24px; }
     }
 
+    /* ──────── YOUTUBE SECTION ──────── */
+    .yt-section {
+      background: #0d1117;
+      padding: 80px 32px;
+    }
+    .yt-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .yt-label {
+      display: inline-block;
+      background: rgba(107,60,247,0.15);
+      color: #6B3CF7;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .yt-h2 {
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 900;
+      color: #fff;
+      margin: 0 0 8px;
+      line-height: 1.3;
+    }
+    .yt-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin: 0 0 36px;
+    }
+    .yt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .yt-card {
+      background: #161B27;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .yt-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(107,60,247,0.4);
+    }
+    .yt-thumb-wrap {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    .yt-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .yt-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .yt-card:hover .yt-play { opacity: 1; }
+    .yt-play-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,0,0,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .yt-play-icon svg { fill: white; margin-left: 3px; }
+    .yt-card-body { padding: 14px 16px 16px; }
+    .yt-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+    .yt-tag.tag-policy  { background: rgba(239,68,68,0.15);  color: #f87171; }
+    .yt-tag.tag-support { background: rgba(245,197,66,0.15);  color: #F5C842; }
+    .yt-tag.tag-idea    { background: rgba(34,197,94,0.15);   color: #4ade80; }
+    .yt-tag.tag-ai      { background: rgba(107,60,247,0.2);   color: #a78bfa; }
+    .yt-tag.tag-startup { background: rgba(251,146,60,0.15);  color: #fb923c; }
+    .yt-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e8eaf0;
+      line-height: 1.45;
+      margin: 0 0 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .yt-channel {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+    }
+    .yt-grid .yt-card:last-child:nth-child(3n+2) {
+      grid-column: span 1;
+    }
+    @media (max-width: 768px) {
+      .yt-section { padding: 60px 20px; }
+      .yt-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .yt-card-body { padding: 10px 12px 12px; }
+      .yt-title { font-size: 12px; }
+    }
+    @media (max-width: 480px) {
+      .yt-grid { grid-template-columns: 1fr; }
+    }
+
     /* ──────── FOOTER ──────── */
     footer {
       background: #0A0A14; color: rgba(255,255,255,0.35);
@@ -1735,6 +1864,79 @@
           </div>
         </div>
       </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- YOUTUBE -->
+<section class="yt-section">
+  <div class="yt-inner">
+    <div class="yt-label">창업 인사이트</div>
+    <h2 class="yt-h2">창업 전 꼭 봐야 할 영상</h2>
+    <p class="yt-sub">예비창업자들이 가장 궁금해하는 주제들을 모았어요</p>
+    <div class="yt-grid">
+
+      <a class="yt-card" href="https://www.youtube.com/watch?v=JLdzEoy9KQg" target="_blank" rel="noopener">
+        <div class="yt-thumb-wrap">
+          <img src="https://i.ytimg.com/vi/JLdzEoy9KQg/hqdefault.jpg" alt="2026년 예비창업패키지 공고 공개">
+          <div class="yt-play"><div class="yt-play-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="yt-card-body">
+          <span class="yt-tag tag-support">지원금 가이드</span>
+          <div class="yt-title">2026년 예비창업패키지 공고 공개! 평균 4천만원 지원금, 그 이상을 받기 위한 방법은?</div>
+          <div class="yt-channel">패스트펀딩: 돈버는 방법</div>
+        </div>
+      </a>
+
+      <a class="yt-card" href="https://www.youtube.com/watch?v=Rtuv_3khXzc" target="_blank" rel="noopener">
+        <div class="yt-thumb-wrap">
+          <img src="https://i.ytimg.com/vi/Rtuv_3khXzc/hqdefault.jpg" alt="모두의 창업 분석">
+          <div class="yt-play"><div class="yt-play-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="yt-card-body">
+          <span class="yt-tag tag-startup">창업 기회</span>
+          <div class="yt-title">무려 4,000명을 뽑는 화제의 '모두의 창업' 분석 &amp; 미리보기</div>
+          <div class="yt-channel">유니콘대학</div>
+        </div>
+      </a>
+
+      <a class="yt-card" href="https://www.youtube.com/watch?v=Z-gyjt3x7h0" target="_blank" rel="noopener">
+        <div class="yt-thumb-wrap">
+          <img src="https://i.ytimg.com/vi/Z-gyjt3x7h0/hqdefault.jpg" alt="AI 창업 청년 급증">
+          <div class="yt-play"><div class="yt-play-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="yt-card-body">
+          <span class="yt-tag tag-ai">AI 창업 트렌드</span>
+          <div class="yt-title">취업 대신 'AI 창업' 청년 9년새 50% 급증…"실패도 경험 자산"</div>
+          <div class="yt-channel">뉴스TVCHOSUN</div>
+        </div>
+      </a>
+
+      <a class="yt-card" href="https://www.youtube.com/watch?v=6nkDiR1oDKw" target="_blank" rel="noopener">
+        <div class="yt-thumb-wrap">
+          <img src="https://i.ytimg.com/vi/6nkDiR1oDKw/hqdefault.jpg" alt="사업 아이템 고르는 방법">
+          <div class="yt-play"><div class="yt-play-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="yt-card-body">
+          <span class="yt-tag tag-idea">창업 아이템</span>
+          <div class="yt-title">회사 5개 운영하는 24살이 사업 아이템 고르는 5가지 방법</div>
+          <div class="yt-channel">돈린이 I 돈버는 어린이</div>
+        </div>
+      </a>
+
+      <a class="yt-card" href="https://www.youtube.com/watch?v=MLPz12JE74s" target="_blank" rel="noopener">
+        <div class="yt-thumb-wrap">
+          <img src="https://i.ytimg.com/vi/MLPz12JE74s/hqdefault.jpg" alt="국가창업시대 선포">
+          <div class="yt-play"><div class="yt-play-icon"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="yt-card-body">
+          <span class="yt-tag tag-policy">정책 뉴스</span>
+          <div class="yt-title">이재명 대통령, '국가창업시대' 선포… "아이디어 싸움부터 국가가 책임진다"</div>
+          <div class="yt-channel">춘천MBC뉴스</div>
+        </div>
+      </a>
 
     </div>
   </div>
