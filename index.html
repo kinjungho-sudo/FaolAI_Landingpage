@@ -437,6 +437,93 @@
     }
     .d-card-body strong { color: #333; }
 
+    /* ──────── TESTIMONIALS ──────── */
+    .review-section {
+      padding: 80px 32px;
+      background: #0C0A1E;
+      color: #fff;
+    }
+    .review-inner { max-width: 1200px; margin: 0 auto; }
+    .review-header { margin-bottom: 48px; }
+    .review-label {
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #A78BFF; margin-bottom: 14px;
+    }
+    .review-h2 {
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 900; letter-spacing: -0.04em;
+      line-height: 1.2;
+    }
+    .review-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 36px 32px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .review-card:hover {
+      border-color: rgba(167,139,255,0.4);
+      background: rgba(107,60,247,0.08);
+    }
+    .review-card::before {
+      content: '\201C';
+      position: absolute; top: 20px; right: 28px;
+      font-size: 80px; line-height: 1;
+      color: rgba(107,60,247,0.25);
+      font-family: Georgia, serif; font-weight: 700;
+    }
+    .review-stars {
+      display: flex; gap: 4px; margin-bottom: 20px;
+    }
+    .star { color: #F5A623; font-size: 16px; }
+    .review-quote {
+      font-size: 17px; line-height: 1.75;
+      color: rgba(255,255,255,0.9);
+      font-weight: 400; margin-bottom: 28px;
+      position: relative; z-index: 1;
+    }
+    .review-quote strong {
+      color: #A78BFF; font-weight: 700;
+    }
+    .review-author {
+      display: flex; align-items: center; gap: 14px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .review-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, #6B3CF7, #A78BFF);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 800; color: #fff;
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-size: 15px; font-weight: 700; color: #fff;
+      margin-bottom: 3px;
+    }
+    .review-role {
+      font-size: 12px; color: rgba(255,255,255,0.45);
+      font-weight: 400;
+    }
+    .review-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(107,60,247,0.2);
+      border: 1px solid rgba(107,60,247,0.4);
+      color: #A78BFF;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 4px 12px; border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 640px) {
+      .review-grid { grid-template-columns: 1fr; }
+    }
+
     /* ──────── CTA ──────── */
     .cta-section {
       padding: 90px 32px;
@@ -747,6 +834,56 @@
         <div class="d-card-title">ChatGPT 검증의 문제</div>
         <p class="d-card-body">"내 아이디어 어때?"라고 물으면 ChatGPT도 <strong>"좋아 보입니다"</strong>라고 합니다. 그건 검증이 아닙니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="review-section">
+  <div class="review-inner">
+    <div class="review-header">
+      <div class="review-label">사전 테스터 사용 후기</div>
+      <h2 class="review-h2">먼저 써본 분들의<br />솔직한 이야기</h2>
+    </div>
+    <div class="review-grid">
+
+      <div class="review-card">
+        <div class="review-badge">✓ 사전 테스터 인증</div>
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-quote">
+          "한번도 해본 적 없던 사업계획서를 써야 해서 막막했는데,<br />
+          <strong>Foal AI를 쓰고 나니 내가 뭘 써야 하는지, 어디서 시작해야 하는지가 보이기 시작했어요.</strong>
+          AI가 질문을 던져줄 때마다 내 생각이 정리되는 느낌이었습니다."
+        </p>
+        <div class="review-author">
+          <div class="review-avatar">홍</div>
+          <div>
+            <div class="review-name">홍재의 님</div>
+            <div class="review-role">예비창업자 · 사전 테스터</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-badge">✓ 사전 테스터 인증</div>
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-quote">
+          "이게 정식 출시되면 <strong>저처럼 창업을 희망하는 사람들이 이용하기 딱 좋은 서비스</strong>인 것 같아요.
+          ChatGPT랑은 다르게 방향을 잡아주는 느낌이 확실히 있었어요. 추천합니다."
+        </p>
+        <div class="review-author">
+          <div class="review-avatar">정</div>
+          <div>
+            <div class="review-name">정하늘 님</div>
+            <div class="review-role">OZ코딩스쿨 수강생 · 사전 테스터</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
