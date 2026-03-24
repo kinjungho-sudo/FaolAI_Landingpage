@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사업계획서 작성가이드 — Foal AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans KR', sans-serif; background: #F8F7FF; color: #111; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+    /* ── Nav ── */
+    .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid #f0edf8; padding: 0 32px; }
+    .nav-inner { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-size: 22px; font-weight: 900; letter-spacing: -0.05em; text-decoration: none; color: #111; display: flex; align-items: center; gap: 7px; }
+    .logo span { color: #6B3CF7; }
+    .logo-img { height: 26px; width: auto; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-link { font-size: 14px; color: #666; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .nav-link:hover { color: #6B3CF7; }
+    .nav-link.active { color: #6B3CF7; font-weight: 800; }
+    .nav-btn { padding: 9px 22px; background: #6B3CF7; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .nav-btn:hover { background: #5428E0; }
+
+    /* ── Hero ── */
+    .page-hero { background: linear-gradient(135deg, #1a0e3d 0%, #0B0D14 100%); padding: 60px 32px 48px; text-align: center; }
+    .hero-label { font-size: 12px; font-weight: 800; color: #A78BFF; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+    .hero-h1 { font-size: 34px; font-weight: 900; color: #fff; line-height: 1.3; margin-bottom: 12px; }
+    .hero-sub { font-size: 15px; color: rgba(255,255,255,0.45); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+
+    /* ── Main ── */
+    .main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Eval criteria ── */
+    .criteria-card { background: #fff; border-radius: 16px; border: 1px solid #ece8ff; padding: 28px; margin-bottom: 20px; }
+    .card-hdr { display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 900; color: #111; margin-bottom: 20px; }
+    .criteria-row { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .criteria-label { width: 90px; flex-shrink: 0; font-size: 13px; font-weight: 700; color: #333; }
+    .criteria-bar-wrap { flex: 1; height: 8px; background: #f0edf8; border-radius: 4px; overflow: hidden; }
+    .criteria-bar { height: 100%; background: #6B3CF7; border-radius: 4px; }
+    .criteria-score { font-size: 13px; font-weight: 900; color: #111; width: 36px; text-align: right; flex-shrink: 0; }
+    .criteria-desc { font-size: 12px; color: #aaa; flex: 1; }
+
+    /* ── Accordion sections ── */
+    .acc-section { background: #fff; border-radius: 16px; border: 1px solid #ece8ff; overflow: hidden; margin-bottom: 16px; }
+    .acc-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px 24px;
+      text-align: left; background: none; border: none; cursor: pointer; transition: background 0.2s;
+    }
+    .acc-trigger:hover { background: #faf8ff; }
+    .acc-trigger-left { display: flex; align-items: center; gap: 16px; }
+    .acc-num { width: 40px; height: 40px; border-radius: 12px; background: #0B1120; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: #F5C842; flex-shrink: 0; }
+    .acc-title { font-size: 17px; font-weight: 900; color: #111; }
+    .acc-chevron { width: 20px; height: 20px; color: #aaa; transition: transform 0.3s; flex-shrink: 0; }
+    .acc-chevron.open { transform: rotate(180deg); }
+    .acc-body { border-top: 1px solid #f0edf8; display: none; }
+    .acc-body.open { display: block; }
+
+    /* ── Subsection ── */
+    .sub { padding: 24px; border-bottom: 1px solid #f9f8ff; }
+    .sub:last-child { border-bottom: none; }
+    .sub-top { display: flex; align-items: flex-start; gap: 16px; }
+    .sub-code { flex-shrink: 0; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 8px; border: 1px solid; }
+    .sub-content { flex: 1; }
+    .sub-title { font-size: 15px; font-weight: 800; color: #111; margin-bottom: 6px; }
+    .sub-desc { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 12px; }
+    .sub-tip { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 14px; display: flex; gap: 8px; margin-bottom: 16px; }
+    .sub-tip-icon { font-size: 16px; flex-shrink: 0; }
+    .sub-tip-text { font-size: 13px; color: #92400e; line-height: 1.6; }
+    .sub-fields-lbl { font-size: 11px; font-weight: 800; color: #aaa; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+    .sub-field { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; margin-bottom: 6px; }
+    .sub-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* section color variants */
+    .color-blue .sub-code  { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+    .color-blue .sub-dot   { background: #3b82f6; }
+    .color-green .sub-code { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; }
+    .color-green .sub-dot  { background: #22c55e; }
+    .color-purple .sub-code{ background: #faf5ff; border-color: #e9d5ff; color: #7e22ce; }
+    .color-purple .sub-dot { background: #a855f7; }
+    .color-amber .sub-code { background: #fffbeb; border-color: #fde68a; color: #b45309; }
+    .color-amber .sub-dot  { background: #f59e0b; }
+
+    /* ── Footer ── */
+    footer { text-align: center; padding: 28px; font-size: 13px; color: #aaa; border-top: 1px solid #ece8ff; }
+
+    @media (max-width: 600px) {
+      .nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 44px 20px 36px; }
+      .hero-h1 { font-size: 26px; }
+      .main { padding: 28px 16px 60px; }
+      .criteria-desc { display: none; }
+      .acc-trigger { padding: 16px 18px; }
+      .sub { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="images/Logo.png" alt="Foal AI" class="logo-img" onerror="this.style.display='none'">Foal<span>AI</span>
+    </a>
+    <div class="nav-links">
+      <a href="announcements.html" class="nav-link">공고마당</a>
+      <a href="guide.html" class="nav-link active">사업계획서 작성가이드</a>
+    </div>
+    <a href="index.html#cta" class="nav-btn">관심 등록하기</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-label">Business Plan Template</div>
+  <h1 class="hero-h1">예비창업패키지<br/>사업계획서 작성 가이드</h1>
+  <p class="hero-sub">심사위원이 보는 공식 양식을 섹션별로 분석하고, 각 항목을 어떻게 작성해야 하는지 팁과 함께 제공합니다.</p>
+</div>
+
+<main class="main">
+
+  <!-- 심사 기준 -->
+  <div class="criteria-card">
+    <div class="card-hdr"><span>📊</span> 심사 기준 (100점)</div>
+    <div class="criteria-row">
+      <div class="criteria-label">문제 명확성</div>
+      <div class="criteria-bar-wrap"><div class="criteria-bar" style="width:100%"></div></div>
+      <div class="criteria-score">20점</div>
+      <div class="criteria-desc">해결하려는 문제가 실제로 존재하고 명확한가</div>
+    </div>
+    <div class="criteria-row">
+      <div class="criteria-label">솔루션 차별성</div>
+      <div class="criteria-bar-wrap"><div class="criteria-bar" style="width:100%"></div></div>
+      <div class="criteria-score">20점</div>
+      <div class="criteria-desc">기존 대안 대비 실질적인 차별점이 있는가</div>
+    </div>
+    <div class="criteria-row">
+      <div class="criteria-label">시장 규모</div>
+      <div class="criteria-bar-wrap"><div class="criteria-bar" style="width:100%"></div></div>
+      <div class="criteria-score">20점</div>
+      <div class="criteria-desc">충분히 큰 시장이 존재하고 근거가 있는가</div>
+    </div>
+    <div class="criteria-row">
+      <div class="criteria-label">팀 역량</div>
+      <div class="criteria-bar-wrap"><div class="criteria-bar" style="width:100%"></div></div>
+      <div class="criteria-score">20점</div>
+      <div class="criteria-desc">이 문제를 해결할 수 있는 팀인가</div>
+    </div>
+    <div class="criteria-row" style="margin-bottom:0">
+      <div class="criteria-label">실행 가능성</div>
+      <div class="criteria-bar-wrap"><div class="criteria-bar" style="width:100%"></div></div>
+      <div class="criteria-score">20점</div>
+      <div class="criteria-desc">계획이 현실적이고 실현 가능한가</div>
+    </div>
+  </div>
+
+  <!-- 1. 창업 아이템 개요 -->
+  <div class="acc-section color-blue">
+    <button class="acc-trigger" onclick="toggle(this)">
+      <div class="acc-trigger-left">
+        <div class="acc-num">1</div>
+        <div class="acc-title">창업 아이템 개요</div>
+      </div>
+      <svg class="acc-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">1-1</span>
+          <div class="sub-content">
+            <div class="sub-title">창업 아이템명 및 개요</div>
+            <div class="sub-desc">아이템의 핵심을 한 줄로 표현하고, 어떤 문제를 어떻게 해결하는지 서술합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">심사위원이 30초 안에 이해할 수 있어야 합니다. 기술 용어보다 결과와 가치로 설명하세요.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>아이템명</div>
+            <div class="sub-field"><div class="sub-dot"></div>아이템 요약 (3줄 이내)</div>
+            <div class="sub-field"><div class="sub-dot"></div>개발 단계 (아이디어 / 시제품 / 서비스 중)</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">1-2</span>
+          <div class="sub-content">
+            <div class="sub-title">창업 아이템의 필요성</div>
+            <div class="sub-desc">해결하려는 문제가 실제로 존재하는지, 얼마나 심각한지 데이터와 사례로 제시합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">통계, 인터뷰, 실제 사례를 활용해 문제의 크기를 수치로 보여주세요.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>현재 문제 상황</div>
+            <div class="sub-field"><div class="sub-dot"></div>불편 사항 및 피해 규모</div>
+            <div class="sub-field"><div class="sub-dot"></div>기존 해결책의 한계</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">1-3</span>
+          <div class="sub-content">
+            <div class="sub-title">창업 아이템의 현황</div>
+            <div class="sub-desc">현재 개발 상황, 보유 기술, 지식재산권 등을 정리합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">없어도 괜찮습니다. 있다면 구체적으로, 없다면 계획을 명확히 제시하세요.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>현재 개발 단계</div>
+            <div class="sub-field"><div class="sub-dot"></div>보유 기술 / 특허</div>
+            <div class="sub-field"><div class="sub-dot"></div>파트너십 / 협약 현황</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">1-4</span>
+          <div class="sub-content">
+            <div class="sub-title">시장 분석 (TAM / SAM / SOM)</div>
+            <div class="sub-desc">목표 시장의 규모를 전체 → 세분 → 실제 획득 가능 순으로 분석합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">근거 있는 숫자가 중요합니다. '약 OO조 시장'보다 '통계청 자료에 따르면'으로 시작하세요.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>TAM (전체 시장 규모)</div>
+            <div class="sub-field"><div class="sub-dot"></div>SAM (서비스 가능 시장)</div>
+            <div class="sub-field"><div class="sub-dot"></div>SOM (실제 목표 시장)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 실현 가능성 -->
+  <div class="acc-section color-green">
+    <button class="acc-trigger" onclick="toggle(this)">
+      <div class="acc-trigger-left">
+        <div class="acc-num">2</div>
+        <div class="acc-title">창업 아이템의 실현 가능성</div>
+      </div>
+      <svg class="acc-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">2-1</span>
+          <div class="sub-content">
+            <div class="sub-title">기술 및 서비스 차별성</div>
+            <div class="sub-desc">경쟁사 대비 무엇이 10배 나은지 수치로 설명합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">고객이 진짜 원하는 것(JTBD)과 연결해서, 차별점이 실제 고객 문제를 해결한다는 것을 보여주세요.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>핵심 차별점 (기능 / 기술 / 가격 / 경험)</div>
+            <div class="sub-field"><div class="sub-dot"></div>경쟁사 비교표</div>
+            <div class="sub-field"><div class="sub-dot"></div>지속 가능한 경쟁우위</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">2-2</span>
+          <div class="sub-content">
+            <div class="sub-title">사업화 전략</div>
+            <div class="sub-desc">어떻게 고객을 확보하고, 어떤 채널로 수익을 낼지 구체적으로 서술합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">첫 10명의 고객을 어떻게 확보할지부터 시작하세요. 대형 마케팅보다 작은 실험이 설득력 있습니다.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>타겟 고객 정의</div>
+            <div class="sub-field"><div class="sub-dot"></div>고객 확보 전략 (초기 / 성장)</div>
+            <div class="sub-field"><div class="sub-dot"></div>수익 모델</div>
+            <div class="sub-field"><div class="sub-dot"></div>가격 정책</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">2-3</span>
+          <div class="sub-content">
+            <div class="sub-title">팀 구성 및 역할</div>
+            <div class="sub-desc">왜 이 팀이 이 문제를 해결할 수 있는지 경험과 역량으로 증명합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">창업자의 이 분야 경험 또는 집착이 핵심입니다. '왜 내가 해야 하는가'를 명확히 답하세요.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>창업자 프로필 및 관련 경험</div>
+            <div class="sub-field"><div class="sub-dot"></div>팀원 역할 및 역량</div>
+            <div class="sub-field"><div class="sub-dot"></div>외부 자문 / 멘토</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 성장 전략 -->
+  <div class="acc-section color-purple">
+    <button class="acc-trigger" onclick="toggle(this)">
+      <div class="acc-trigger-left">
+        <div class="acc-num">3</div>
+        <div class="acc-title">성장 전략 및 자금 활용 계획</div>
+      </div>
+      <svg class="acc-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">3-1</span>
+          <div class="sub-content">
+            <div class="sub-title">목표 및 실행 계획</div>
+            <div class="sub-desc">지원금 수령 후 12개월 내 달성할 구체적인 마일스톤을 제시합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">분기별로 나눠서 측정 가능한 목표(KPI)를 설정하세요. 막연한 '성장'보다 '고객 100명 확보'가 좋습니다.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>3개월 목표 및 KPI</div>
+            <div class="sub-field"><div class="sub-dot"></div>6개월 목표 및 KPI</div>
+            <div class="sub-field"><div class="sub-dot"></div>12개월 목표 및 KPI</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">3-2</span>
+          <div class="sub-content">
+            <div class="sub-title">자금 활용 계획</div>
+            <div class="sub-desc">지원금 OO만원을 어디에 어떻게 사용할지 항목별로 상세히 기술합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">개발비, 마케팅비, 인건비 등 구체적 비목과 금액을 제시하세요. 심사위원이 납득할 수 있어야 합니다.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>사업화 자금 활용 계획 (항목별)</div>
+            <div class="sub-field"><div class="sub-dot"></div>기대 효과</div>
+            <div class="sub-field"><div class="sub-dot"></div>후속 자금 조달 계획</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">3-3</span>
+          <div class="sub-content">
+            <div class="sub-title">리스크 및 대응 방안</div>
+            <div class="sub-desc">예상되는 위험 요소와 이를 어떻게 극복할지 솔직하게 작성합니다.</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">리스크를 숨기는 것보다 인정하고 대응책을 제시하는 것이 더 신뢰를 줍니다.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>주요 리스크 요소</div>
+            <div class="sub-field"><div class="sub-dot"></div>기술 / 시장 / 팀 위험</div>
+            <div class="sub-field"><div class="sub-dot"></div>위기 대응 전략</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. JTBD 분석 -->
+  <div class="acc-section color-amber">
+    <button class="acc-trigger" onclick="toggle(this)">
+      <div class="acc-trigger-left">
+        <div class="acc-num">4</div>
+        <div class="acc-title">JTBD 분석 (고객 과업 분석)</div>
+      </div>
+      <svg class="acc-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div class="acc-body">
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">4-1</span>
+          <div class="sub-content">
+            <div class="sub-title">기능적 과업 (Functional Jobs)</div>
+            <div class="sub-desc">고객이 제품/서비스를 통해 실제로 수행하고자 하는 작업</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">고객 인터뷰 또는 AI 분석 결과를 활용하세요. Foal AI의 검증 인터뷰가 이 항목을 자동으로 채워줍니다.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>주요 기능적 과업 목록</div>
+            <div class="sub-field"><div class="sub-dot"></div>현재 해결 방식과의 비교</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">4-2</span>
+          <div class="sub-content">
+            <div class="sub-title">감정적 과업 (Emotional Jobs)</div>
+            <div class="sub-desc">고객이 느끼고 싶은 감정 또는 피하고 싶은 감정</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">구체적인 감정 언어를 사용하세요. "불안하다", "자신 없다" 같은 표현이 설득력이 있습니다.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>긍정적 감정 과업</div>
+            <div class="sub-field"><div class="sub-dot"></div>부정적 감정 회피 과업</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-top">
+          <span class="sub-code">4-3</span>
+          <div class="sub-content">
+            <div class="sub-title">사회적 과업 (Social Jobs)</div>
+            <div class="sub-desc">고객이 다른 사람들에게 어떻게 보이고 싶은지에 대한 욕구</div>
+            <div class="sub-tip"><span class="sub-tip-icon">💡</span><span class="sub-tip-text">B2B라면 직장 내 평판, B2C라면 사회적 정체성을 고려하세요.</span></div>
+            <div class="sub-fields-lbl">작성 항목</div>
+            <div class="sub-field"><div class="sub-dot"></div>사회적 인정 욕구</div>
+            <div class="sub-field"><div class="sub-dot"></div>정체성 표현 방식</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>© 2026 CoMindWorks · Foal AI</footer>
+
+<script>
+function toggle(btn){
+  const body = btn.nextElementSibling;
+  const chev = btn.querySelector('.acc-chevron');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
