@@ -2254,9 +2254,17 @@ function closeModal(){
   document.getElementById('m-bg').classList.remove('open');
 }
 function bgClick(e){ if(e.target===document.getElementById('m-bg')) closeModal(); }
+function saveReg(email, src){
+  const KEY='foalai_regs';
+  const list=JSON.parse(localStorage.getItem(KEY)||'[]');
+  if(list.some(r=>r.email===email)) return;
+  list.unshift({id:Date.now(), email, source:src, date:new Date().toISOString(), ref:document.referrer||'직접 접속'});
+  localStorage.setItem(KEY, JSON.stringify(list));
+}
 function submitModal(){
   const v=document.getElementById('m-email').value;
   if(!v||!v.includes('@')){ document.getElementById('m-email').style.borderColor='#F44'; return; }
+  saveReg(v,'팝업 모달');
   document.getElementById('m-form').style.display='none';
   document.getElementById('m-done').style.display='block';
   setTimeout(closeModal,2600);
@@ -2264,6 +2272,7 @@ function submitModal(){
 function submitCTA(){
   const v=document.getElementById('cta-email').value;
   if(!v||!v.includes('@')) return;
+  saveReg(v,'하단 CTA');
   document.getElementById('cta-form').style.display='none';
   document.getElementById('cta-ok').style.display='block';
 }

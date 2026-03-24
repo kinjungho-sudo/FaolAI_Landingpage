@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>관리자 — Foal AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans KR', sans-serif; background: #0B0D14; color: #e2e8f0; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+    /* ── Login screen ── */
+    #login-screen {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0; padding: 24px;
+    }
+    .login-box {
+      background: #13182A; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 48px 40px; width: 100%; max-width: 380px;
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
+    }
+    .login-logo { font-size: 28px; font-weight: 900; letter-spacing: -0.05em; }
+    .login-logo span { color: #6B3CF7; }
+    .login-title { font-size: 18px; font-weight: 800; color: #fff; text-align: center; }
+    .login-sub { font-size: 13px; color: rgba(255,255,255,0.35); text-align: center; }
+    .login-input {
+      width: 100%; padding: 13px 16px; background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,255,255,0.1); border-radius: 10px;
+      font-size: 15px; font-family: inherit; color: #fff; outline: none;
+      text-align: center; letter-spacing: 0.15em; transition: border-color 0.2s;
+    }
+    .login-input:focus { border-color: #6B3CF7; }
+    .login-input.error { border-color: #f87171; }
+    .login-btn {
+      width: 100%; padding: 13px; background: #6B3CF7; color: #fff;
+      border: none; border-radius: 10px; font-size: 15px; font-weight: 800;
+      cursor: pointer; font-family: inherit; transition: background 0.2s;
+    }
+    .login-btn:hover { background: #5428E0; }
+    .login-err { font-size: 13px; color: #f87171; min-height: 18px; }
+
+    /* ── Dashboard ── */
+    #dashboard { display: none; min-height: 100vh; flex-direction: column; }
+    #dashboard.show { display: flex; }
+
+    /* Nav */
+    .adm-nav {
+      background: #13182A; border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 60px;
+      flex-shrink: 0;
+    }
+    .adm-nav-logo { font-size: 20px; font-weight: 900; letter-spacing: -0.05em; display: flex; align-items: center; gap: 10px; }
+    .adm-nav-logo span { color: #6B3CF7; }
+    .adm-badge { font-size: 10px; font-weight: 800; background: #6B3CF7; color: #fff; padding: 2px 8px; border-radius: 6px; letter-spacing: 0.04em; }
+    .adm-nav-right { display: flex; align-items: center; gap: 16px; }
+    .adm-nav-link { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .adm-nav-link:hover { color: #fff; }
+    .logout-btn {
+      padding: 7px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; font-size: 13px; color: rgba(255,255,255,0.5); cursor: pointer;
+      font-family: inherit; transition: all 0.2s;
+    }
+    .logout-btn:hover { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); color: #f87171; }
+
+    /* Main */
+    .adm-main { flex: 1; padding: 36px 32px 60px; max-width: 1200px; width: 100%; margin: 0 auto; }
+
+    /* Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+    .stat-card {
+      background: #13182A; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 22px 24px;
+    }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+    .stat-value { font-size: 36px; font-weight: 900; color: #fff; line-height: 1; }
+    .stat-value.accent { color: #F5C842; }
+    .stat-sub { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 6px; }
+
+    /* Controls */
+    .controls-bar { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .search-box {
+      flex: 1; min-width: 200px; padding: 10px 16px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 9px; font-size: 14px; font-family: inherit; color: #fff; outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-box::placeholder { color: rgba(255,255,255,0.25); }
+    .search-box:focus { border-color: #6B3CF7; }
+    .ctrl-btn {
+      padding: 10px 18px; border-radius: 9px; font-size: 13px; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: all 0.2s; border: 1px solid;
+      white-space: nowrap;
+    }
+    .ctrl-btn.outline { background: transparent; border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); }
+    .ctrl-btn.outline:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+    .ctrl-btn.primary { background: #F5C842; border-color: #F5C842; color: #111; }
+    .ctrl-btn.primary:hover { background: #e6b82e; }
+    .ctrl-btn.danger { background: transparent; border-color: rgba(248,113,113,0.3); color: #f87171; }
+    .ctrl-btn.danger:hover { background: rgba(248,113,113,0.1); }
+
+    /* Table */
+    .table-wrap {
+      background: #13182A; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; overflow: hidden;
+    }
+    .table-hdr {
+      padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .table-hdr-title { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.7); }
+    .count-badge {
+      font-size: 11px; font-weight: 800; background: rgba(107,60,247,0.2);
+      color: #A78BFF; padding: 3px 10px; border-radius: 20px;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      padding: 12px 20px; text-align: left; font-size: 11px; font-weight: 800;
+      color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.07em;
+      border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(0,0,0,0.15);
+    }
+    tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.02); }
+    tbody td { padding: 14px 20px; font-size: 13px; color: rgba(255,255,255,0.7); vertical-align: middle; }
+    .td-num { color: rgba(255,255,255,0.2); font-size: 12px; width: 40px; }
+    .td-email { color: #fff; font-weight: 600; }
+    .source-tag {
+      display: inline-block; font-size: 10px; font-weight: 800; padding: 3px 8px;
+      border-radius: 5px;
+    }
+    .source-modal { background: rgba(107,60,247,0.2); color: #A78BFF; }
+    .source-cta   { background: rgba(245,200,66,0.15); color: #F5C842; }
+    .source-seed  { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .del-btn {
+      padding: 5px 12px; background: transparent; border: 1px solid rgba(248,113,113,0.2);
+      border-radius: 6px; font-size: 11px; font-weight: 700; color: rgba(248,113,113,0.5);
+      cursor: pointer; font-family: inherit; transition: all 0.2s;
+    }
+    .del-btn:hover { background: rgba(248,113,113,0.1); border-color: #f87171; color: #f87171; }
+
+    /* Empty state */
+    .empty-state { text-align: center; padding: 80px 24px; }
+    .empty-icon { font-size: 48px; margin-bottom: 16px; }
+    .empty-title { font-size: 16px; font-weight: 800; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+    .empty-sub { font-size: 13px; color: rgba(255,255,255,0.2); }
+
+    /* Notice */
+    .notice {
+      background: rgba(107,60,247,0.08); border: 1px solid rgba(107,60,247,0.2);
+      border-radius: 10px; padding: 14px 18px; font-size: 13px; color: rgba(255,255,255,0.4);
+      margin-top: 20px; line-height: 1.6;
+    }
+    .notice strong { color: rgba(255,255,255,0.6); }
+
+    /* Seed modal */
+    .seed-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100;
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .seed-overlay.open { display: flex; }
+    .seed-box {
+      background: #1a2035; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 32px; width: 100%; max-width: 440px;
+    }
+    .seed-title { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .seed-sub { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .seed-textarea {
+      width: 100%; height: 120px; padding: 12px 14px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 9px; font-size: 13px; font-family: inherit; color: #fff;
+      outline: none; resize: vertical; line-height: 1.6;
+    }
+    .seed-textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .seed-textarea:focus { border-color: #6B3CF7; }
+    .seed-actions { display: flex; gap: 10px; margin-top: 16px; justify-content: flex-end; }
+
+    @media (max-width: 768px) {
+      .adm-main { padding: 24px 16px 40px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .adm-nav { padding: 0 16px; }
+      .adm-badge, .adm-nav-link { display: none; }
+      thead th:nth-child(3), thead th:nth-child(4), tbody td:nth-child(3), tbody td:nth-child(4) { display: none; }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .login-box { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Login ── -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Foal<span>AI</span></div>
+    <div>
+      <div class="login-title">관리자 로그인</div>
+      <div class="login-sub" style="margin-top:6px">비밀번호를 입력하세요</div>
+    </div>
+    <input class="login-input" id="pw-input" type="password" placeholder="••••••••"
+      onkeydown="if(event.key==='Enter') tryLogin()" />
+    <button class="login-btn" onclick="tryLogin()">로그인</button>
+    <div class="login-err" id="login-err"></div>
+  </div>
+</div>
+
+<!-- ── Dashboard ── -->
+<div id="dashboard">
+  <nav class="adm-nav">
+    <div class="adm-nav-logo">
+      <img src="images/Logo.png" alt="" style="height:26px;width:auto;" onerror="this.style.display='none'">
+      Foal<span>AI</span>
+      <span class="adm-badge">ADMIN</span>
+    </div>
+    <div class="adm-nav-right">
+      <a href="index.html" class="adm-nav-link">← 랜딩페이지</a>
+      <button class="logout-btn" onclick="logout()">로그아웃</button>
+    </div>
+  </nav>
+
+  <div class="adm-main">
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">총 관심 등록</div>
+        <div class="stat-value accent" id="s-total">0</div>
+        <div class="stat-sub">누적 이메일</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">오늘 등록</div>
+        <div class="stat-value" id="s-today">0</div>
+        <div class="stat-sub" id="s-today-date"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">이번 주</div>
+        <div class="stat-value" id="s-week">0</div>
+        <div class="stat-sub">최근 7일</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">팝업 / CTA</div>
+        <div class="stat-value" id="s-split" style="font-size:22px;line-height:1.4;">0 / 0</div>
+        <div class="stat-sub">유입 경로 비율</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-bar">
+      <input class="search-box" id="searchBox" type="text" placeholder="🔍  이메일 검색…" oninput="render()" />
+      <button class="ctrl-btn outline" onclick="refresh()">↻ 새로고침</button>
+      <button class="ctrl-btn outline" onclick="openSeed()">+ 직접 추가</button>
+      <button class="ctrl-btn primary" onclick="exportCSV()">CSV 다운로드</button>
+      <button class="ctrl-btn danger" onclick="clearAll()">전체 삭제</button>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+      <div class="table-hdr">
+        <span class="table-hdr-title">관심 등록자 목록</span>
+        <span class="count-badge" id="count-badge">0명</span>
+      </div>
+      <div id="table-area"></div>
+    </div>
+
+    <div class="notice">
+      <strong>💡 데이터 저장 방식:</strong> 현재 이 기기의 브라우저(localStorage)에 저장됩니다.
+      다른 기기에서 접속한 등록자 데이터는 보이지 않습니다.
+      실제 운영 시 <strong>Supabase</strong> 또는 <strong>Google Sheets</strong> 연동을 권장합니다.
+    </div>
+
+  </div>
+</div>
+
+<!-- Seed modal -->
+<div class="seed-overlay" id="seed-overlay" onclick="if(event.target===this) closeSeed()">
+  <div class="seed-box">
+    <div class="seed-title">이메일 직접 추가</div>
+    <div class="seed-sub">줄바꿈으로 여러 이메일을 한 번에 추가할 수 있습니다</div>
+    <textarea class="seed-textarea" id="seed-input" placeholder="example@email.com&#10;another@email.com"></textarea>
+    <div class="seed-actions">
+      <button class="ctrl-btn outline" onclick="closeSeed()">취소</button>
+      <button class="ctrl-btn primary" onclick="addSeed()">추가</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const KEY = 'foalai_regs';
+const PW  = 'foal2026';       // ← 비밀번호 변경 시 여기를 수정하세요
+
+/* ─── Auth ─── */
+function tryLogin(){
+  const v = document.getElementById('pw-input').value;
+  const err = document.getElementById('login-err');
+  const inp = document.getElementById('pw-input');
+  if(v === PW){
+    sessionStorage.setItem('adm_ok','1');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').classList.add('show');
+    init();
+  } else {
+    inp.classList.add('error');
+    err.textContent = '비밀번호가 올바르지 않습니다';
+    setTimeout(()=>{ inp.classList.remove('error'); err.textContent=''; }, 2000);
+  }
+}
+function logout(){
+  sessionStorage.removeItem('adm_ok');
+  location.reload();
+}
+
+/* ─── Data ─── */
+function getRegs(){ return JSON.parse(localStorage.getItem(KEY)||'[]'); }
+function setRegs(list){ localStorage.setItem(KEY, JSON.stringify(list)); }
+
+function delReg(id){
+  if(!confirm('이 항목을 삭제하시겠습니까?')) return;
+  setRegs(getRegs().filter(r=>r.id!==id));
+  refresh();
+}
+function clearAll(){
+  if(!confirm('전체 등록자 데이터를 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) return;
+  setRegs([]); refresh();
+}
+
+/* ─── Stats ─── */
+function updateStats(list){
+  const now  = new Date();
+  const today = now.toDateString();
+  const week  = now - 7*24*60*60*1000;
+  document.getElementById('s-total').textContent = list.length;
+  document.getElementById('s-today').textContent = list.filter(r=>new Date(r.date).toDateString()===today).length;
+  document.getElementById('s-week').textContent  = list.filter(r=>new Date(r.date)>=week).length;
+  const modal = list.filter(r=>r.source==='팝업 모달').length;
+  const cta   = list.filter(r=>r.source==='하단 CTA').length;
+  document.getElementById('s-split').textContent = modal+' / '+cta;
+  document.getElementById('s-today-date').textContent = now.toLocaleDateString('ko-KR',{month:'long',day:'numeric'});
+}
+
+/* ─── Render ─── */
+function render(){
+  const q    = (document.getElementById('searchBox').value||'').toLowerCase();
+  const list = getRegs().filter(r=>!q||r.email.toLowerCase().includes(q));
+  document.getElementById('count-badge').textContent = list.length+'명';
+
+  if(list.length===0){
+    document.getElementById('table-area').innerHTML =
+      '<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">등록된 데이터가 없습니다</div><div class="empty-sub">랜딩페이지에서 이메일을 등록하면 여기에 표시됩니다</div></div>';
+    return;
+  }
+
+  let rows = list.map((r,i)=>{
+    const d    = new Date(r.date);
+    const date = d.toLocaleDateString('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit'});
+    const time = d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+    const srcClass = r.source==='팝업 모달'?'source-modal': r.source==='하단 CTA'?'source-cta':'source-seed';
+    return `<tr>
+      <td class="td-num">${list.length-i}</td>
+      <td class="td-email">${esc(r.email)}</td>
+      <td><span class="source-tag ${srcClass}">${esc(r.source||'직접 추가')}</span></td>
+      <td>${date} ${time}</td>
+      <td><button class="del-btn" onclick="delReg(${r.id})">삭제</button></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('table-area').innerHTML =
+    `<table><thead><tr>
+      <th>#</th><th>이메일</th><th>유입 경로</th><th>등록 일시</th><th></th>
+    </tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function refresh(){
+  updateStats(getRegs());
+  render();
+}
+
+/* ─── Export CSV ─── */
+function exportCSV(){
+  const list = getRegs();
+  if(list.length===0){ alert('다운로드할 데이터가 없습니다.'); return; }
+  const header = '번호,이메일,유입경로,등록일시\n';
+  const rows = list.map((r,i)=>{
+    const d = new Date(r.date).toLocaleString('ko-KR');
+    return `${list.length-i},"${r.email}","${r.source||''}","${d}"`;
+  }).join('\n');
+  const blob = new Blob(['\uFEFF'+header+rows],{type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'foalai_registrations_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+/* ─── Seed (직접 추가) ─── */
+function openSeed(){ document.getElementById('seed-overlay').classList.add('open'); }
+function closeSeed(){ document.getElementById('seed-overlay').classList.remove('open'); document.getElementById('seed-input').value=''; }
+function addSeed(){
+  const lines = document.getElementById('seed-input').value.split('\n').map(s=>s.trim()).filter(s=>s.includes('@'));
+  if(lines.length===0){ alert('올바른 이메일을 입력해주세요.'); return; }
+  const list = getRegs();
+  let added = 0;
+  lines.forEach(email=>{
+    if(!list.some(r=>r.email===email)){
+      list.unshift({id:Date.now()+Math.random(), email, source:'직접 추가', date:new Date().toISOString(), ref:''});
+      added++;
+    }
+  });
+  setRegs(list);
+  closeSeed();
+  refresh();
+  if(added>0) alert(added+'명이 추가되었습니다.');
+}
+
+/* ─── Init ─── */
+function init(){ refresh(); }
+
+// Auto-login if session still active
+if(sessionStorage.getItem('adm_ok')==='1'){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('dashboard').classList.add('show');
+  init();
+} else {
+  setTimeout(()=>document.getElementById('pw-input').focus(), 100);
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSeed(); });
+</script>
+</body>
+</html>
