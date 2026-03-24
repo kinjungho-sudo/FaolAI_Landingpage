@@ -542,6 +542,63 @@
       .demo-next-cards { grid-template-columns: 1fr; }
     }
 
+    /* ──────── COMPARISON SECTION ──────── */
+    .cmp-section { padding: 80px 32px; background: #F6F4FF; }
+    .cmp-inner { max-width: 960px; margin: 0 auto; }
+    .cmp-toggle { display: flex; gap: 8px; margin-bottom: 28px; }
+    .cmp-btn {
+      padding: 9px 22px; border-radius: 100px;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer; border: none; font-family: inherit; transition: all 0.2s;
+    }
+    .cmp-btn.on { background: #6B3CF7; color: #fff; }
+    .cmp-btn.off { background: #fff; color: #777; border: 1.5px solid #E0E0E0; }
+    .cmp-window {
+      background: #fff; border-radius: 18px;
+      border: 1px solid #E4E0F5;
+      box-shadow: 0 10px 48px rgba(107,60,247,0.1); overflow: hidden;
+    }
+    .cmp-bar {
+      background: #F5F4F8; padding: 12px 18px;
+      border-bottom: 1px solid #EBEBEB;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .cmp-bar-title { margin-left: 10px; font-size: 13px; font-weight: 700; color: #555; }
+    .cmp-body { padding: 28px 28px 20px; min-height: 320px; display: flex; flex-direction: column; gap: 18px; }
+    .c-panel { display: none; flex-direction: column; gap: 18px; }
+    .c-panel.active { display: flex; }
+    .c-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.35s, transform 0.35s;
+    }
+    .c-row.show { opacity: 1; transform: translateY(0); }
+    .c-row.user-row { flex-direction: row-reverse; }
+    .c-av {
+      width: 34px; height: 34px; border-radius: 50%;
+      font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .av-u { background: #EDE0FF; color: #6B3CF7; }
+    .av-gpt { background: #19C37D; color: #fff; }
+    .av-foal { background: #6B3CF7; color: #fff; }
+    .c-bub { max-width: 72%; padding: 12px 16px; border-radius: 14px; font-size: 14px; line-height: 1.65; }
+    .bub-u { background: #6B3CF7; color: #fff; border-bottom-right-radius: 4px; }
+    .bub-gpt { background: #F3F3F3; color: #333; border-bottom-left-radius: 4px; }
+    .bub-foal { background: #EDE0FF; color: #2E1080; border-bottom-left-radius: 4px; border-left: 3px solid #6B3CF7; }
+    .bub-warn {
+      background: #FFF8E6; color: #7A5800; border: 1px solid #FFE08A;
+      border-radius: 10px; padding: 12px 16px; font-size: 13px; width: 100%; border-bottom-left-radius: 4px;
+    }
+    .bub-win {
+      background: #E8F9EE; color: #1A6634; border: 1px solid #9DE0B3;
+      border-radius: 10px; padding: 12px 16px; font-size: 13px; width: 100%; border-bottom-left-radius: 4px;
+    }
+    .t-row { display: flex; gap: 5px; padding: 6px 2px; align-items: center; }
+    .t-dot { width: 7px; height: 7px; border-radius: 50%; background: #bbb; animation: bounce 1.2s infinite; }
+    .t-dot:nth-child(2){animation-delay:.2s;} .t-dot:nth-child(3){animation-delay:.4s;}
+    @keyframes bounce { 0%,60%,100%{transform:translateY(0);opacity:.4;} 30%{transform:translateY(-6px);opacity:1;} }
+
     /* ──────── HOW WE'RE DIFFERENT ──────── */
     .diff-section {
       padding: 80px 32px;
@@ -1086,6 +1143,29 @@
   </div>
 </section>
 
+<!-- COMPARISON: ChatGPT vs Foal AI -->
+<section class="cmp-section">
+  <div class="cmp-inner">
+    <div class="sec-label reveal">두 가지 방식의 차이</div>
+    <h2 class="sec-h2 reveal reveal-delay-1">ChatGPT와 Foal AI,<br />무엇이 다를까요?</h2>
+    <p class="sec-desc reveal reveal-delay-2">같은 아이디어, 다른 방식으로 검증해보세요.</p>
+    <div class="cmp-toggle">
+      <button class="cmp-btn on" id="tab-gpt" onclick="switchCmp('gpt')">😓 ChatGPT로 검증할 때</button>
+      <button class="cmp-btn off" id="tab-foal" onclick="switchCmp('foal')">✨ Foal AI로 검증할 때</button>
+    </div>
+    <div class="cmp-window">
+      <div class="cmp-bar">
+        <div class="s-dot r"></div><div class="s-dot y"></div><div class="s-dot g"></div>
+        <div class="cmp-bar-title" id="cmp-name">ChatGPT</div>
+      </div>
+      <div class="cmp-body">
+        <div class="c-panel active" id="cpanel-gpt"></div>
+        <div class="c-panel" id="cpanel-foal"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WHAT WE DO -->
 <section class="diff-section">
   <div class="sec-inner">
@@ -1363,6 +1443,90 @@
     obs.observe(section);
   }
 })();
+
+// ─── COMPARISON SIM ───
+const CMP_MSG = {
+  gpt: [
+    { type:'user', text:'동네 카페 사장님들한테 SNS 마케팅 대행 서비스 아이디어가 있는데, 어때요?' },
+    { type:'typing' },
+    { type:'gpt', text:'흥미로운 아이디어입니다! 소상공인들의 디지털 마케팅 수요가 높아지고 있어서 충분히 가능성 있어 보입니다. 차별화된 서비스를 제공하면 성공할 수 있을 것 같아요.' },
+    { type:'user', text:'근데 진짜 카페 사장님들이 돈 낼까요?' },
+    { type:'typing' },
+    { type:'gpt', text:'충분히 가능합니다! SNS 광고 효과를 체감한 소상공인이 늘고 있고, 합리적인 가격을 책정하면 수요가 있을 것 같습니다. 주변 카페에 먼저 제안해보시는 건 어떨까요? 😊' },
+    { type:'warn', text:'⚠️ "가능성 있어 보입니다"는 검증이 아닙니다. 진짜 돈을 낼지는 여전히 모릅니다.' },
+  ],
+  foal: [
+    { type:'foal', text:'어떤 문제를 해결하고 싶으신가요? 편하게 말씀해주세요.' },
+    { type:'user', text:'소상공인들이 SNS 마케팅이 필요한 건 아는데 어떻게 해야 할지 모르는 것 같아요.' },
+    { type:'typing' },
+    { type:'foal', text:'그 문제를 가장 심하게 겪는 사람은 어떤 분일까요? 업종, 나이, 상황을 구체적으로 그려봐주세요.' },
+    { type:'user', text:'동네 카페 3년차 40대 여성 사장님인 것 같아요. 블로그 글 쓸 시간도 없고 방법도 모르는 분들이요.' },
+    { type:'typing' },
+    { type:'foal', text:'그분이 지금 이 문제를 어떻게 해결하고 있나요? 누군가에게 돈 내고 맡기고 있나요, 아니면 그냥 포기하고 있나요?' },
+    { type:'user', text:'그냥 가끔 네이버 블로그 올리거나 아예 안 하는 것 같아요. 대행사는 너무 비싸서요.' },
+    { type:'typing' },
+    { type:'win', text:'✅ 핵심 발견: "해야 하는 건 알지만 못 하고 있는" 상태입니다. 현재 해결책(포기 또는 가끔 블로그)과 원하는 상태(효과적인 홍보) 사이의 Gap이 확인됐어요. 진짜 검증의 시작입니다.' },
+  ],
+};
+let cmpTimers = [];
+function clrCmp(){ cmpTimers.forEach(clearTimeout); cmpTimers=[]; }
+
+function renderCmp(key){
+  const panel = document.getElementById('cpanel-'+key);
+  if(!panel) return;
+  panel.innerHTML = ''; clrCmp();
+  let delay = 300;
+  CMP_MSG[key].forEach(msg => {
+    const d = delay;
+    if(msg.type==='typing'){
+      const row = makeCmpTyping(key);
+      row.classList.add('c-row','show'); panel.appendChild(row);
+      cmpTimers.push(setTimeout(()=>row.remove(), d+900));
+      delay += 1000; return;
+    }
+    const el = makeCmpMsg(msg);
+    panel.appendChild(el);
+    cmpTimers.push(setTimeout(()=>el.classList.add('show'), d));
+    delay += 750;
+  });
+}
+function makeCmpMsg(msg){
+  if(msg.type==='warn'||msg.type==='win'){
+    const d=document.createElement('div');
+    d.className='c-row '+(msg.type==='warn'?'bub-warn':'bub-win');
+    d.textContent=msg.text; return d;
+  }
+  const row=document.createElement('div');
+  row.className='c-row'+(msg.type==='user'?' user-row':'');
+  const av=document.createElement('div');
+  av.className='c-av '+(msg.type==='user'?'av-u':msg.type==='gpt'?'av-gpt':'av-foal');
+  av.textContent=msg.type==='user'?'나':msg.type==='gpt'?'GPT':'F';
+  const bub=document.createElement('div');
+  bub.className='c-bub '+(msg.type==='user'?'bub-u':msg.type==='gpt'?'bub-gpt':'bub-foal');
+  bub.textContent=msg.text;
+  if(msg.type==='user'){row.appendChild(bub);row.appendChild(av);}
+  else{row.appendChild(av);row.appendChild(bub);}
+  return row;
+}
+function makeCmpTyping(key){
+  const row=document.createElement('div'); row.className='c-row';
+  const av=document.createElement('div');
+  av.className='c-av '+(key==='gpt'?'av-gpt':'av-foal');
+  av.textContent=key==='gpt'?'GPT':'F';
+  const bub=document.createElement('div');
+  bub.className='c-bub '+(key==='gpt'?'bub-gpt':'bub-foal');
+  bub.innerHTML='<div class="t-row"><div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div></div>';
+  row.appendChild(av); row.appendChild(bub); return row;
+}
+function switchCmp(key){
+  document.querySelectorAll('.c-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('cpanel-'+key).classList.add('active');
+  document.getElementById('cmp-name').textContent=key==='gpt'?'ChatGPT':'Foal AI';
+  document.getElementById('tab-gpt').className='cmp-btn '+(key==='gpt'?'on':'off');
+  document.getElementById('tab-foal').className='cmp-btn '+(key==='foal'?'on':'off');
+  renderCmp(key);
+}
+renderCmp('gpt');
 
 // ─── MODAL ───
 function openModal(){
