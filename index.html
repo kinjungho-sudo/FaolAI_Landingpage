@@ -353,67 +353,48 @@
       text-align: center; color: #fff; position: relative;
       display: flex; align-items: center; justify-content: center;
     }
-    /* chaos stack */
-    .stress-chaos-stack {
-      position: relative; width: 210px; height: 170px;
-    }
-    .stress-chaos-card {
-      position: absolute;
-      background: #161c2e;
+    /* progress card */
+    .stress-progress-card {
+      background: #13182A;
       border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 10px;
-      padding: 10px 14px;
-      width: 190px;
+      border-radius: 18px;
+      padding: 22px 24px;
+      width: 248px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
     }
-    .scc-back {
-      top: 0; left: 10px;
-      transform: rotate(-7deg);
-      opacity: 0.45;
+    .spc-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px;
     }
-    .scc-mid {
-      top: 18px; left: 4px;
-      transform: rotate(3deg);
-      opacity: 0.65;
+    .spc-title { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.55); }
+    .spc-status {
+      font-size: 10px; font-weight: 800; color: #F59E0B;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.2);
+      padding: 2px 8px; border-radius: 6px;
     }
-    .scc-front {
-      top: 34px; left: 10px;
-      transform: rotate(-1deg);
-      box-shadow: 0 10px 32px rgba(0,0,0,0.5);
-      border-color: rgba(255,255,255,0.14);
+    .spc-gauge-wrap { display: flex; justify-content: center; margin-bottom: 18px; }
+    .spc-gauge-pct {
+      font-size: 22px; font-weight: 900;
+      fill: rgba(255,255,255,0.35);
+      font-family: "Noto Sans KR", sans-serif;
     }
-    .scc-top {
-      display: flex; align-items: center; gap: 5px; margin-bottom: 8px;
+    .spc-gauge-lbl {
+      font-size: 9px; fill: rgba(255,255,255,0.25);
+      font-family: "Noto Sans KR", sans-serif;
     }
-    .scc-dot {
-      width: 7px; height: 7px; border-radius: 50%;
+    .spc-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+    .spc-bar-row:last-child { margin-bottom: 0; }
+    .spc-bar-lbl { font-size: 10px; color: rgba(255,255,255,0.38); width: 68px; flex-shrink: 0; }
+    .spc-bar-track {
+      flex: 1; height: 4px;
+      background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden;
     }
-    .scc-title {
-      font-size: 10px; font-weight: 600;
-      color: rgba(255,255,255,0.45);
-      margin-left: 4px; white-space: nowrap;
-      overflow: hidden; text-overflow: ellipsis; max-width: 130px;
+    .spc-bar-fill {
+      height: 100%; border-radius: 2px;
+      background: linear-gradient(90deg, rgba(107,60,247,0.5), rgba(107,60,247,0.2));
     }
-    .scc-line {
-      height: 6px; border-radius: 3px;
-      background: rgba(255,255,255,0.07);
-      margin-bottom: 5px;
-    }
-    .scc-line.accent { background: rgba(107,60,247,0.25); }
-    .scc-blank-text {
-      text-align: center; padding: 6px 0;
-      color: rgba(255,255,255,0.18); font-size: 11px;
-      font-style: italic;
-    }
-    .scc-search {
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 6px; padding: 5px 8px; margin-bottom: 8px;
-    }
-    .scc-search-icon { font-size: 10px; }
-    .scc-search-text { font-size: 10px; color: rgba(255,255,255,0.45); }
-    .scc-result-title { font-size: 11px; color: rgba(245,200,66,0.7); margin-bottom: 2px; }
-    .scc-result-url { font-size: 9px; color: rgba(255,255,255,0.25); }
+    .spc-bar-q { font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.2); width: 12px; text-align: right; }
     @media(max-width:700px){
       .stress-fallback{ grid-template-columns:1fr; padding:40px 24px; }
       .stress-left-tags,.stress-right-tags{ flex-direction:row; flex-wrap:wrap; justify-content:center; align-items:center; }
@@ -1411,6 +1392,7 @@
     <div class="nav-links">
       <a href="announcements.html" class="nav-link">공고마당</a>
       <a href="guide.html" class="nav-link">사업계획서 작성가이드</a>
+      <a href="inquiry.html" class="nav-link">문의하기</a>
     </div>
     <button class="nav-btn" onclick="openModal()">관심 등록하기</button>
   </div>
@@ -1525,35 +1507,40 @@
         <div class="stress-tag-box">아이디어 검증</div>
       </div>
       <div class="stress-center">
-        <div class="stress-chaos-stack">
-          <!-- 뒤: ChatGPT 창 -->
-          <div class="stress-chaos-card scc-back">
-            <div class="scc-top">
-              <span class="scc-dot" style="background:#FF5F57"></span>
-              <span class="scc-dot" style="background:#FEBC2E"></span>
-              <span class="scc-dot" style="background:#28C840"></span>
-              <span class="scc-title">ChatGPT</span>
-            </div>
-            <div class="scc-line accent" style="width:90%"></div>
-            <div class="scc-line" style="width:78%"></div>
-            <div class="scc-line" style="width:85%"></div>
+        <div class="stress-progress-card">
+          <div class="spc-header">
+            <span class="spc-title">사업계획서 완성도</span>
+            <span class="spc-status">제출 불가</span>
           </div>
-          <!-- 중간: 빈 문서 -->
-          <div class="stress-chaos-card scc-mid">
-            <div class="scc-top">
-              <span class="scc-title">📄 사업계획서_초안.docx</span>
-            </div>
-            <div class="scc-blank-text">어디서부터 써야 하지...</div>
-            <div class="scc-line" style="width:60%"></div>
+          <div class="spc-gauge-wrap">
+            <svg width="110" height="110" viewBox="0 0 110 110">
+              <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="9"/>
+              <circle cx="55" cy="55" r="42" fill="none" stroke="rgba(107,60,247,0.55)" stroke-width="9"
+                stroke-dasharray="263.9" stroke-dashoffset="250.7"
+                stroke-linecap="round" transform="rotate(-90 55 55)"/>
+              <text x="55" y="51" text-anchor="middle" class="spc-gauge-pct">5%</text>
+              <text x="55" y="63" text-anchor="middle" class="spc-gauge-lbl">전체 완성도</text>
+            </svg>
           </div>
-          <!-- 앞: 구글 검색 창 -->
-          <div class="stress-chaos-card scc-front">
-            <div class="scc-search">
-              <span class="scc-search-icon">🔍</span>
-              <span class="scc-search-text">예창패 사업계획서 작성법</span>
-            </div>
-            <div class="scc-result-title">2019년 합격 후기 블로그</div>
-            <div class="scc-result-url">blog.naver.com/startup_tips/...</div>
+          <div class="spc-bar-row">
+            <span class="spc-bar-lbl">아이디어 검증</span>
+            <div class="spc-bar-track"><div class="spc-bar-fill" style="width:10%"></div></div>
+            <span class="spc-bar-q">?</span>
+          </div>
+          <div class="spc-bar-row">
+            <span class="spc-bar-lbl">타겟 고객</span>
+            <div class="spc-bar-track"><div class="spc-bar-fill" style="width:7%"></div></div>
+            <span class="spc-bar-q">?</span>
+          </div>
+          <div class="spc-bar-row">
+            <span class="spc-bar-lbl">시장 규모</span>
+            <div class="spc-bar-track"><div class="spc-bar-fill" style="width:4%"></div></div>
+            <span class="spc-bar-q">?</span>
+          </div>
+          <div class="spc-bar-row">
+            <span class="spc-bar-lbl">차별점</span>
+            <div class="spc-bar-track"><div class="spc-bar-fill" style="width:3%"></div></div>
+            <span class="spc-bar-q">?</span>
           </div>
         </div>
       </div>

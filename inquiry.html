@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>문의하기 — Foal AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans KR', sans-serif; background: #0B0D14; color: #e2e8f0; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+    /* ── Header ── */
+    .iq-header {
+      background: #0B0D14;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .iq-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .iq-logo-img {
+      height: 28px;
+      width: auto;
+    }
+    .iq-logo-text {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: #fff;
+    }
+    .iq-logo-text span { color: #6B3CF7; }
+    .iq-nav-links { display: flex; gap: 20px; align-items: center; }
+    .iq-nav-link {
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .iq-nav-link:hover { color: #fff; }
+    .iq-nav-link.active { color: #fff; }
+    .iq-nav-btn {
+      padding: 8px 18px;
+      background: #6B3CF7;
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .iq-nav-btn:hover { background: #5428E0; }
+
+    /* ── Hero ── */
+    .iq-hero {
+      padding: 64px 40px 48px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .iq-hero-label {
+      display: inline-block;
+      background: rgba(107,60,247,0.15);
+      color: #A78BFF;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .iq-hero-h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .iq-hero-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+
+    /* ── Layout ── */
+    .iq-main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* ── Form ── */
+    .iq-form-card {
+      background: #13182A;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px;
+      position: sticky;
+      top: 84px;
+    }
+    .iq-form-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .iq-form-group {
+      margin-bottom: 14px;
+    }
+    .iq-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+    .iq-input, .iq-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .iq-input::placeholder, .iq-textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .iq-input:focus, .iq-textarea:focus { border-color: #6B3CF7; }
+    .iq-input.error { border-color: #f87171; }
+    .iq-textarea {
+      resize: vertical;
+      min-height: 130px;
+      line-height: 1.6;
+    }
+    .iq-submit-btn {
+      width: 100%;
+      padding: 13px;
+      background: #6B3CF7;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 4px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .iq-submit-btn:hover { background: #5428E0; }
+    .iq-submit-btn:active { transform: scale(0.98); }
+    .iq-submit-btn:disabled { background: rgba(107,60,247,0.4); cursor: not-allowed; }
+    .iq-form-notice {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      margin-top: 12px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ── Board ── */
+    .iq-board-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .iq-board-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .iq-board-count {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── Card ── */
+    .iq-card {
+      background: #13182A;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .iq-card:hover { border-color: rgba(107,60,247,0.35); background: #161c2e; }
+    .iq-card.open { border-color: rgba(107,60,247,0.4); }
+    .iq-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .iq-card-nick {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #6B3CF7, #A78BFF);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .iq-card-meta { flex: 1; min-width: 0; }
+    .iq-card-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .iq-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .iq-card-info {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      display: flex;
+      gap: 8px;
+    }
+    .iq-card-nick-name { font-weight: 700; color: rgba(255,255,255,0.5); }
+    .iq-card-preview {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 10px;
+      line-height: 1.6;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .iq-card-content {
+      display: none;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      line-height: 1.75;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .iq-card.open .iq-card-preview { display: none; }
+    .iq-card.open .iq-card-content { display: block; }
+    .iq-card-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: rgba(255,255,255,0.2);
+      transition: transform 0.2s;
+    }
+    .iq-card.open .iq-card-chevron { transform: rotate(180deg); color: #6B3CF7; }
+
+    /* ── Empty / Loading ── */
+    .iq-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: rgba(255,255,255,0.25);
+    }
+    .iq-empty-icon { font-size: 40px; margin-bottom: 12px; }
+    .iq-empty-text { font-size: 14px; }
+    .iq-loading {
+      text-align: center;
+      padding: 40px;
+      color: rgba(255,255,255,0.3);
+      font-size: 13px;
+    }
+
+    /* ── Toast ── */
+    .iq-toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1a2236;
+      border: 1px solid rgba(107,60,247,0.4);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      z-index: 999;
+      white-space: nowrap;
+    }
+    .iq-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .iq-toast.success { border-color: rgba(34,197,94,0.4); }
+    .iq-toast.error { border-color: rgba(248,113,113,0.4); }
+
+    /* ── Footer ── */
+    .iq-footer {
+      background: #0A0A14;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .iq-header { padding: 0 20px; }
+      .iq-hero { padding: 40px 20px 32px; }
+      .iq-main {
+        grid-template-columns: 1fr;
+        padding: 0 20px 80px;
+        gap: 24px;
+      }
+      .iq-form-card { position: static; }
+      .iq-nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="iq-header">
+  <a href="index.html" class="iq-logo">
+    <img src="images/Logo.png" alt="Foal AI" class="iq-logo-img" onerror="this.style.display='none'" />
+    <span class="iq-logo-text">Foal<span>AI</span></span>
+  </a>
+  <nav class="iq-nav-links">
+    <a href="announcements.html" class="iq-nav-link">공고마당</a>
+    <a href="guide.html" class="iq-nav-link">사업계획서 작성가이드</a>
+    <a href="inquiry.html" class="iq-nav-link active">문의하기</a>
+  </nav>
+  <a href="index.html#cta" class="iq-nav-btn">관심 등록하기</a>
+</header>
+
+<!-- HERO -->
+<div class="iq-hero">
+  <div class="iq-hero-label">INQUIRY</div>
+  <h1 class="iq-hero-h1">무엇이든 물어보세요</h1>
+  <p class="iq-hero-sub">Foal AI에 대해 궁금한 점, 바라는 기능, 개선 의견을<br />자유롭게 남겨주세요. 모든 문의가 제품 개선에 반영됩니다.</p>
+</div>
+
+<!-- MAIN -->
+<main class="iq-main">
+
+  <!-- FORM -->
+  <div class="iq-form-card">
+    <div class="iq-form-title">문의 남기기</div>
+
+    <div class="iq-form-group">
+      <label class="iq-label" for="iq-nick">닉네임</label>
+      <input class="iq-input" id="iq-nick" type="text" placeholder="예) 예비창업자A" maxlength="20" />
+    </div>
+
+    <div class="iq-form-group">
+      <label class="iq-label" for="iq-title">제목</label>
+      <input class="iq-input" id="iq-title" type="text" placeholder="궁금한 점을 한 줄로 요약해주세요" maxlength="80" />
+    </div>
+
+    <div class="iq-form-group">
+      <label class="iq-label" for="iq-content">내용</label>
+      <textarea class="iq-textarea" id="iq-content" placeholder="자유롭게 작성해주세요. 예: 어떤 기능이 있나요? 언제 출시되나요? 가격은 어떻게 되나요?" maxlength="1000"></textarea>
+    </div>
+
+    <button class="iq-submit-btn" id="iq-submit-btn" onclick="submitInquiry()">문의 남기기 →</button>
+    <p class="iq-form-notice">닉네임은 게시판에 공개됩니다.<br/>개인 정보(전화번호, 이메일 등)는 기재하지 마세요.</p>
+  </div>
+
+  <!-- BOARD -->
+  <div class="iq-board">
+    <div class="iq-board-header">
+      <div class="iq-board-title">전체 문의</div>
+      <div class="iq-board-count" id="iq-count">불러오는 중...</div>
+    </div>
+    <div id="iq-board-list">
+      <div class="iq-loading">불러오는 중...</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- TOAST -->
+<div class="iq-toast" id="iq-toast"></div>
+
+<!-- FOOTER -->
+<footer class="iq-footer">© 2026 CoMindWorks · Foal AI</footer>
+
+<script>
+  const SB_KEY = 'foalai_sb_config';
+  const LOCAL_KEY = 'foalai_inquiries';
+
+  /* ── Supabase helpers ── */
+  function getSB() {
+    return JSON.parse(localStorage.getItem(SB_KEY) || 'null');
+  }
+
+  async function sbReq(path, opts = {}) {
+    const cfg = getSB();
+    if (!cfg) return null;
+    const r = await fetch(cfg.url + '/rest/v1' + path, {
+      ...opts,
+      headers: {
+        'apikey': cfg.key,
+        'Authorization': 'Bearer ' + cfg.key,
+        'Content-Type': 'application/json',
+        ...(opts.headers || {})
+      }
+    });
+    if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
+    return r;
+  }
+
+  /* ── Load board ── */
+  async function loadBoard() {
+    const list = document.getElementById('iq-board-list');
+    const countEl = document.getElementById('iq-count');
+    let items = [];
+
+    try {
+      const cfg = getSB();
+      if (cfg) {
+        const r = await sbReq('/inquiries?select=*&order=created_at.desc', {
+          headers: { Accept: 'application/json' }
+        });
+        if (r) items = await r.json();
+      } else {
+        items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
+      }
+    } catch (e) {
+      console.warn('Fetch failed, falling back to localStorage', e);
+      items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
+    }
+
+    countEl.textContent = '총 ' + items.length + '개';
+
+    if (items.length === 0) {
+      list.innerHTML = '<div class="iq-empty"><div class="iq-empty-icon">💬</div><div class="iq-empty-text">아직 문의가 없어요.<br/>첫 번째 문의를 남겨보세요!</div></div>';
+      return;
+    }
+
+    list.innerHTML = items.map((item, i) => {
+      const nick = item.nickname || item.nick || '익명';
+      const initial = nick.charAt(0).toUpperCase();
+      const title = item.title || '제목 없음';
+      const content = item.content || '';
+      const date = formatDate(item.created_at || item.date);
+      return `
+        <div class="iq-card" onclick="toggleCard(this)">
+          <div class="iq-card-top">
+            <div class="iq-card-nick">${escHtml(initial)}</div>
+            <div class="iq-card-meta">
+              <div class="iq-card-title-row">
+                <div class="iq-card-title">${escHtml(title)}</div>
+              </div>
+              <div class="iq-card-info">
+                <span class="iq-card-nick-name">${escHtml(nick)}</span>
+                <span>·</span>
+                <span>${date}</span>
+              </div>
+            </div>
+            <svg class="iq-card-chevron" viewBox="0 0 20 20" fill="none">
+              <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="iq-card-preview">${escHtml(content)}</div>
+          <div class="iq-card-content">${escHtml(content)}</div>
+        </div>`;
+    }).join('');
+  }
+
+  function toggleCard(el) {
+    el.classList.toggle('open');
+  }
+
+  /* ── Submit ── */
+  async function submitInquiry() {
+    const nick = document.getElementById('iq-nick').value.trim();
+    const title = document.getElementById('iq-title').value.trim();
+    const content = document.getElementById('iq-content').value.trim();
+    const btn = document.getElementById('iq-submit-btn');
+
+    // Validate
+    let valid = true;
+    ['iq-nick', 'iq-title', 'iq-content'].forEach(id => {
+      document.getElementById(id).classList.remove('error');
+    });
+    if (!nick) { document.getElementById('iq-nick').classList.add('error'); valid = false; }
+    if (!title) { document.getElementById('iq-title').classList.add('error'); valid = false; }
+    if (!content) { document.getElementById('iq-content').classList.add('error'); valid = false; }
+    if (!valid) { showToast('모든 항목을 입력해주세요.', 'error'); return; }
+
+    btn.disabled = true;
+    btn.textContent = '등록 중...';
+
+    try {
+      const cfg = getSB();
+      if (cfg) {
+        await sbReq('/inquiries', {
+          method: 'POST',
+          headers: { Prefer: 'return=minimal' },
+          body: JSON.stringify({ nickname: nick, title, content })
+        });
+      } else {
+        // localStorage fallback
+        const items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
+        items.unshift({ id: Date.now(), nickname: nick, title, content, created_at: new Date().toISOString() });
+        localStorage.setItem(LOCAL_KEY, JSON.stringify(items));
+      }
+
+      // Clear form
+      document.getElementById('iq-nick').value = '';
+      document.getElementById('iq-title').value = '';
+      document.getElementById('iq-content').value = '';
+      showToast('✅ 문의가 등록되었습니다!', 'success');
+      loadBoard();
+    } catch (e) {
+      console.error(e);
+      showToast('등록 중 오류가 발생했습니다.', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '문의 남기기 →';
+    }
+  }
+
+  /* ── Toast ── */
+  function showToast(msg, type = '') {
+    const t = document.getElementById('iq-toast');
+    t.textContent = msg;
+    t.className = 'iq-toast ' + type;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  /* ── Helpers ── */
+  function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    const now = new Date();
+    const diff = Math.floor((now - d) / 1000);
+    if (diff < 60) return '방금 전';
+    if (diff < 3600) return Math.floor(diff / 60) + '분 전';
+    if (diff < 86400) return Math.floor(diff / 3600) + '시간 전';
+    if (diff < 604800) return Math.floor(diff / 86400) + '일 전';
+    return d.toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' });
+  }
+
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  /* ── Enter key submit ── */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) submitInquiry();
+  });
+
+  /* ── Init ── */
+  loadBoard();
+</script>
+</body>
+</html>
