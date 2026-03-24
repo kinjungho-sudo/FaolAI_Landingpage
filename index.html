@@ -907,11 +907,35 @@
       font-weight: 900; letter-spacing: -0.04em;
       line-height: 1.2;
     }
-    .review-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+    .review-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 36px; gap: 16px; flex-wrap: wrap;
     }
+    .review-nav { display: flex; gap: 8px; flex-shrink: 0; }
+    .review-nav-btn {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s;
+      color: rgba(255,255,255,0.6);
+      font-size: 18px; line-height: 1; user-select: none;
+    }
+    .review-nav-btn:hover { background: rgba(107,60,247,0.3); border-color: rgba(107,60,247,0.5); color: #fff; }
+    .review-track {
+      display: flex; gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none; scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+    .review-track::-webkit-scrollbar { display: none; }
     .review-card {
+      flex-shrink: 0;
+      width: calc(50% - 10px);
+      scroll-snap-align: start;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 20px; padding: 36px 32px;
@@ -973,7 +997,7 @@
       margin-bottom: 32px;
     }
     @media (max-width: 640px) {
-      .review-grid { grid-template-columns: 1fr; }
+      .review-card { width: calc(85vw); }
     }
 
     /* ──────── CTA ──────── */
@@ -1843,44 +1867,44 @@
 <section class="review-section">
   <div class="review-inner">
     <div class="review-header">
-      <div class="review-label">관심 등록해주신분들</div>
-      <h2 class="review-h2">관심 등록해주신<br />분들의 이야기</h2>
+      <div>
+        <div class="review-label">관심 등록해주신분들</div>
+        <h2 class="review-h2">관심 등록해주신<br />분들의 이야기</h2>
+      </div>
+      <div class="review-nav">
+        <button class="review-nav-btn" onclick="scrollReviews(-1)">&#8592;</button>
+        <button class="review-nav-btn" onclick="scrollReviews(1)">&#8594;</button>
+      </div>
     </div>
-    <div class="review-grid">
+    <div class="review-track" id="review-track">
 
       <div class="review-card">
-        <div class="review-badge">✓ 관심 등록</div>
-        <div class="review-stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="review-quote">
-          "한번도 해본 적 없던 사업계획서를 써야 해서 막막했는데,<br />
-          이 서비스가 나온다면 자신감이 생길것 같아요.<br />
-          <strong>출시되면 빨리 써보고 싶네요.</strong>"
-        </p>
+        <div class="review-badge">&#10003; 관심 등록</div>
+        <div class="review-stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <p class="review-quote">"실제 고객을 만나보지 않은 상태라 내 사업이 될까? 의문이 들었는데 이런 방법이 있다면 <strong>검증도 하고 확신을 갖게 될 것 같아요.</strong>"</p>
         <div class="review-author">
-          <div class="review-avatar">정</div>
-          <div>
-            <div class="review-name">정민지 님</div>
-            <div class="review-role">예비창업자</div>
-          </div>
+          <div class="review-avatar">신</div>
+          <div><div class="review-name">신소영 님</div><div class="review-role">예비창업자</div></div>
         </div>
       </div>
 
       <div class="review-card">
-        <div class="review-badge">✓ 관심 등록</div>
-        <div class="review-stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="review-quote">
-          "이게 정식 출시되면 <strong>저처럼 창업을 희망하는 사람들이 이용하기 딱 좋은 서비스</strong>인 것 같아요."
-        </p>
+        <div class="review-badge">&#10003; 관심 등록</div>
+        <div class="review-stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <p class="review-quote">"한번도 해본 적 없던 사업계획서를 써야 해서 막막했는데, 이 서비스가 나온다면 자신감이 생길것 같아요. <strong>출시되면 빨리 써보고 싶네요.</strong>"</p>
         <div class="review-author">
           <div class="review-avatar">정</div>
-          <div>
-            <div class="review-name">정하늘 님</div>
-            <div class="review-role">OZ코딩스쿨 수강생</div>
-          </div>
+          <div><div class="review-name">정민지 님</div><div class="review-role">예비창업자</div></div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-badge">&#10003; 관심 등록</div>
+        <div class="review-stars"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+        <p class="review-quote">"이게 정식 출시되면 <strong>저처럼 창업을 희망하는 사람들이 이용하기 딱 좋은 서비스</strong>인 것 같아요."</p>
+        <div class="review-author">
+          <div class="review-avatar">정</div>
+          <div><div class="review-name">정하늘 님</div><div class="review-role">OZ코딩스쿨 수강생</div></div>
         </div>
       </div>
 
@@ -1888,6 +1912,13 @@
   </div>
 </section>
 
+<script>
+function scrollReviews(dir){
+  var t=document.getElementById('review-track');
+  var c=t.querySelector('.review-card');
+  t.scrollBy({left: dir*(c.offsetWidth+20), behavior:'smooth'});
+}
+</script>
 
 <!-- YOUTUBE -->
 <section class="yt-section">
