@@ -2255,11 +2255,27 @@ function closeModal(){
 }
 function bgClick(e){ if(e.target===document.getElementById('m-bg')) closeModal(); }
 function saveReg(email, src){
+  // localStorage
   const KEY='foalai_regs';
   const list=JSON.parse(localStorage.getItem(KEY)||'[]');
-  if(list.some(r=>r.email===email)) return;
-  list.unshift({id:Date.now(), email, source:src, date:new Date().toISOString(), ref:document.referrer||'직접 접속'});
-  localStorage.setItem(KEY, JSON.stringify(list));
+  if(!list.some(r=>r.email===email)){
+    list.unshift({id:Date.now(), email, source:src, date:new Date().toISOString(), ref:document.referrer||'직접 접속'});
+    localStorage.setItem(KEY, JSON.stringify(list));
+  }
+  // Supabase (연동된 경우)
+  const cfg=JSON.parse(localStorage.getItem('foalai_sb_config')||'null');
+  if(cfg && cfg.url && cfg.key){
+    fetch(cfg.url+'/rest/v1/registrations',{
+      method:'POST',
+      headers:{
+        'apikey':cfg.key,
+        'Authorization':'Bearer '+cfg.key,
+        'Content-Type':'application/json',
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify({email, source:src, ref:document.referrer||'직접 접속'})
+    }).catch(()=>{});
+  }
 }
 function submitModal(){
   const v=document.getElementById('m-email').value;

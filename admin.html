@@ -11,181 +11,129 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Noto Sans KR', sans-serif; background: #0B0D14; color: #e2e8f0; -webkit-font-smoothing: antialiased; min-height: 100vh; }
 
-    /* ── Login screen ── */
-    #login-screen {
-      min-height: 100vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 0; padding: 24px;
-    }
-    .login-box {
-      background: #13182A; border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px; padding: 48px 40px; width: 100%; max-width: 380px;
-      display: flex; flex-direction: column; align-items: center; gap: 24px;
-    }
-    .login-logo { font-size: 28px; font-weight: 900; letter-spacing: -0.05em; }
-    .login-logo span { color: #6B3CF7; }
-    .login-title { font-size: 18px; font-weight: 800; color: #fff; text-align: center; }
-    .login-sub { font-size: 13px; color: rgba(255,255,255,0.35); text-align: center; }
-    .login-input {
-      width: 100%; padding: 13px 16px; background: rgba(255,255,255,0.05);
-      border: 1.5px solid rgba(255,255,255,0.1); border-radius: 10px;
-      font-size: 15px; font-family: inherit; color: #fff; outline: none;
-      text-align: center; letter-spacing: 0.15em; transition: border-color 0.2s;
-    }
-    .login-input:focus { border-color: #6B3CF7; }
-    .login-input.error { border-color: #f87171; }
-    .login-btn {
-      width: 100%; padding: 13px; background: #6B3CF7; color: #fff;
-      border: none; border-radius: 10px; font-size: 15px; font-weight: 800;
-      cursor: pointer; font-family: inherit; transition: background 0.2s;
-    }
-    .login-btn:hover { background: #5428E0; }
-    .login-err { font-size: 13px; color: #f87171; min-height: 18px; }
+    /* ── Login ── */
+    #login-screen { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+    .login-box { background:#13182A; border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:48px 40px; width:100%; max-width:380px; display:flex; flex-direction:column; align-items:center; gap:22px; }
+    .login-logo { font-size:28px; font-weight:900; letter-spacing:-0.05em; }
+    .login-logo span { color:#6B3CF7; }
+    .login-title { font-size:18px; font-weight:800; color:#fff; }
+    .login-input { width:100%; padding:13px 16px; background:rgba(255,255,255,0.05); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; font-size:15px; font-family:inherit; color:#fff; outline:none; text-align:center; letter-spacing:0.15em; transition:border-color 0.2s; }
+    .login-input:focus { border-color:#6B3CF7; }
+    .login-input.error { border-color:#f87171; }
+    .login-btn { width:100%; padding:13px; background:#6B3CF7; color:#fff; border:none; border-radius:10px; font-size:15px; font-weight:800; cursor:pointer; font-family:inherit; transition:background 0.2s; }
+    .login-btn:hover { background:#5428E0; }
+    .login-err { font-size:13px; color:#f87171; min-height:18px; }
 
     /* ── Dashboard ── */
-    #dashboard { display: none; min-height: 100vh; flex-direction: column; }
-    #dashboard.show { display: flex; }
+    #dashboard { display:none; min-height:100vh; flex-direction:column; }
+    #dashboard.show { display:flex; }
 
     /* Nav */
-    .adm-nav {
-      background: #13182A; border-bottom: 1px solid rgba(255,255,255,0.07);
-      padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 60px;
-      flex-shrink: 0;
-    }
-    .adm-nav-logo { font-size: 20px; font-weight: 900; letter-spacing: -0.05em; display: flex; align-items: center; gap: 10px; }
-    .adm-nav-logo span { color: #6B3CF7; }
-    .adm-badge { font-size: 10px; font-weight: 800; background: #6B3CF7; color: #fff; padding: 2px 8px; border-radius: 6px; letter-spacing: 0.04em; }
-    .adm-nav-right { display: flex; align-items: center; gap: 16px; }
-    .adm-nav-link { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
-    .adm-nav-link:hover { color: #fff; }
-    .logout-btn {
-      padding: 7px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px; font-size: 13px; color: rgba(255,255,255,0.5); cursor: pointer;
-      font-family: inherit; transition: all 0.2s;
-    }
-    .logout-btn:hover { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); color: #f87171; }
+    .adm-nav { background:#13182A; border-bottom:1px solid rgba(255,255,255,0.07); padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:60px; flex-shrink:0; gap:16px; }
+    .adm-nav-logo { font-size:20px; font-weight:900; letter-spacing:-0.05em; display:flex; align-items:center; gap:10px; flex-shrink:0; }
+    .adm-nav-logo span { color:#6B3CF7; }
+    .adm-badge { font-size:10px; font-weight:800; background:#6B3CF7; color:#fff; padding:2px 8px; border-radius:6px; }
+    .sb-status { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:700; }
+    .sb-dot { width:7px; height:7px; border-radius:50%; background:#4B5563; flex-shrink:0; }
+    .sb-dot.connected { background:#22C55E; animation:pulse 2s infinite; }
+    .sb-dot.error { background:#F97316; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .adm-nav-right { display:flex; align-items:center; gap:10px; }
+    .nav-icon-btn { padding:7px 14px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; font-size:12px; font-weight:700; color:rgba(255,255,255,0.5); cursor:pointer; font-family:inherit; transition:all 0.2s; text-decoration:none; }
+    .nav-icon-btn:hover { background:rgba(255,255,255,0.09); color:#fff; }
+    .logout-btn { padding:7px 14px; background:transparent; border:1px solid rgba(248,113,113,0.2); border-radius:8px; font-size:12px; font-weight:700; color:rgba(248,113,113,0.5); cursor:pointer; font-family:inherit; transition:all 0.2s; }
+    .logout-btn:hover { background:rgba(248,113,113,0.1); border-color:#f87171; color:#f87171; }
 
     /* Main */
-    .adm-main { flex: 1; padding: 36px 32px 60px; max-width: 1200px; width: 100%; margin: 0 auto; }
+    .adm-main { flex:1; padding:36px 32px 60px; max-width:1200px; width:100%; margin:0 auto; }
+
+    /* Supabase setup banner */
+    .sb-banner { background:rgba(107,60,247,0.08); border:1px solid rgba(107,60,247,0.25); border-radius:14px; padding:20px 24px; margin-bottom:28px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .sb-banner.hidden { display:none; }
+    .sb-banner-txt { font-size:14px; color:rgba(255,255,255,0.55); line-height:1.6; }
+    .sb-banner-txt strong { color:#A78BFF; }
+    .sb-setup-btn { padding:9px 20px; background:#6B3CF7; color:#fff; border:none; border-radius:9px; font-size:13px; font-weight:800; cursor:pointer; font-family:inherit; white-space:nowrap; transition:background 0.2s; }
+    .sb-setup-btn:hover { background:#5428E0; }
 
     /* Stats */
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
-    .stat-card {
-      background: #13182A; border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px; padding: 22px 24px;
-    }
-    .stat-label { font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
-    .stat-value { font-size: 36px; font-weight: 900; color: #fff; line-height: 1; }
-    .stat-value.accent { color: #F5C842; }
-    .stat-sub { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 6px; }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
+    .stat-card { background:#13182A; border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:22px 24px; }
+    .stat-label { font-size:11px; color:rgba(255,255,255,0.3); font-weight:700; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:10px; }
+    .stat-value { font-size:36px; font-weight:900; color:#fff; line-height:1; }
+    .stat-value.accent { color:#F5C842; }
+    .stat-sub { font-size:12px; color:rgba(255,255,255,0.22); margin-top:6px; }
 
     /* Controls */
-    .controls-bar { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
-    .search-box {
-      flex: 1; min-width: 200px; padding: 10px 16px;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 9px; font-size: 14px; font-family: inherit; color: #fff; outline: none;
-      transition: border-color 0.2s;
-    }
-    .search-box::placeholder { color: rgba(255,255,255,0.25); }
-    .search-box:focus { border-color: #6B3CF7; }
-    .ctrl-btn {
-      padding: 10px 18px; border-radius: 9px; font-size: 13px; font-weight: 700;
-      cursor: pointer; font-family: inherit; transition: all 0.2s; border: 1px solid;
-      white-space: nowrap;
-    }
-    .ctrl-btn.outline { background: transparent; border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); }
-    .ctrl-btn.outline:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
-    .ctrl-btn.primary { background: #F5C842; border-color: #F5C842; color: #111; }
-    .ctrl-btn.primary:hover { background: #e6b82e; }
-    .ctrl-btn.danger { background: transparent; border-color: rgba(248,113,113,0.3); color: #f87171; }
-    .ctrl-btn.danger:hover { background: rgba(248,113,113,0.1); }
+    .controls-bar { display:flex; gap:10px; align-items:center; margin-bottom:18px; flex-wrap:wrap; }
+    .search-box { flex:1; min-width:180px; padding:10px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:9px; font-size:14px; font-family:inherit; color:#fff; outline:none; transition:border-color 0.2s; }
+    .search-box::placeholder { color:rgba(255,255,255,0.2); }
+    .search-box:focus { border-color:#6B3CF7; }
+    .ctrl-btn { padding:10px 16px; border-radius:9px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; transition:all 0.2s; border:1px solid; white-space:nowrap; }
+    .ctrl-btn.outline { background:transparent; border-color:rgba(255,255,255,0.12); color:rgba(255,255,255,0.55); }
+    .ctrl-btn.outline:hover { border-color:rgba(255,255,255,0.3); color:#fff; }
+    .ctrl-btn.yellow { background:#F5C842; border-color:#F5C842; color:#111; }
+    .ctrl-btn.yellow:hover { background:#e6b82e; }
+    .ctrl-btn.danger { background:transparent; border-color:rgba(248,113,113,0.25); color:rgba(248,113,113,0.55); }
+    .ctrl-btn.danger:hover { background:rgba(248,113,113,0.1); border-color:#f87171; color:#f87171; }
 
     /* Table */
-    .table-wrap {
-      background: #13182A; border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px; overflow: hidden;
-    }
-    .table-hdr {
-      padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.06);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .table-hdr-title { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.7); }
-    .count-badge {
-      font-size: 11px; font-weight: 800; background: rgba(107,60,247,0.2);
-      color: #A78BFF; padding: 3px 10px; border-radius: 20px;
-    }
-    table { width: 100%; border-collapse: collapse; }
-    thead th {
-      padding: 12px 20px; text-align: left; font-size: 11px; font-weight: 800;
-      color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.07em;
-      border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(0,0,0,0.15);
-    }
-    tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: rgba(255,255,255,0.02); }
-    tbody td { padding: 14px 20px; font-size: 13px; color: rgba(255,255,255,0.7); vertical-align: middle; }
-    .td-num { color: rgba(255,255,255,0.2); font-size: 12px; width: 40px; }
-    .td-email { color: #fff; font-weight: 600; }
-    .source-tag {
-      display: inline-block; font-size: 10px; font-weight: 800; padding: 3px 8px;
-      border-radius: 5px;
-    }
-    .source-modal { background: rgba(107,60,247,0.2); color: #A78BFF; }
-    .source-cta   { background: rgba(245,200,66,0.15); color: #F5C842; }
-    .source-seed  { background: rgba(34,197,94,0.15); color: #4ade80; }
-    .del-btn {
-      padding: 5px 12px; background: transparent; border: 1px solid rgba(248,113,113,0.2);
-      border-radius: 6px; font-size: 11px; font-weight: 700; color: rgba(248,113,113,0.5);
-      cursor: pointer; font-family: inherit; transition: all 0.2s;
-    }
-    .del-btn:hover { background: rgba(248,113,113,0.1); border-color: #f87171; color: #f87171; }
+    .table-wrap { background:#13182A; border:1px solid rgba(255,255,255,0.07); border-radius:14px; overflow:hidden; }
+    .table-hdr { padding:16px 24px; border-bottom:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+    .table-hdr-left { display:flex; align-items:center; gap:10px; }
+    .table-hdr-title { font-size:14px; font-weight:800; color:rgba(255,255,255,0.6); }
+    .count-badge { font-size:11px; font-weight:800; background:rgba(107,60,247,0.2); color:#A78BFF; padding:3px 10px; border-radius:20px; }
+    .loading-row { text-align:center; padding:20px; font-size:13px; color:rgba(255,255,255,0.3); }
+    table { width:100%; border-collapse:collapse; }
+    thead th { padding:11px 20px; text-align:left; font-size:11px; font-weight:800; color:rgba(255,255,255,0.25); text-transform:uppercase; letter-spacing:0.07em; border-bottom:1px solid rgba(255,255,255,0.06); background:rgba(0,0,0,0.12); }
+    tbody tr { border-bottom:1px solid rgba(255,255,255,0.04); transition:background 0.15s; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:rgba(255,255,255,0.02); }
+    tbody td { padding:13px 20px; font-size:13px; color:rgba(255,255,255,0.65); vertical-align:middle; }
+    .td-num { color:rgba(255,255,255,0.18); font-size:12px; width:36px; }
+    .td-email { color:#fff; font-weight:600; }
+    .source-tag { display:inline-block; font-size:10px; font-weight:800; padding:3px 9px; border-radius:5px; }
+    .src-modal { background:rgba(107,60,247,0.2); color:#A78BFF; }
+    .src-cta   { background:rgba(245,200,66,0.15); color:#F5C842; }
+    .src-manual{ background:rgba(34,197,94,0.15); color:#4ade80; }
+    .del-btn { padding:4px 11px; background:transparent; border:1px solid rgba(248,113,113,0.18); border-radius:6px; font-size:11px; font-weight:700; color:rgba(248,113,113,0.45); cursor:pointer; font-family:inherit; transition:all 0.2s; }
+    .del-btn:hover { background:rgba(248,113,113,0.1); border-color:#f87171; color:#f87171; }
+    .empty-state { text-align:center; padding:72px 24px; }
+    .empty-icon { font-size:44px; margin-bottom:14px; }
+    .empty-title { font-size:15px; font-weight:800; color:rgba(255,255,255,0.3); margin-bottom:6px; }
+    .empty-sub { font-size:13px; color:rgba(255,255,255,0.18); }
 
-    /* Empty state */
-    .empty-state { text-align: center; padding: 80px 24px; }
-    .empty-icon { font-size: 48px; margin-bottom: 16px; }
-    .empty-title { font-size: 16px; font-weight: 800; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
-    .empty-sub { font-size: 13px; color: rgba(255,255,255,0.2); }
+    /* ── Modals ── */
+    .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:100; display:none; align-items:center; justify-content:center; padding:24px; }
+    .overlay.open { display:flex; }
+    .modal-box { background:#1a2035; border:1px solid rgba(255,255,255,0.1); border-radius:18px; padding:36px; width:100%; overflow-y:auto; max-height:90vh; }
+    .modal-box.wide { max-width:580px; }
+    .modal-box.narrow { max-width:420px; }
+    .modal-title { font-size:18px; font-weight:900; color:#fff; margin-bottom:6px; }
+    .modal-sub { font-size:13px; color:rgba(255,255,255,0.35); margin-bottom:24px; line-height:1.6; }
+    .modal-section { margin-bottom:22px; }
+    .modal-label { font-size:12px; font-weight:800; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+    .step-pill { background:#6B3CF7; color:#fff; font-size:10px; padding:1px 7px; border-radius:5px; letter-spacing:0; text-transform:none; }
+    .modal-input { width:100%; padding:11px 14px; background:rgba(255,255,255,0.05); border:1.5px solid rgba(255,255,255,0.1); border-radius:9px; font-size:13px; font-family:inherit; color:#fff; outline:none; transition:border-color 0.2s; }
+    .modal-input:focus { border-color:#6B3CF7; }
+    .modal-input.error-field { border-color:#f87171; }
+    .sql-block { background:#0d1117; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:16px; font-size:12px; color:#7dd3fc; font-family:monospace; line-height:1.7; white-space:pre; overflow-x:auto; position:relative; }
+    .copy-btn { position:absolute; top:10px; right:10px; padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); border-radius:6px; font-size:11px; font-weight:700; color:rgba(255,255,255,0.5); cursor:pointer; font-family:inherit; transition:all 0.2s; }
+    .copy-btn:hover { background:rgba(255,255,255,0.14); color:#fff; }
+    .modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:24px; flex-wrap:wrap; }
+    .modal-err { font-size:13px; color:#f87171; margin-top:8px; min-height:18px; }
+    .conn-ok { display:none; font-size:13px; color:#4ade80; margin-top:8px; }
+    .seed-textarea { width:100%; height:110px; padding:11px 14px; background:rgba(255,255,255,0.04); border:1.5px solid rgba(255,255,255,0.1); border-radius:9px; font-size:13px; font-family:inherit; color:#fff; outline:none; resize:vertical; line-height:1.6; transition:border-color 0.2s; }
+    .seed-textarea:focus { border-color:#6B3CF7; }
+    .seed-textarea::placeholder { color:rgba(255,255,255,0.2); }
+    .info-note { background:rgba(107,60,247,0.07); border:1px solid rgba(107,60,247,0.2); border-radius:9px; padding:13px 16px; font-size:12px; color:rgba(255,255,255,0.35); line-height:1.65; margin-top:16px; }
+    .info-note strong { color:rgba(255,255,255,0.55); }
 
-    /* Notice */
-    .notice {
-      background: rgba(107,60,247,0.08); border: 1px solid rgba(107,60,247,0.2);
-      border-radius: 10px; padding: 14px 18px; font-size: 13px; color: rgba(255,255,255,0.4);
-      margin-top: 20px; line-height: 1.6;
-    }
-    .notice strong { color: rgba(255,255,255,0.6); }
-
-    /* Seed modal */
-    .seed-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100;
-      display: none; align-items: center; justify-content: center; padding: 24px;
-    }
-    .seed-overlay.open { display: flex; }
-    .seed-box {
-      background: #1a2035; border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px; padding: 32px; width: 100%; max-width: 440px;
-    }
-    .seed-title { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 6px; }
-    .seed-sub { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
-    .seed-textarea {
-      width: 100%; height: 120px; padding: 12px 14px;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 9px; font-size: 13px; font-family: inherit; color: #fff;
-      outline: none; resize: vertical; line-height: 1.6;
-    }
-    .seed-textarea::placeholder { color: rgba(255,255,255,0.2); }
-    .seed-textarea:focus { border-color: #6B3CF7; }
-    .seed-actions { display: flex; gap: 10px; margin-top: 16px; justify-content: flex-end; }
-
-    @media (max-width: 768px) {
-      .adm-main { padding: 24px 16px 40px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .adm-nav { padding: 0 16px; }
-      .adm-badge, .adm-nav-link { display: none; }
-      thead th:nth-child(3), thead th:nth-child(4), tbody td:nth-child(3), tbody td:nth-child(4) { display: none; }
-    }
-    @media (max-width: 480px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .login-box { padding: 36px 24px; }
+    @media (max-width:768px) {
+      .adm-main { padding:20px 16px 40px; }
+      .stats-grid { grid-template-columns:repeat(2,1fr); }
+      .adm-nav { padding:0 16px; }
+      .adm-badge { display:none; }
+      thead th:nth-child(3), thead th:nth-child(4), tbody td:nth-child(3), tbody td:nth-child(4) { display:none; }
     }
   </style>
 </head>
@@ -195,10 +143,7 @@
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">Foal<span>AI</span></div>
-    <div>
-      <div class="login-title">관리자 로그인</div>
-      <div class="login-sub" style="margin-top:6px">비밀번호를 입력하세요</div>
-    </div>
+    <div class="login-title">관리자 로그인</div>
     <input class="login-input" id="pw-input" type="password" placeholder="••••••••"
       onkeydown="if(event.key==='Enter') tryLogin()" />
     <button class="login-btn" onclick="tryLogin()">로그인</button>
@@ -208,40 +153,55 @@
 
 <!-- ── Dashboard ── -->
 <div id="dashboard">
+
   <nav class="adm-nav">
     <div class="adm-nav-logo">
       <img src="images/Logo.png" alt="" style="height:26px;width:auto;" onerror="this.style.display='none'">
       Foal<span>AI</span>
       <span class="adm-badge">ADMIN</span>
     </div>
+    <div class="sb-status" id="sb-status">
+      <div class="sb-dot" id="sb-dot"></div>
+      <span id="sb-status-txt">Supabase 미연결</span>
+    </div>
     <div class="adm-nav-right">
-      <a href="index.html" class="adm-nav-link">← 랜딩페이지</a>
+      <button class="nav-icon-btn" onclick="openSBModal()">⚙ Supabase 설정</button>
+      <a href="index.html" class="nav-icon-btn">← 랜딩페이지</a>
       <button class="logout-btn" onclick="logout()">로그아웃</button>
     </div>
   </nav>
 
   <div class="adm-main">
 
+    <!-- Supabase setup banner -->
+    <div class="sb-banner" id="sb-banner">
+      <div class="sb-banner-txt">
+        <strong>Supabase를 연결하면 모든 기기에서 등록자 데이터를 확인할 수 있습니다.</strong><br>
+        현재는 이 브라우저의 localStorage 데이터만 표시됩니다.
+      </div>
+      <button class="sb-setup-btn" onclick="openSBModal()">Supabase 연동하기 →</button>
+    </div>
+
     <!-- Stats -->
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-label">총 관심 등록</div>
-        <div class="stat-value accent" id="s-total">0</div>
+        <div class="stat-value accent" id="s-total">—</div>
         <div class="stat-sub">누적 이메일</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">오늘 등록</div>
-        <div class="stat-value" id="s-today">0</div>
+        <div class="stat-value" id="s-today">—</div>
         <div class="stat-sub" id="s-today-date"></div>
       </div>
       <div class="stat-card">
         <div class="stat-label">이번 주</div>
-        <div class="stat-value" id="s-week">0</div>
+        <div class="stat-value" id="s-week">—</div>
         <div class="stat-sub">최근 7일</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">팝업 / CTA</div>
-        <div class="stat-value" id="s-split" style="font-size:22px;line-height:1.4;">0 / 0</div>
+        <div class="stat-value" id="s-split" style="font-size:22px;line-height:1.4;">— / —</div>
         <div class="stat-sub">유입 경로 비율</div>
       </div>
     </div>
@@ -250,49 +210,109 @@
     <div class="controls-bar">
       <input class="search-box" id="searchBox" type="text" placeholder="🔍  이메일 검색…" oninput="render()" />
       <button class="ctrl-btn outline" onclick="refresh()">↻ 새로고침</button>
-      <button class="ctrl-btn outline" onclick="openSeed()">+ 직접 추가</button>
-      <button class="ctrl-btn primary" onclick="exportCSV()">CSV 다운로드</button>
+      <button class="ctrl-btn outline" onclick="openSeedModal()">+ 직접 추가</button>
+      <button class="ctrl-btn yellow" onclick="exportCSV()">CSV 다운로드</button>
       <button class="ctrl-btn danger" onclick="clearAll()">전체 삭제</button>
     </div>
 
     <!-- Table -->
     <div class="table-wrap">
       <div class="table-hdr">
-        <span class="table-hdr-title">관심 등록자 목록</span>
-        <span class="count-badge" id="count-badge">0명</span>
+        <div class="table-hdr-left">
+          <span class="table-hdr-title">관심 등록자 목록</span>
+          <span class="count-badge" id="count-badge">0명</span>
+        </div>
       </div>
-      <div id="table-area"></div>
+      <div id="table-area"><div class="loading-row">불러오는 중…</div></div>
     </div>
 
-    <div class="notice">
-      <strong>💡 데이터 저장 방식:</strong> 현재 이 기기의 브라우저(localStorage)에 저장됩니다.
-      다른 기기에서 접속한 등록자 데이터는 보이지 않습니다.
-      실제 운영 시 <strong>Supabase</strong> 또는 <strong>Google Sheets</strong> 연동을 권장합니다.
+    <div class="info-note" id="data-source-note">
+      <strong>데이터 저장:</strong> 이 브라우저의 localStorage에서 불러왔습니다.
+      Supabase 연동 후 모든 기기의 등록자를 한 곳에서 관리할 수 있습니다.
     </div>
 
   </div>
 </div>
 
-<!-- Seed modal -->
-<div class="seed-overlay" id="seed-overlay" onclick="if(event.target===this) closeSeed()">
-  <div class="seed-box">
-    <div class="seed-title">이메일 직접 추가</div>
-    <div class="seed-sub">줄바꿈으로 여러 이메일을 한 번에 추가할 수 있습니다</div>
+<!-- ── Supabase 설정 모달 ── -->
+<div class="overlay" id="sb-modal" onclick="if(event.target===this)closeSBModal()">
+  <div class="modal-box wide">
+    <div class="modal-title">⚡ Supabase 연동 설정</div>
+    <div class="modal-sub">아래 순서대로 진행하면 3분 안에 설정이 완료됩니다.<br>Supabase 무료 플랜으로 충분합니다.</div>
+
+    <div class="modal-section">
+      <div class="modal-label"><span class="step-pill">STEP 1</span> Supabase에서 테이블 생성</div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:10px;">
+        <a href="https://supabase.com" target="_blank" style="color:#A78BFF;">supabase.com</a> → 프로젝트 생성 → SQL Editor에 아래 코드를 붙여넣고 실행하세요.
+      </p>
+      <div class="sql-block" id="sql-block">create table registrations (
+  id bigint generated always as identity primary key,
+  email text unique not null,
+  source text,
+  ref text,
+  created_at timestamptz default now()
+);
+
+alter table registrations enable row level security;
+
+create policy "anon_insert" on registrations
+  for insert to anon with check (true);
+
+create policy "anon_select" on registrations
+  for select to anon using (true);
+
+create policy "anon_delete" on registrations
+  for delete to anon using (true);</div>
+      <button class="copy-btn" onclick="copySQL()">복사</button>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label"><span class="step-pill">STEP 2</span> API 정보 입력</div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:12px;">
+        Settings → API 에서 Project URL과 anon public key를 복사하세요.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <input class="modal-input" id="sb-url" type="text" placeholder="https://xxxxxxxxxxxx.supabase.co" />
+        <input class="modal-input" id="sb-key" type="text" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." />
+      </div>
+      <div class="modal-err" id="sb-err"></div>
+      <div class="conn-ok" id="conn-ok">✅ 연결 성공! 데이터를 불러옵니다.</div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="ctrl-btn outline" onclick="closeSBModal()">취소</button>
+      <button class="ctrl-btn outline" onclick="disconnectSB()" id="disconnect-btn" style="display:none;border-color:rgba(248,113,113,0.3);color:rgba(248,113,113,0.5);">연결 해제</button>
+      <button class="ctrl-btn yellow" onclick="connectSB()">연결 테스트 → 저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── 직접 추가 모달 ── -->
+<div class="overlay" id="seed-modal" onclick="if(event.target===this)closeSeedModal()">
+  <div class="modal-box narrow">
+    <div class="modal-title">이메일 직접 추가</div>
+    <div class="modal-sub">줄바꿈으로 여러 이메일을 한 번에 추가할 수 있습니다.</div>
     <textarea class="seed-textarea" id="seed-input" placeholder="example@email.com&#10;another@email.com"></textarea>
-    <div class="seed-actions">
-      <button class="ctrl-btn outline" onclick="closeSeed()">취소</button>
-      <button class="ctrl-btn primary" onclick="addSeed()">추가</button>
+    <div class="modal-actions">
+      <button class="ctrl-btn outline" onclick="closeSeedModal()">취소</button>
+      <button class="ctrl-btn yellow" onclick="addSeed()">추가</button>
     </div>
   </div>
 </div>
 
 <script>
-const KEY = 'foalai_regs';
-const PW  = 'foal2026';       // ← 비밀번호 변경 시 여기를 수정하세요
+/* ════════════════════════════════════════════
+   CONFIG
+════════════════════════════════════════════ */
+const PW        = 'foal2026';           // ← 비밀번호 변경 시 여기를 수정
+const LOCAL_KEY = 'foalai_regs';
+const SB_KEY    = 'foalai_sb_config';
 
-/* ─── Auth ─── */
+/* ════════════════════════════════════════════
+   AUTH
+════════════════════════════════════════════ */
 function tryLogin(){
-  const v = document.getElementById('pw-input').value;
+  const v   = document.getElementById('pw-input').value;
   const err = document.getElementById('login-err');
   const inp = document.getElementById('pw-input');
   if(v === PW){
@@ -311,23 +331,116 @@ function logout(){
   location.reload();
 }
 
-/* ─── Data ─── */
-function getRegs(){ return JSON.parse(localStorage.getItem(KEY)||'[]'); }
-function setRegs(list){ localStorage.setItem(KEY, JSON.stringify(list)); }
+/* ════════════════════════════════════════════
+   SUPABASE HELPERS
+════════════════════════════════════════════ */
+function getSBCfg(){ return JSON.parse(localStorage.getItem(SB_KEY)||'null'); }
+function setSBCfg(url, key){ localStorage.setItem(SB_KEY, JSON.stringify({url:url.replace(/\/$/,''), key})); }
+function clearSBCfg(){ localStorage.removeItem(SB_KEY); }
 
-function delReg(id){
+async function sbReq(path, opts={}){
+  const cfg = getSBCfg();
+  if(!cfg) throw new Error('not configured');
+  const res = await fetch(`${cfg.url}/rest/v1${path}`, {
+    ...opts,
+    headers: {
+      'apikey': cfg.key,
+      'Authorization': `Bearer ${cfg.key}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      ...(opts.headers||{})
+    }
+  });
+  if(!res.ok){
+    const body = await res.text().catch(()=>'');
+    throw new Error(`${res.status}: ${body}`);
+  }
+  return res;
+}
+
+/* ════════════════════════════════════════════
+   DATA OPERATIONS
+════════════════════════════════════════════ */
+let cachedData = [];
+
+async function fetchData(){
+  const cfg = getSBCfg();
+  if(cfg){
+    try {
+      const res  = await sbReq('/registrations?select=*&order=created_at.desc');
+      const rows = await res.json();
+      cachedData = rows.map(r=>({
+        id:      r.id,
+        email:   r.email,
+        source:  r.source || '',
+        date:    r.created_at,
+        ref:     r.ref || ''
+      }));
+      updateNavStatus(true);
+      return;
+    } catch(e){
+      console.error('Supabase fetch error:', e);
+      updateNavStatus(false, e.message);
+    }
+  }
+  // Fallback: localStorage
+  cachedData = JSON.parse(localStorage.getItem(LOCAL_KEY)||'[]');
+  updateNavStatus(null);
+}
+
+async function deleteRow(id){
   if(!confirm('이 항목을 삭제하시겠습니까?')) return;
-  setRegs(getRegs().filter(r=>r.id!==id));
+  const cfg = getSBCfg();
+  if(cfg){
+    try {
+      await sbReq(`/registrations?id=eq.${id}`, {method:'DELETE'});
+    } catch(e){ alert('삭제 실패: '+e.message); return; }
+  } else {
+    const list = JSON.parse(localStorage.getItem(LOCAL_KEY)||'[]');
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(list.filter(r=>r.id!=id)));
+  }
   refresh();
 }
-function clearAll(){
-  if(!confirm('전체 등록자 데이터를 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) return;
-  setRegs([]); refresh();
+
+async function insertRows(emails, source){
+  const cfg = getSBCfg();
+  const now = new Date().toISOString();
+  const rows = emails.map(email=>({email, source, ref:'직접 추가', created_at:now}));
+  if(cfg){
+    await sbReq('/registrations', {
+      method:'POST',
+      headers:{'Prefer':'return=minimal'},
+      body: JSON.stringify(rows)
+    });
+  } else {
+    const list = JSON.parse(localStorage.getItem(LOCAL_KEY)||'[]');
+    const added = [];
+    rows.forEach(r=>{
+      if(!list.some(x=>x.email===r.email)){
+        added.push({id:Date.now()+Math.random(), email:r.email, source:r.source, date:r.created_at, ref:''});
+      }
+    });
+    localStorage.setItem(LOCAL_KEY, JSON.stringify([...added,...list]));
+  }
 }
 
-/* ─── Stats ─── */
+async function clearAll(){
+  if(!confirm('전체 등록자 데이터를 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) return;
+  const cfg = getSBCfg();
+  if(cfg){
+    try { await sbReq('/registrations?id=gte.0', {method:'DELETE'}); }
+    catch(e){ alert('삭제 실패: '+e.message); return; }
+  } else {
+    localStorage.setItem(LOCAL_KEY, '[]');
+  }
+  refresh();
+}
+
+/* ════════════════════════════════════════════
+   STATS + RENDER
+════════════════════════════════════════════ */
 function updateStats(list){
-  const now  = new Date();
+  const now   = new Date();
   const today = now.toDateString();
   const week  = now - 7*24*60*60*1000;
   document.getElementById('s-total').textContent = list.length;
@@ -336,14 +449,15 @@ function updateStats(list){
   const modal = list.filter(r=>r.source==='팝업 모달').length;
   const cta   = list.filter(r=>r.source==='하단 CTA').length;
   document.getElementById('s-split').textContent = modal+' / '+cta;
-  document.getElementById('s-today-date').textContent = now.toLocaleDateString('ko-KR',{month:'long',day:'numeric'});
+  document.getElementById('s-today-date').textContent =
+    now.toLocaleDateString('ko-KR',{month:'long',day:'numeric'});
 }
 
-/* ─── Render ─── */
 function render(){
   const q    = (document.getElementById('searchBox').value||'').toLowerCase();
-  const list = getRegs().filter(r=>!q||r.email.toLowerCase().includes(q));
+  const list = q ? cachedData.filter(r=>r.email.toLowerCase().includes(q)) : cachedData;
   document.getElementById('count-badge').textContent = list.length+'명';
+  updateStats(cachedData);
 
   if(list.length===0){
     document.getElementById('table-area').innerHTML =
@@ -351,81 +465,169 @@ function render(){
     return;
   }
 
-  let rows = list.map((r,i)=>{
+  const rows = list.map((r,i)=>{
     const d    = new Date(r.date);
-    const date = d.toLocaleDateString('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit'});
+    const date = d.toLocaleDateString('ko-KR',{year:'2-digit',month:'2-digit',day:'2-digit'});
     const time = d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
-    const srcClass = r.source==='팝업 모달'?'source-modal': r.source==='하단 CTA'?'source-cta':'source-seed';
+    const cls  = r.source==='팝업 모달'?'src-modal': r.source==='하단 CTA'?'src-cta':'src-manual';
+    const src  = r.source||'직접 추가';
     return `<tr>
       <td class="td-num">${list.length-i}</td>
       <td class="td-email">${esc(r.email)}</td>
-      <td><span class="source-tag ${srcClass}">${esc(r.source||'직접 추가')}</span></td>
+      <td><span class="source-tag ${cls}">${esc(src)}</span></td>
       <td>${date} ${time}</td>
-      <td><button class="del-btn" onclick="delReg(${r.id})">삭제</button></td>
+      <td><button class="del-btn" onclick="deleteRow(${JSON.stringify(r.id)})">삭제</button></td>
     </tr>`;
   }).join('');
 
   document.getElementById('table-area').innerHTML =
-    `<table><thead><tr>
-      <th>#</th><th>이메일</th><th>유입 경로</th><th>등록 일시</th><th></th>
-    </tr></thead><tbody>${rows}</tbody></table>`;
+    `<table><thead><tr><th>#</th><th>이메일</th><th>유입 경로</th><th>등록 일시</th><th></th></tr></thead>
+    <tbody>${rows}</tbody></table>`;
 }
 
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-function refresh(){
-  updateStats(getRegs());
+async function refresh(){
+  document.getElementById('table-area').innerHTML = '<div class="loading-row">불러오는 중…</div>';
+  await fetchData();
   render();
 }
 
-/* ─── Export CSV ─── */
+/* ════════════════════════════════════════════
+   NAV STATUS
+════════════════════════════════════════════ */
+function updateNavStatus(connected, errMsg=''){
+  const dot = document.getElementById('sb-dot');
+  const txt = document.getElementById('sb-status-txt');
+  const banner = document.getElementById('sb-banner');
+  const note   = document.getElementById('data-source-note');
+  if(connected === true){
+    dot.className='sb-dot connected'; txt.textContent='Supabase 연결됨';
+    banner.classList.add('hidden');
+    note.innerHTML='<strong>데이터 저장:</strong> Supabase에서 실시간으로 불러왔습니다. 모든 기기의 등록자를 한 곳에서 관리합니다.';
+  } else if(connected === false){
+    dot.className='sb-dot error'; txt.textContent='Supabase 오류 — localStorage 표시 중';
+    banner.classList.remove('hidden');
+    note.innerHTML=`<strong>Supabase 연결 실패:</strong> ${esc(errMsg)}<br>설정을 다시 확인해주세요.`;
+  } else {
+    dot.className='sb-dot'; txt.textContent='Supabase 미연결';
+    banner.classList.remove('hidden');
+    note.innerHTML='<strong>데이터 저장:</strong> 이 브라우저의 localStorage에서 불러왔습니다. Supabase 연동 후 모든 기기의 등록자를 한 곳에서 관리할 수 있습니다.';
+  }
+}
+
+/* ════════════════════════════════════════════
+   SUPABASE MODAL
+════════════════════════════════════════════ */
+function openSBModal(){
+  const cfg = getSBCfg();
+  if(cfg){
+    document.getElementById('sb-url').value = cfg.url;
+    document.getElementById('sb-key').value = cfg.key;
+    document.getElementById('disconnect-btn').style.display='';
+  } else {
+    document.getElementById('sb-url').value = '';
+    document.getElementById('sb-key').value = '';
+    document.getElementById('disconnect-btn').style.display='none';
+  }
+  document.getElementById('sb-err').textContent = '';
+  document.getElementById('conn-ok').style.display = 'none';
+  document.getElementById('sb-modal').classList.add('open');
+}
+function closeSBModal(){ document.getElementById('sb-modal').classList.remove('open'); }
+
+async function connectSB(){
+  const url = document.getElementById('sb-url').value.trim();
+  const key = document.getElementById('sb-key').value.trim();
+  const errEl = document.getElementById('sb-err');
+  const okEl  = document.getElementById('conn-ok');
+  errEl.textContent=''; okEl.style.display='none';
+
+  if(!url || !key){ errEl.textContent='URL과 API Key를 모두 입력해주세요.'; return; }
+  if(!url.startsWith('https://')){ errEl.textContent='URL은 https://로 시작해야 합니다.'; return; }
+
+  // Test connection
+  try {
+    const res = await fetch(`${url.replace(/\/$/,'')}/rest/v1/registrations?select=id&limit=1`, {
+      headers:{ 'apikey':key, 'Authorization':`Bearer ${key}` }
+    });
+    if(!res.ok){
+      const body = await res.text().catch(()=>'');
+      throw new Error(`${res.status} — ${body.slice(0,120)}`);
+    }
+    setSBCfg(url, key);
+    okEl.style.display='block';
+    document.getElementById('disconnect-btn').style.display='';
+    setTimeout(()=>{ closeSBModal(); refresh(); }, 1200);
+  } catch(e){
+    errEl.textContent = '연결 실패: '+e.message;
+  }
+}
+
+function disconnectSB(){
+  if(!confirm('Supabase 연결을 해제하시겠습니까?')) return;
+  clearSBCfg(); closeSBModal(); refresh();
+}
+
+function copySQL(){
+  const txt = document.getElementById('sql-block').innerText;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent='복사됨 ✓';
+    setTimeout(()=>btn.textContent='복사',1500);
+  });
+}
+
+/* ════════════════════════════════════════════
+   SEED MODAL
+════════════════════════════════════════════ */
+function openSeedModal(){ document.getElementById('seed-modal').classList.add('open'); }
+function closeSeedModal(){ document.getElementById('seed-modal').classList.remove('open'); document.getElementById('seed-input').value=''; }
+
+async function addSeed(){
+  const lines = document.getElementById('seed-input').value
+    .split('\n').map(s=>s.trim()).filter(s=>s.includes('@'));
+  if(!lines.length){ alert('올바른 이메일을 입력해주세요.'); return; }
+  try {
+    await insertRows(lines,'직접 추가');
+    closeSeedModal();
+    refresh();
+  } catch(e){ alert('추가 실패: '+e.message); }
+}
+
+/* ════════════════════════════════════════════
+   CSV EXPORT
+════════════════════════════════════════════ */
 function exportCSV(){
-  const list = getRegs();
-  if(list.length===0){ alert('다운로드할 데이터가 없습니다.'); return; }
+  if(!cachedData.length){ alert('다운로드할 데이터가 없습니다.'); return; }
   const header = '번호,이메일,유입경로,등록일시\n';
-  const rows = list.map((r,i)=>{
+  const rows = cachedData.map((r,i)=>{
     const d = new Date(r.date).toLocaleString('ko-KR');
-    return `${list.length-i},"${r.email}","${r.source||''}","${d}"`;
+    return `${cachedData.length-i},"${r.email}","${r.source||''}","${d}"`;
   }).join('\n');
   const blob = new Blob(['\uFEFF'+header+rows],{type:'text/csv;charset=utf-8'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'foalai_registrations_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.download = 'foalai_reg_'+new Date().toISOString().slice(0,10)+'.csv';
   a.click();
 }
 
-/* ─── Seed (직접 추가) ─── */
-function openSeed(){ document.getElementById('seed-overlay').classList.add('open'); }
-function closeSeed(){ document.getElementById('seed-overlay').classList.remove('open'); document.getElementById('seed-input').value=''; }
-function addSeed(){
-  const lines = document.getElementById('seed-input').value.split('\n').map(s=>s.trim()).filter(s=>s.includes('@'));
-  if(lines.length===0){ alert('올바른 이메일을 입력해주세요.'); return; }
-  const list = getRegs();
-  let added = 0;
-  lines.forEach(email=>{
-    if(!list.some(r=>r.email===email)){
-      list.unshift({id:Date.now()+Math.random(), email, source:'직접 추가', date:new Date().toISOString(), ref:''});
-      added++;
-    }
-  });
-  setRegs(list);
-  closeSeed();
-  refresh();
-  if(added>0) alert(added+'명이 추가되었습니다.');
+/* ════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════ */
+async function init(){
+  updateNavStatus(getSBCfg() ? null : null);
+  await refresh();
 }
 
-/* ─── Init ─── */
-function init(){ refresh(); }
-
-// Auto-login if session still active
 if(sessionStorage.getItem('adm_ok')==='1'){
   document.getElementById('login-screen').style.display='none';
   document.getElementById('dashboard').classList.add('show');
   init();
 } else {
-  setTimeout(()=>document.getElementById('pw-input').focus(), 100);
+  setTimeout(()=>document.getElementById('pw-input').focus(),100);
 }
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSeed(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeSBModal(); closeSeedModal(); } });
 </script>
 </body>
 </html>
