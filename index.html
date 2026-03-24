@@ -186,6 +186,36 @@
       font-size: 36px; opacity: 0.6;
     }
 
+    /* ──────── STATS SECTION ──────── */
+    .stats-section {
+      background: #0F1220;
+      padding: 60px 32px;
+    }
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .stat-card {
+      background: #161C2E;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 32px 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: clamp(22px, 2.8vw, 34px); font-weight: 900;
+      color: #F5C842; letter-spacing: -0.03em; margin-bottom: 10px;
+    }
+    .stat-desc {
+      font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .stats-inner { grid-template-columns: 1fr; }
+    }
+
     /* ──────── PROBLEM SECTION ──────── */
     .problem-section {
       padding: 80px 32px;
@@ -344,99 +374,172 @@
 
     /* ──────── SIMULATION SECTION ──────── */
     .sim-section {
-      padding: 80px 32px;
-      background: #F6F4FF;
+      padding: 80px 32px 100px;
+      background: #0B0D14;
+      color: #fff;
     }
-    .sim-inner { max-width: 960px; margin: 0 auto; }
-    .sim-toggle {
-      display: flex; gap: 8px; margin-bottom: 28px;
-    }
-    .sim-btn {
-      padding: 9px 22px; border-radius: 100px;
-      font-size: 14px; font-weight: 700;
-      cursor: pointer; border: none; font-family: inherit;
-      transition: all 0.2s;
-    }
-    .sim-btn.on { background: #6B3CF7; color: #fff; }
-    .sim-btn.off { background: #fff; color: #777; border: 1.5px solid #E0E0E0; }
-    .sim-window {
-      background: #fff;
-      border-radius: 18px;
-      border: 1px solid #E4E0F5;
-      box-shadow: 0 10px 48px rgba(107,60,247,0.1);
-      overflow: hidden;
-    }
-    .sim-bar {
-      background: #F5F4F8; padding: 12px 18px;
-      border-bottom: 1px solid #EBEBEB;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .s-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .sim-inner { max-width: 1000px; margin: 0 auto; }
+    .sim-section .sec-label { color: #A78BFF; }
+    .sim-section .sec-h2 { color: #fff; }
+    .sim-section .sec-desc { color: rgba(255,255,255,0.45); }
+    /* macOS dots */
+    .s-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink:0; }
     .s-dot.r{background:#FF5F57;}.s-dot.y{background:#FEBC2E;}.s-dot.g{background:#28C840;}
-    .sim-bar-title {
-      margin-left: 10px; font-size: 13px; font-weight: 700; color: #555;
+    /* Step pill */
+    .demo-pill {
+      display: inline-block; background: #F5C842; color: #111;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+      padding: 6px 18px; border-radius: 100px; margin-bottom: 20px;
     }
-    .sim-body {
-      padding: 28px 28px 20px;
-      min-height: 360px;
-      display: flex; flex-direction: column; gap: 18px;
+    .demo-h3 {
+      font-size: clamp(26px, 3.8vw, 46px); font-weight: 900;
+      color: #fff; letter-spacing: -0.04em; line-height: 1.2; margin-bottom: 10px;
     }
-    /* panels */
-    .s-panel { display: none; flex-direction: column; gap: 18px; }
-    .s-panel.active { display: flex; }
-    /* chat rows */
-    .c-row {
-      display: flex; align-items: flex-start; gap: 10px;
-      opacity: 0; transform: translateY(10px);
+    .demo-sub {
+      font-size: 15px; color: rgba(255,255,255,0.45);
+      margin-bottom: 32px;
+    }
+    /* Demo window */
+    .demo-win {
+      background: #131720; border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    }
+    .demo-win-bar {
+      background: #1C2130; padding: 11px 18px;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .demo-win-title {
+      flex: 1; font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.5); margin-left: 8px;
+    }
+    .demo-step-prog {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.35);
+    }
+    .dsp-dot { width: 18px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.12); }
+    .dsp-dot.done { background: #F5C842; }
+    .dsp-dot.cur  { background: rgba(245,200,66,0.5); }
+    /* Split pane */
+    .demo-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .demo-chat-pane {
+      padding: 20px 18px; border-right: 1px solid rgba(255,255,255,0.05);
+      display: flex; flex-direction: column; gap: 14px;
+      min-height: 340px; max-height: 380px; overflow-y: auto;
+    }
+    .demo-chat-pane::-webkit-scrollbar { width: 4px; }
+    .demo-chat-pane::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius:2px; }
+    /* Dark chat bubbles */
+    .dc-row {
+      display: flex; align-items: flex-start; gap: 9px;
+      opacity: 0; transform: translateY(8px);
       transition: opacity 0.35s, transform 0.35s;
     }
-    .c-row.show { opacity: 1; transform: translateY(0); }
-    .c-row.user-row { flex-direction: row-reverse; }
-    .c-av {
-      width: 34px; height: 34px; border-radius: 50%;
+    .dc-row.show { opacity: 1; transform: none; }
+    .dc-row.user-row { flex-direction: row-reverse; }
+    .dc-av {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: #2D4A8A; color: #fff;
       font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .dc-bub-f {
+      background: #1E2C47; color: #D8E4FF;
+      padding: 9px 13px; border-radius: 12px; border-bottom-left-radius: 3px;
+      font-size: 12.5px; line-height: 1.6; max-width: 80%;
+    }
+    .dc-bub-u {
+      background: #F5C842; color: #1A1200; font-weight: 500;
+      padding: 9px 13px; border-radius: 12px; border-bottom-right-radius: 3px;
+      font-size: 12.5px; line-height: 1.6; max-width: 80%;
+    }
+    /* Score pane */
+    .demo-score-pane {
+      padding: 22px 20px; display: flex; flex-direction: column;
+    }
+    .score-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .score-big-num { font-size: 52px; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.04em; }
+    .score-big-num span { font-size: 20px; color: rgba(255,255,255,0.35); font-weight: 400; }
+    .score-base-line { font-size: 11px; color: rgba(255,255,255,0.3); margin: 5px 0 18px; }
+    .score-bar-list { display: flex; flex-direction: column; gap: 11px; }
+    .score-bar-row { display: flex; align-items: center; gap: 8px; }
+    .score-bar-label { font-size: 11px; color: rgba(255,255,255,0.55); width: 72px; flex-shrink: 0; }
+    .score-bar-track { flex: 1; height: 5px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 3px; background: #F5C842; transition: width 1.4s cubic-bezier(.22,1,.36,1); width: 0; }
+    .score-bar-val { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); width: 34px; text-align: right; flex-shrink: 0; }
+    /* Business plan pane */
+    .demo-plan-pane {
+      padding: 18px 20px; display: flex; flex-direction: column; gap: 9px;
+    }
+    .plan-writing-ind {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; color: #A78BFF; margin-bottom: 4px;
+    }
+    .plan-wd { width: 8px; height: 8px; border-radius: 50%; background: #A78BFF; animation: blink 1.4s infinite; }
+    .plan-item {
+      background: #1A2235; border-radius: 10px; padding: 11px 13px;
+      opacity: 0; transform: translateY(6px); transition: opacity 0.4s, transform 0.4s;
+    }
+    .plan-item.show { opacity: 1; transform: none; }
+    .plan-item-num { font-size: 10px; font-weight: 800; color: #F5C842; margin-bottom: 3px; }
+    .plan-item-title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 3px; line-height: 1.4; }
+    .plan-item-desc { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+    /* Input bar */
+    .demo-input-bar {
+      background: #1C2130; padding: 12px 18px;
+      display: flex; align-items: center; gap: 10px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .demo-input {
+      flex: 1; background: #252D40; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 9px 14px;
+      color: rgba(255,255,255,0.25); font-size: 13px; font-family: inherit; outline: none;
+    }
+    .demo-send-btn {
+      width: 34px; height: 34px; background: #F5C842; color: #111;
+      border: none; border-radius: 8px; cursor: default;
+      font-size: 15px; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
     }
-    .av-u { background: #EDE0FF; color: #6B3CF7; }
-    .av-gpt { background: #19C37D; color: #fff; }
-    .av-foal { background: #6B3CF7; color: #fff; }
-    .c-bub {
-      max-width: 72%; padding: 12px 16px;
-      border-radius: 14px; font-size: 14px; line-height: 1.65;
+    /* Phase 3 – Next steps */
+    .demo-next-outer { display: none; }
+    .demo-next-badge {
+      display: inline-block; border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.55); font-size: 11px; font-weight: 700;
+      padding: 5px 16px; border-radius: 100px; margin-bottom: 20px;
     }
-    .bub-u { background: #6B3CF7; color: #fff; border-bottom-right-radius: 4px; }
-    .bub-gpt { background: #F3F3F3; color: #333; border-bottom-left-radius: 4px; }
-    .bub-foal {
-      background: #EDE0FF; color: #2E1080;
-      border-bottom-left-radius: 4px;
-      border-left: 3px solid #6B3CF7;
+    .demo-next-h3 {
+      font-size: clamp(26px, 3.5vw, 44px); font-weight: 900;
+      color: #fff; letter-spacing: -0.04em; margin-bottom: 10px;
     }
-    .bub-warn {
-      background: #FFF8E6; color: #7A5800;
-      border: 1px solid #FFE08A;
-      border-radius: 10px; padding: 12px 16px;
-      font-size: 13px; width: 100%; border-bottom-left-radius: 4px;
+    .demo-next-sub { font-size: 15px; color: rgba(255,255,255,0.4); margin-bottom: 36px; }
+    .demo-next-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .demo-nc {
+      background: #131720; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 30px 26px;
     }
-    .bub-win {
-      background: #E8F9EE; color: #1A6634;
-      border: 1px solid #9DE0B3;
-      border-radius: 10px; padding: 12px 16px;
-      font-size: 13px; width: 100%; border-bottom-left-radius: 4px;
+    .demo-nc-icon {
+      width: 42px; height: 42px; background: #1E2A42; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 19px; margin-bottom: 18px;
     }
-    .typing-row {
-      display: flex; gap: 5px; padding: 6px 2px; align-items: center;
+    .demo-nc-badge {
+      display: inline-block; background: #F5C842; color: #111;
+      font-size: 10px; font-weight: 800; padding: 3px 10px;
+      border-radius: 100px; margin-bottom: 10px;
     }
-    .t-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: #bbb;
-      animation: bounce 1.2s infinite;
-    }
-    .t-dot:nth-child(2){animation-delay:.2s;}
-    .t-dot:nth-child(3){animation-delay:.4s;}
-    @keyframes bounce {
-      0%,60%,100%{transform:translateY(0);opacity:.4;}
-      30%{transform:translateY(-6px);opacity:1;}
+    .demo-nc-title { font-size: 21px; font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 10px; }
+    .demo-nc-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.65; margin-bottom: 14px; }
+    .demo-nc-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .demo-nc-list li { font-size: 13px; color: rgba(255,255,255,0.6); display: flex; align-items: flex-start; gap: 6px; }
+    .demo-nc-list li::before { content: '→'; color: #F5C842; font-weight: 700; flex-shrink: 0; }
+    @media (max-width: 760px) {
+      .demo-split { grid-template-columns: 1fr; }
+      .demo-score-pane,.demo-plan-pane { border-top: 1px solid rgba(255,255,255,0.05); }
+      .demo-next-cards { grid-template-columns: 1fr; }
     }
 
     /* ──────── HOW WE'RE DIFFERENT ──────── */
@@ -803,6 +906,28 @@
   </div>
 </section>
 
+<!-- STATS SECTION -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stat-card reveal">
+      <div class="stat-num">87%</div>
+      <div class="stat-desc">예비창업자가 사업계획서 작성에 어려움을 겪음</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-num">평균 3주</div>
+      <div class="stat-desc">초안 완성까지 걸리는 시간</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-num">150만원 ↑</div>
+      <div class="stat-desc">창업 컨설팅 평균 비용</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-num">62%</div>
+      <div class="stat-desc">첫 제출 후 탈락 (사업계획서 미흡 사유)</div>
+    </div>
+  </div>
+</section>
+
 <!-- PROBLEM SECTION -->
 <section class="problem-section">
   <div class="sec-inner">
@@ -882,23 +1007,80 @@
 <!-- SIMULATION -->
 <section class="sim-section">
   <div class="sim-inner">
-    <div class="sec-label">지금 이렇게 하고 있지 않나요?</div>
-    <h2 class="sec-h2" style="margin-bottom:10px;">ChatGPT에 물어보고<br />검증을 끝내고 있진 않나요?</h2>
-    <p class="sec-desc">두 가지 방식의 차이를 직접 확인해보세요.</p>
-    <div class="sim-toggle">
-      <button class="sim-btn on" id="tab-gpt" onclick="switchSim('gpt')">😓 ChatGPT로 검증할 때</button>
-      <button class="sim-btn off" id="tab-foal" onclick="switchSim('foal')">✨ Foal AI로 검증할 때</button>
-    </div>
-    <div class="sim-window">
-      <div class="sim-bar">
-        <div class="s-dot r"></div>
-        <div class="s-dot y"></div>
-        <div class="s-dot g"></div>
-        <div class="sim-bar-title" id="sim-name">ChatGPT</div>
+    <div class="sec-label reveal">지금 이렇게 하고 있지 않나요?</div>
+    <h2 class="sec-h2 reveal" style="color:#fff;margin-bottom:14px;">Foal AI는 소크라테스식 인터뷰로<br />타겟 고객과 JTBD를 발견합니다</h2>
+    <p class="sec-desc reveal" style="color:rgba(255,255,255,0.45);margin-bottom:52px;">검증 후 랜딩페이지 또는 사업계획서를 선택하세요.</p>
+
+    <!-- Phase 1 & 2: Interview window -->
+    <div id="demo-interview">
+      <div class="demo-pill">STEP 1 — 창업 검증 인터뷰 시연</div>
+      <h3 class="demo-h3">먼저 아이디어를<br/>검증합니다</h3>
+      <p class="demo-sub">AI 질문 → 답변 → 실시간 채점 → 타겟 고객 &amp; 검증 리포트 완성</p>
+      <div class="demo-win">
+        <div class="demo-win-bar">
+          <div class="s-dot r"></div><div class="s-dot y"></div><div class="s-dot g"></div>
+          <span class="demo-win-title">Foal AI — 창업 인터뷰 시연</span>
+          <div class="demo-step-prog">
+            <div class="dsp-dot done" id="dsp1"></div>
+            <div class="dsp-dot done" id="dsp2"></div>
+            <div class="dsp-dot cur"  id="dsp3"></div>
+            <div class="dsp-dot"      id="dsp4"></div>
+            <div class="dsp-dot"      id="dsp5"></div>
+            <span id="demo-step-txt">STEP 3/9</span>
+          </div>
+        </div>
+        <div class="demo-split">
+          <!-- Chat pane -->
+          <div class="demo-chat-pane" id="demo-chat"></div>
+          <!-- Score pane (phase 1) -->
+          <div class="demo-score-pane" id="demo-score">
+            <div class="score-label">창업 아이디어 점수</div>
+            <div class="score-big-num" id="score-num">0<span>/100</span></div>
+            <div class="score-base-line">사업계획서 작성 기준: 61점</div>
+            <div class="score-bar-list">
+              <div class="score-bar-row"><span class="score-bar-label">타겟 고객</span><div class="score-bar-track"><div class="score-bar-fill" id="sb1"></div></div><span class="score-bar-val">16/20</span></div>
+              <div class="score-bar-row"><span class="score-bar-label">페인포인트</span><div class="score-bar-track"><div class="score-bar-fill" id="sb2"></div></div><span class="score-bar-val">14/20</span></div>
+              <div class="score-bar-row"><span class="score-bar-label">차별점</span><div class="score-bar-track"><div class="score-bar-fill" id="sb3"></div></div><span class="score-bar-val">9/20</span></div>
+              <div class="score-bar-row"><span class="score-bar-label">창업자 적합성</span><div class="score-bar-track"><div class="score-bar-fill" id="sb4"></div></div><span class="score-bar-val">8/20</span></div>
+              <div class="score-bar-row"><span class="score-bar-label">실행 가능성</span><div class="score-bar-track"><div class="score-bar-fill" id="sb5"></div></div><span class="score-bar-val">11/20</span></div>
+            </div>
+          </div>
+          <!-- Plan pane (phase 2, hidden) -->
+          <div class="demo-plan-pane" id="demo-plan" style="display:none;">
+            <div class="plan-writing-ind"><div class="plan-wd"></div>사업계획서 자동 작성 중...</div>
+            <div class="plan-item" id="pi1"><div class="plan-item-num">1-1 창업 아이템명</div><div class="plan-item-title">AI 기반 하이퍼로컬 소상공인 광고 최적화 플랫폼 '니어리(Nearly)'</div></div>
+            <div class="plan-item" id="pi2"><div class="plan-item-num">1-2 아이템 개요</div><div class="plan-item-desc">소상공인이 반경 1km 내 잠재 고객의 행동 패턴을 AI로 분석하여 최적의 시간·채널·메시지로 광고를 집행하고 효과를 실시간 측정할 수 있는 서비스</div></div>
+            <div class="plan-item" id="pi3"><div class="plan-item-num">1-4 시장 분석</div><div class="plan-item-desc">국내 소상공인 광고 시장 14조원 (TAM) → 디지털 전환 소상공인 580억 (SAM) → 초기 목표 수도권 5억 (SOM)</div></div>
+            <div class="plan-item" id="pi4"><div class="plan-item-num">2-1 차별점</div><div class="plan-item-desc">기존 전국 타겟팅 → 반경 1km 정밀 타겟, 광고 효과 블랙박스 → 매출 연동 ROI 실시간 측정</div></div>
+          </div>
+        </div>
+        <div class="demo-input-bar">
+          <input class="demo-input" placeholder="답변 입력 중..." disabled />
+          <div class="demo-send-btn">→</div>
+        </div>
       </div>
-      <div class="sim-body">
-        <div class="s-panel active" id="panel-gpt"></div>
-        <div class="s-panel" id="panel-foal"></div>
+    </div>
+
+    <!-- Phase 3: Next steps -->
+    <div class="demo-next-outer" id="demo-next">
+      <div class="demo-next-badge">인터뷰 완료 후</div>
+      <h3 class="demo-next-h3">다음 단계를<br/>선택하세요</h3>
+      <p class="demo-next-sub">검증이 끝나면 두 가지 방향으로 나아갈 수 있습니다</p>
+      <div class="demo-next-cards">
+        <div class="demo-nc">
+          <div class="demo-nc-icon">🖥</div>
+          <div class="demo-nc-badge">옵션 1</div>
+          <div class="demo-nc-title">랜딩페이지<br/>자동 제작</div>
+          <p class="demo-nc-desc">실제 고객이 있는지 먼저 확인하고 싶다면. JTBD 기반으로 헤드라인·문제·차별점·CTA를 자동 생성하고 배포 링크를 만듭니다.</p>
+          <ul class="demo-nc-list"><li>JTBD 기반 카피 자동 작성</li><li>퍼르소나 이미지 포함</li><li>배포 링크 즉시 생성</li><li>고객 유입 DB 확보</li></ul>
+        </div>
+        <div class="demo-nc">
+          <div class="demo-nc-icon">📄</div>
+          <div class="demo-nc-badge">옵션 2</div>
+          <div class="demo-nc-title">사업계획서<br/>자동 제작</div>
+          <p class="demo-nc-desc">바로 사업계획서를 작성하고 싶다면. 인터뷰에서 발견한 모든 맥락을 AI가 기억하고 섹션별로 함께 완성합니다.</p>
+          <ul class="demo-nc-list"><li>7개 섹션 대화형 작성</li><li>예창패 공식 양식 반영</li><li>악마의 변호인 피드백</li><li>PDF/Word 완성본 출력</li></ul>
+        </div>
       </div>
     </div>
   </div>
@@ -1065,100 +1247,122 @@
 
 })();
 
-// ─── SIMULATION ───
-const MSG = {
-  gpt: [
-    { type:'user', text:'동네 카페 사장님들한테 SNS 마케팅 대행 서비스 아이디어가 있는데, 어때요?' },
-    { type:'typing' },
-    { type:'gpt', text:'흥미로운 아이디어입니다! 소상공인들의 디지털 마케팅 수요가 높아지고 있어서 충분히 가능성 있어 보입니다. 차별화된 서비스를 제공하면 성공할 수 있을 것 같아요.' },
-    { type:'user', text:'근데 진짜 카페 사장님들이 돈 낼까요?' },
-    { type:'typing' },
-    { type:'gpt', text:'충분히 가능합니다! SNS 광고 효과를 체감한 소상공인이 늘고 있고, 합리적인 가격을 책정하면 수요가 있을 것 같습니다. 주변 카페에 먼저 제안해보시는 건 어떨까요? 😊' },
-    { type:'warn', text:'⚠️ "가능성 있어 보입니다"는 검증이 아닙니다. 진짜 돈을 낼지는 여전히 모릅니다.' },
-  ],
-  foal: [
-    { type:'foal', text:'어떤 문제를 해결하고 싶으신가요? 편하게 말씀해주세요.' },
-    { type:'user', text:'소상공인들이 SNS 마케팅이 필요한 건 아는데 어떻게 해야 할지 모르는 것 같아요.' },
-    { type:'typing' },
-    { type:'foal', text:'그 문제를 가장 심하게 겪는 사람은 어떤 분일까요? 업종, 나이, 상황을 구체적으로 그려봐주세요.' },
-    { type:'user', text:'동네 카페 3년차 40대 여성 사장님인 것 같아요. 블로그 글 쓸 시간도 없고 방법도 모르는 분들이요.' },
-    { type:'typing' },
-    { type:'foal', text:'그분이 지금 이 문제를 어떻게 해결하고 있나요? 누군가에게 돈 내고 맡기고 있나요, 아니면 그냥 포기하고 있나요?' },
-    { type:'user', text:'그냥 가끔 네이버 블로그 올리거나 아예 안 하는 것 같아요. 대행사는 너무 비싸서요.' },
-    { type:'typing' },
-    { type:'win', text:'✅ 핵심 발견: "해야 하는 건 알지만 못 하고 있는" 상태입니다. 현재 해결책(포기 또는 가끔 블로그)과 원하는 상태(효과적인 홍보) 사이의 Gap이 확인됐어요. 진짜 검증의 시작입니다.' },
-  ],
-};
+// ─── DASHBOARD DEMO ───
+(function(){
+  const CHAT = [
+    { who:'foal', text:'안녕하세요. 저는 AI 창업 멘토, Foal AI입니다. 지금 해결하고 싶은 문제가 뭔가요?' },
+    { who:'user', text:'소상공인들이 광고비를 써도 효과가 없어요. 어디에 얼마나 써야 하는지 모르거든요.' },
+    { who:'foal', text:'그 문제를 가장 심각하게 겪는 사람은 누구인가요? 이름, 나이, 직업까지 구체적으로 떠올려 보세요.' },
+    { who:'user', text:'반경 500m 안에 고객이 다 있는데 SNS 광고로 전국에 뿌리는 40대 치킨집 사장님이요. 월 50만원씩 쓰는데 효과를 모르겠다고 하세요.' },
+    { who:'foal', text:'그 사장님은 지금 이 문제를 어떻게 해결하고 있나요? 완벽하지 않아도 현재 방법이 있을 겁니다.' },
+    { who:'user', text:'배달의민족 광고, 동네 현수막, 가끔 전단지 돌리고 있는데 뭐가 효과 있는지 모른다고 해요. 그냥 감으로 해요.' },
+    { who:'foal', text:'그 사장님이 진짜 원하는 건 \'광고 도구\'가 아닙니다. 그 도구를 통해 얻고 싶은 결과는 무엇인가요?' },
+    { who:'user', text:'돈 낭비 없이 근처 단골 손님을 만들고 싶은 거예요. 지금 오는 손님이 다시 오게 하고 새 손님이 들어오는 것.' },
+  ];
+  const STEPS = ['STEP 1/9','STEP 2/9','STEP 3/9','STEP 4/9','STEP 5/9','STEP 6/9','STEP 7/9','STEP 8/9'];
+  const SCORE_W = ['80%','70%','45%','40%','55%'];
+  let dTimers = [];
+  function clr(){ dTimers.forEach(clearTimeout); dTimers=[]; }
 
-let timers = [];
-function clearTimers(){ timers.forEach(clearTimeout); timers=[]; }
-
-function renderSim(key){
-  const panel = document.getElementById('panel-'+key);
-  panel.innerHTML = '';
-  clearTimers();
-  const msgs = MSG[key];
-  let delay = 300;
-  msgs.forEach(msg => {
-    const d = delay;
-    if(msg.type==='typing'){
-      const row = makeTypingRow(key==='gpt'?'gpt':'foal');
-      row.classList.add('c-row','show');
-      panel.appendChild(row);
-      const el=row;
-      timers.push(setTimeout(()=>{ el.remove(); }, d+900));
-      delay += 1000; return;
+  function addMsg(pane, who, text){
+    const row = document.createElement('div');
+    row.className = 'dc-row' + (who==='user'?' user-row':'');
+    if(who!=='user'){
+      const av=document.createElement('div'); av.className='dc-av'; av.textContent='F';
+      row.appendChild(av);
     }
-    const el = makeMsg(msg);
-    panel.appendChild(el);
-    timers.push(setTimeout(()=>{ el.classList.add('show'); }, d));
-    delay += 700;
-  });
-}
-
-function makeMsg(msg){
-  if(msg.type==='warn'||msg.type==='win'){
-    const div=document.createElement('div');
-    div.className='c-row '+(msg.type==='warn'?'bub-warn':'bub-win');
-    div.textContent=msg.text;
-    return div;
+    const bub=document.createElement('div');
+    bub.className = who==='user'?'dc-bub-u':'dc-bub-f';
+    bub.textContent=text;
+    row.appendChild(bub);
+    pane.appendChild(row);
+    setTimeout(()=>row.classList.add('show'),30);
+    pane.scrollTop=pane.scrollHeight;
   }
-  const row=document.createElement('div');
-  row.className='c-row'+(msg.type==='user'?' user-row':'');
-  const av=document.createElement('div');
-  av.className='c-av '+(msg.type==='user'?'av-u':msg.type==='gpt'?'av-gpt':'av-foal');
-  av.textContent=msg.type==='user'?'나':msg.type==='gpt'?'GPT':'F';
-  const bub=document.createElement('div');
-  bub.className='c-bub '+(msg.type==='user'?'bub-u':msg.type==='gpt'?'bub-gpt':'bub-foal');
-  bub.textContent=msg.text;
-  if(msg.type==='user'){ row.appendChild(bub); row.appendChild(av); }
-  else { row.appendChild(av); row.appendChild(bub); }
-  return row;
-}
 
-function makeTypingRow(type){
-  const row=document.createElement('div');
-  row.className='c-row';
-  const av=document.createElement('div');
-  av.className='c-av '+(type==='gpt'?'av-gpt':'av-foal');
-  av.textContent=type==='gpt'?'GPT':'F';
-  const bub=document.createElement('div');
-  bub.className='c-bub '+(type==='gpt'?'bub-gpt':'bub-foal');
-  bub.innerHTML='<div class="typing-row"><div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div></div>';
-  row.appendChild(av); row.appendChild(bub);
-  return row;
-}
+  function animNum(from,to,dur,el){
+    const s=performance.now();
+    (function step(now){
+      const p=Math.min((now-s)/dur,1);
+      el.innerHTML=Math.round(from+(to-from)*p)+'<span>/100</span>';
+      if(p<1) requestAnimationFrame(step);
+    })(performance.now());
+  }
 
-function switchSim(key){
-  document.querySelectorAll('.s-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-'+key).classList.add('active');
-  document.getElementById('sim-name').textContent = key==='gpt'?'ChatGPT':'Foal AI';
-  document.getElementById('tab-gpt').className='sim-btn '+(key==='gpt'?'on':'off');
-  document.getElementById('tab-foal').className='sim-btn '+(key==='foal'?'on':'off');
-  renderSim(key);
-}
+  function startDemo(){
+    clr();
+    const chat=document.getElementById('demo-chat');
+    const itvEl=document.getElementById('demo-interview');
+    const nxtEl=document.getElementById('demo-next');
+    const scoreEl=document.getElementById('demo-score');
+    const planEl=document.getElementById('demo-plan');
 
-renderSim('gpt');
+    // Reset
+    chat.innerHTML='';
+    itvEl.style.display='block'; itvEl.style.opacity='1';
+    nxtEl.style.display='none';
+    scoreEl.style.display='flex'; planEl.style.display='none';
+    ['pi1','pi2','pi3','pi4'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('show'); });
+    SCORE_W.forEach((_,i)=>{ const el=document.getElementById('sb'+(i+1)); if(el) el.style.width='0'; });
+    const snum=document.getElementById('score-num');
+    if(snum) snum.innerHTML='0<span>/100</span>';
+    document.getElementById('demo-step-txt').textContent='STEP 1/9';
+
+    // Animate score bars + number
+    dTimers.push(setTimeout(()=>{
+      if(snum) animNum(0,58,2000,snum);
+      SCORE_W.forEach((w,i)=>dTimers.push(setTimeout(()=>{
+        const b=document.getElementById('sb'+(i+1)); if(b) b.style.width=w;
+      },i*280)));
+    },1200));
+
+    // Add chat messages
+    let delay=600;
+    CHAT.forEach((msg,idx)=>{
+      dTimers.push(setTimeout(()=>{
+        addMsg(chat,msg.who,msg.text);
+        const stEl=document.getElementById('demo-step-txt');
+        if(stEl && STEPS[idx]) stEl.textContent=STEPS[idx];
+        // Switch to plan pane at step 4
+        if(idx===4){
+          dTimers.push(setTimeout(()=>{
+            scoreEl.style.display='none';
+            planEl.style.display='flex';
+            ['pi1','pi2','pi3','pi4'].forEach((id,k)=>dTimers.push(setTimeout(()=>{
+              const el=document.getElementById(id); if(el) el.classList.add('show');
+            },k*1100)));
+          },600));
+        }
+      },delay));
+      delay += msg.who==='foal' ? 1900 : 1500;
+    });
+
+    // Phase 3: next steps
+    const p3start = delay + 1500;
+    dTimers.push(setTimeout(()=>{
+      itvEl.style.transition='opacity 0.5s';
+      itvEl.style.opacity='0';
+      dTimers.push(setTimeout(()=>{
+        itvEl.style.display='none';
+        nxtEl.style.display='block';
+        nxtEl.style.opacity='0'; nxtEl.style.transition='opacity 0.6s';
+        setTimeout(()=>nxtEl.style.opacity='1',30);
+      },520));
+    },p3start));
+
+    // Loop
+    dTimers.push(setTimeout(startDemo, p3start + 9000));
+  }
+
+  // Start when section is in view
+  const section = document.querySelector('.sim-section');
+  if(section){
+    const obs = new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting){ obs.disconnect(); startDemo(); }
+    },{threshold:0.2});
+    obs.observe(section);
+  }
+})();
 
 // ─── MODAL ───
 function openModal(){
