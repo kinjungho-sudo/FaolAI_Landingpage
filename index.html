@@ -1158,14 +1158,78 @@
       .p-panel { aspect-ratio: 16/7; }
       .cards-3 { grid-template-columns: 1fr; }
     }
+    /* ── BPCO section ── */
+    .bpco-section { padding: 80px 32px; background: #080B12; }
+    .bpco-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .bpco-step-badge { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .bpco-step-pill { background: #6B3CF7; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px; letter-spacing: 0.04em; }
+    .bpco-step-label { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 600; }
+    .bpco-h2 { font-size: 38px; font-weight: 900; color: #fff; line-height: 1.25; margin-bottom: 18px; }
+    .bpco-accent { color: #F5C842; }
+    .bpco-desc { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 22px; }
+    .bpco-bullets { list-style: none; padding: 0; margin: 0 0 22px; display: flex; flex-direction: column; gap: 11px; }
+    .bpco-bullets li { font-size: 14px; color: rgba(255,255,255,0.55); display: flex; align-items: flex-start; gap: 9px; line-height: 1.5; }
+    .bpco-bullets li::before { content: '→'; color: #F5C842; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .bpco-privacy { font-size: 12px; color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; padding: 11px 15px; line-height: 1.6; }
+    /* right panel wrapper */
+    .bpco-right { position: relative; min-height: 420px; }
+    /* upload phase */
+    .bpco-upload {
+      position: absolute; inset: 0;
+      background: #13182A; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;
+      padding: 36px; display: flex; flex-direction: column; align-items: center; gap: 14px; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.5s;
+    }
+    .bpco-upload.show { opacity: 1; pointer-events: auto; }
+    .bpco-upload-icon { font-size: 38px; }
+    .bpco-upload-name { font-size: 14px; font-weight: 700; color: #fff; }
+    .bpco-upload-status { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .bpco-upload-bar { width: 80%; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+    .bpco-upload-fill { height: 100%; background: linear-gradient(90deg,#6B3CF7,#A78BFF); border-radius: 2px; width: 0; }
+    /* sections panel */
+    .bpco-panel {
+      position: absolute; inset: 0;
+      background: #13182A; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;
+      padding: 22px; opacity: 0; pointer-events: none; transition: opacity 0.5s;
+      display: flex; flex-direction: column;
+    }
+    .bpco-panel.show { opacity: 1; pointer-events: auto; }
+    .bpco-panel-hdr { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 14px; }
+    .bpco-rows { display: flex; flex-direction: column; gap: 7px; flex: 1; }
+    .bpco-row {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 9px; padding: 9px 14px; transition: all 0.4s;
+    }
+    .bpco-row.active { background: rgba(245,200,66,0.08); border-color: rgba(245,200,66,0.25); }
+    .bpco-row.done { background: rgba(34,197,94,0.05); border-color: rgba(34,197,94,0.15); }
+    .bpco-rnum { font-size: 12px; font-weight: 800; color: rgba(255,255,255,0.2); width: 28px; flex-shrink: 0; transition: color 0.4s; }
+    .bpco-row.active .bpco-rnum { color: #F5C842; }
+    .bpco-row.done .bpco-rnum { color: #22C55E; }
+    .bpco-rname { flex: 1; font-size: 13px; color: rgba(255,255,255,0.3); transition: color 0.4s; }
+    .bpco-row.active .bpco-rname, .bpco-row.done .bpco-rname { color: rgba(255,255,255,0.85); }
+    .bpco-rtag { font-size: 11px; font-weight: 700; min-width: 56px; text-align: right; transition: color 0.4s; }
+    .bpco-row.active .bpco-rtag { color: #F5C842; }
+    .bpco-row.done .bpco-rtag { color: #22C55E; }
+    .bpco-dl {
+      margin-top: 12px; background: #F5C842; color: #111; font-size: 12px; font-weight: 800;
+      text-align: center; padding: 10px; border-radius: 9px;
+      opacity: 0; transition: opacity 0.5s;
+    }
+    .bpco-dl.show { opacity: 1; }
+    @media (max-width: 800px) {
+      .bpco-inner { grid-template-columns: 1fr; gap: 36px; }
+      .bpco-right { min-height: 380px; }
+    }
     @media (max-width: 600px) {
       .hero { padding: 60px 20px 0; }
       .nav { padding: 0 20px; }
-      .problem-section, .stress-section, .sim-section, .diff-section, .cta-section { padding-left: 20px; padding-right: 20px; }
+      .problem-section, .stress-section, .sim-section, .diff-section, .cta-section, .bpco-section { padding-left: 20px; padding-right: 20px; }
       .cta-form { flex-direction: column; }
       .sticky-left { display: none; }
       .sticky-bar { justify-content: center; }
       .m-box { padding: 36px 28px; }
+      .bpco-h2 { font-size: 28px; }
     }
   </style>
 </head>
@@ -1548,6 +1612,50 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- STEP 2: AI 협업 사업계획서 작성 -->
+<section class="bpco-section">
+  <div class="bpco-inner">
+    <div class="bpco-left">
+      <div class="bpco-step-badge">
+        <span class="bpco-step-pill">STEP 2</span>
+        <span class="bpco-step-label">AI 협업 사업계획서 작성</span>
+      </div>
+      <h2 class="bpco-h2">검증된 맥락으로<br/><span class="bpco-accent">섹션별로 함께</span><br/>완성합니다</h2>
+      <p class="bpco-desc">인터뷰에서 발견한 타겟 고객, 문제, 차별점을 AI가 기억한 채로 사업계획서 작성을 시작합니다. 각 섹션을 대화로 다듬고, 마음에 들면 다음으로 넘어갑니다.</p>
+      <ul class="bpco-bullets">
+        <li>이미 작성한 제안서를 업로드하면 AI가 분석 후 내용을 보강해 드립니다</li>
+        <li>AI가 인터뷰 맥락으로 초안을 먼저 작성</li>
+        <li>"더 구체적으로", "다시 써줘" 자유롭게 수정</li>
+        <li>7개 섹션 완성 시 전체 사업계획서 다운로드</li>
+      </ul>
+      <div class="bpco-privacy">🔒 업로드된 내용은 개인 채널에만 저장되며, 직접 삭제할 수 있습니다.</div>
+    </div>
+    <div class="bpco-right">
+      <!-- Upload phase -->
+      <div class="bpco-upload" id="bpco-upload">
+        <div class="bpco-upload-icon">📄</div>
+        <div class="bpco-upload-name">기존 사업계획서_초안.pdf</div>
+        <div class="bpco-upload-status" id="bpco-ustatus">AI 분석 중...</div>
+        <div class="bpco-upload-bar"><div class="bpco-upload-fill" id="bpco-ufill"></div></div>
+      </div>
+      <!-- Sections panel -->
+      <div class="bpco-panel" id="bpco-panel">
+        <div class="bpco-panel-hdr">사업계획서 작성 현황</div>
+        <div class="bpco-rows">
+          <div class="bpco-row" id="bpcr0"><span class="bpco-rnum">1-1</span><span class="bpco-rname">창업 아이템 개요</span><span class="bpco-rtag" id="bpcrt0"></span></div>
+          <div class="bpco-row" id="bpcr1"><span class="bpco-rnum">1-3</span><span class="bpco-rname">문제 인식 및 고객 정의</span><span class="bpco-rtag" id="bpcrt1"></span></div>
+          <div class="bpco-row" id="bpcr2"><span class="bpco-rnum">2-1</span><span class="bpco-rname">솔루션 및 차별점</span><span class="bpco-rtag" id="bpcrt2"></span></div>
+          <div class="bpco-row" id="bpcr3"><span class="bpco-rnum">1-4</span><span class="bpco-rname">목표 시장 및 규모</span><span class="bpco-rtag" id="bpcrt3"></span></div>
+          <div class="bpco-row" id="bpcr4"><span class="bpco-rnum">2-3</span><span class="bpco-rname">비즈니스 모델</span><span class="bpco-rtag" id="bpcrt4"></span></div>
+          <div class="bpco-row" id="bpcr5"><span class="bpco-rnum">3-1</span><span class="bpco-rname">팀 구성 및 역량</span><span class="bpco-rtag" id="bpcrt5"></span></div>
+          <div class="bpco-row" id="bpcr6"><span class="bpco-rnum">4-1</span><span class="bpco-rname">실행 계획</span><span class="bpco-rtag" id="bpcrt6"></span></div>
+        </div>
+        <div class="bpco-dl" id="bpco-dl">📥 전체 사업계획서 다운로드</div>
+      </div>
     </div>
   </div>
 </section>
@@ -2154,6 +2262,87 @@ function submitCTA(){
   document.getElementById('cta-ok').style.display='block';
 }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+// ─── BPCO SECTION ANIMATION ───
+(function(){
+  const ROWS = ['bpcr0','bpcr1','bpcr2','bpcr3','bpcr4','bpcr5','bpcr6'];
+  const TAGS = ['bpcrt0','bpcrt1','bpcrt2','bpcrt3','bpcrt4','bpcrt5','bpcrt6'];
+  let bpcoT = [];
+  function clrBpco(){ bpcoT.forEach(clearTimeout); bpcoT=[]; }
+
+  function resetBpco(){
+    const upload = document.getElementById('bpco-upload');
+    const panel  = document.getElementById('bpco-panel');
+    const fill   = document.getElementById('bpco-ufill');
+    const ustatus= document.getElementById('bpco-ustatus');
+    const dl     = document.getElementById('bpco-dl');
+    if(upload){ upload.classList.remove('show'); }
+    if(panel)  { panel.classList.remove('show'); }
+    if(fill)   { fill.style.transition='none'; fill.style.width='0'; void fill.offsetWidth; }
+    if(ustatus){ ustatus.textContent='AI 분석 중...'; }
+    if(dl)     { dl.classList.remove('show'); }
+    ROWS.forEach((id,i)=>{
+      const row=document.getElementById(id); if(row) row.classList.remove('active','done');
+      const tag=document.getElementById(TAGS[i]); if(tag) tag.textContent='';
+    });
+  }
+
+  function runBpco(){
+    clrBpco(); resetBpco();
+
+    // Phase 1: upload & analyse
+    const upload  = document.getElementById('bpco-upload');
+    const ustatus = document.getElementById('bpco-ustatus');
+    const fill    = document.getElementById('bpco-ufill');
+    bpcoT.push(setTimeout(()=>{
+      if(upload) upload.classList.add('show');
+      bpcoT.push(setTimeout(()=>{
+        if(fill){ fill.style.transition='width 2.2s ease'; fill.style.width='100%'; }
+      }, 300));
+      bpcoT.push(setTimeout(()=>{
+        if(ustatus) ustatus.textContent='분석 완료 — 내용 강화 준비됨 ✓';
+      }, 2500));
+    }, 200));
+
+    // Phase 2: show sections panel
+    const panel = document.getElementById('bpco-panel');
+    bpcoT.push(setTimeout(()=>{
+      if(upload) upload.classList.remove('show');
+      bpcoT.push(setTimeout(()=>{ if(panel) panel.classList.add('show'); }, 500));
+    }, 3400));
+
+    // Phase 3: sections light up and complete
+    const START = 4200, PER = 1700;
+    ROWS.forEach((id, i)=>{
+      bpcoT.push(setTimeout(()=>{
+        const row=document.getElementById(id); const tag=document.getElementById(TAGS[i]);
+        if(row) row.classList.add('active');
+        if(tag) tag.textContent='● 작성 중';
+        bpcoT.push(setTimeout(()=>{
+          if(row){ row.classList.remove('active'); row.classList.add('done'); }
+          if(tag) tag.textContent='완료 ✓';
+        }, PER * 0.65));
+      }, START + i * PER));
+    });
+
+    // Download button
+    const endT = START + ROWS.length * PER;
+    bpcoT.push(setTimeout(()=>{
+      const dl=document.getElementById('bpco-dl'); if(dl) dl.classList.add('show');
+    }, endT));
+
+    // Loop
+    bpcoT.push(setTimeout(runBpco, endT + 3200));
+  }
+
+  const section = document.querySelector('.bpco-section');
+  if(section){
+    const obs = new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting){ obs.disconnect(); runBpco(); }
+    }, {threshold: 0.15});
+    obs.observe(section);
+  }
+})();
 </script>
 </body>
 </html>
