@@ -1179,9 +1179,9 @@
 <!-- SIMULATION -->
 <section class="sim-section">
   <div class="sim-inner">
-    <div class="sec-label reveal">창업 검증 인터뷰 시연</div>
-    <h2 class="sec-h2 reveal" style="color:#fff;margin-bottom:14px;">먼저 아이디어를<br />검증합니다</h2>
-    <p class="sec-desc reveal" style="color:rgba(255,255,255,0.45);margin-bottom:52px;">AI 질문 → 답변 → 실시간 채점 → 타겟 고객 &amp; 검증 리포트 완성</p>
+    <div class="sec-label reveal">AI 평가 & 피드백 시연</div>
+    <h2 class="sec-h2 reveal" style="color:#fff;margin-bottom:14px;">사업계획서를 올리거나<br />인터뷰로 시작하세요</h2>
+    <p class="sec-desc reveal" style="color:rgba(255,255,255,0.45);margin-bottom:52px;">업로드 또는 인터뷰 → 종합 점수 대시보드 → 항목별 피드백 제공</p>
 
     <!-- Phase 1 & 2: Interview window -->
     <div id="demo-interview">
@@ -1281,31 +1281,6 @@
   </div>
 </section>
 
-<!-- FOAL AI DIFFERENTIATOR -->
-<section class="foal-diff-section">
-  <div class="sec-inner">
-    <div class="sec-label reveal">Foal AI만의 차별화 포인트</div>
-    <h2 class="sec-h2 reveal reveal-delay-1">질문이 먼저입니다</h2>
-    <p class="foal-diff-desc reveal reveal-delay-2">Foal AI는 핵심질문을 던지고 인터뷰를 토대로<br />랜딩페이지 및 사업계획서 제작을 지원합니다.</p>
-    <div class="foal-diff-cards reveal reveal-delay-3">
-      <div class="foal-diff-card">
-        <div class="fdc-icon">🎯</div>
-        <div class="fdc-title">핵심 질문</div>
-        <div class="fdc-desc">단순 답변이 아닌 창업자 스스로 생각하게 만드는 질문을 던집니다</div>
-      </div>
-      <div class="foal-diff-card">
-        <div class="fdc-icon">🗂</div>
-        <div class="fdc-title">인터뷰 기반 제작</div>
-        <div class="fdc-desc">대화에서 발견한 모든 맥락을 기억해 문서와 페이지를 자동 생성합니다</div>
-      </div>
-      <div class="foal-diff-card">
-        <div class="fdc-icon">🚀</div>
-        <div class="fdc-title">두 가지 결과물</div>
-        <div class="fdc-desc">검증용 랜딩페이지 또는 사업계획서, 필요에 따라 즉시 선택합니다</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- OUTPUT DEMOS -->
 <section class="output-section">
@@ -1350,30 +1325,33 @@
             <span class="out-badge-done" id="bp-done">완성 ✓</span>
           </div>
           <div class="bp-body">
-            <div class="bp-doc-title">📄 사업계획서 자동 작성 중...</div>
+            <div class="bp-doc-title" id="bp-doc-title">📊 사업계획서 분석 중...</div>
             <div class="bp-section" id="bps1">
-              <div class="bp-sec-num">1-1 창업 아이템명</div>
-              <div class="bp-sec-title">AI 기반 하이퍼로컬 소상공인 광고 최적화 플랫폼 '니어리(Nearly)'</div>
-              <div class="bp-sec-content" id="bpc1">반경 1km 내 잠재 고객 행동 패턴을 실시간 분석하여 소상공인의 광고 효율을 극대화하는 AI 플랫폼</div>
+              <div class="bp-sec-num">종합 점수</div>
+              <div class="bp-sec-title" style="display:flex;align-items:baseline;gap:6px;">
+                <span style="font-size:28px;color:#F5C842;" id="bp-total-score">0</span>
+                <span style="font-size:13px;color:rgba(255,255,255,0.35);">/ 100</span>
+              </div>
+              <div class="bp-sec-content" id="bpc1">사업계획서 작성 기준 점수: 예창패 심사 기준 적용</div>
             </div>
             <div class="bp-section" id="bps2">
-              <div class="bp-sec-num">1-4 시장 분석</div>
-              <div class="bp-sec-title">국내 소상공인 광고 시장 14조원 (TAM)</div>
-              <div class="bp-sec-content" id="bpc2">디지털 전환 소상공인 580억 (SAM) → 초기 목표 수도권 5억 (SOM). 연 15% 성장 중.</div>
+              <div class="bp-sec-num">⚠️ 주요 문제점 발견</div>
+              <div class="bp-sec-title">타겟 고객이 불명확합니다</div>
+              <div class="bp-sec-content" id="bpc2">"소상공인 전체"는 타겟이 아닙니다. 업종·규모·지역을 구체화하세요.</div>
             </div>
             <div class="bp-section" id="bps3">
-              <div class="bp-sec-num">2-1 차별점</div>
-              <div class="bp-sec-title">전국 타겟 → 반경 1km 정밀 타겟</div>
-              <div class="bp-sec-content" id="bpc3">광고 효과 블랙박스 → 매출 연동 ROI 실시간 측정. 기존 대행사 대비 비용 80% 절감.</div>
+              <div class="bp-sec-num">⚠️ 보완 필요</div>
+              <div class="bp-sec-title">시장 규모 근거가 없습니다</div>
+              <div class="bp-sec-content" id="bpc3">TAM/SAM/SOM 수치에 출처와 산정 근거를 추가하세요.</div>
             </div>
             <div class="bp-section" id="bps4">
-              <div class="bp-sec-num">3-1 수익모델</div>
-              <div class="bp-sec-title">월 구독 9.9만원 + 성과 기반 수수료</div>
-              <div class="bp-sec-content" id="bpc4">초기 100개 점포 파일럿, 6개월 내 BEP 달성 목표. LTV 3년 기준 350만원.</div>
+              <div class="bp-sec-num">✅ 개선 방향 제시</div>
+              <div class="bp-sec-title">Foal AI가 수정을 도와드립니다</div>
+              <div class="bp-sec-content" id="bpc4">위 항목을 AI와 함께 대화하며 보완하면 점수가 61점 이상으로 올라갑니다.</div>
             </div>
             <div class="bp-progress" id="bp-prog">
               <div class="bp-progress-bar"><div class="bp-progress-fill" id="bp-fill"></div></div>
-              <span class="bp-progress-txt" id="bp-prog-txt">0 / 7 섹션</span>
+              <span class="bp-progress-txt" id="bp-prog-txt">분석 완료</span>
             </div>
           </div>
         </div>
@@ -1676,8 +1654,10 @@
     ['bpc1','bpc2','bpc3','bpc4'].forEach(id=>document.getElementById(id).classList.remove('open'));
     document.getElementById('bp-prog').classList.remove('show');
     document.getElementById('bp-fill').style.width='0';
-    document.getElementById('bp-prog-txt').textContent='0 / 7 섹션';
+    document.getElementById('bp-prog-txt').textContent='분석 완료';
     document.getElementById('bp-done').classList.remove('show');
+    const sc=document.getElementById('bp-total-score'); if(sc) sc.textContent='0';
+    const t=document.getElementById('bp-doc-title'); if(t) t.textContent='📊 사업계획서 분석 중...';
   }
 
   let lpT=[], bpT=[];
@@ -1696,27 +1676,39 @@
     lpT.push(setTimeout(()=>{ runLP(); },8500));
   }
 
+  function animBPScore(to){
+    const el=document.getElementById('bp-total-score'); if(!el) return;
+    const s=performance.now();
+    (function step(now){
+      const p=Math.min((now-s)/1800,1);
+      el.textContent=Math.round(to*p);
+      if(p<1) requestAnimationFrame(step);
+    })(performance.now());
+  }
   function runBP(){
     clrBP(); resetBP();
-    const sections = ['bps1','bps2','bps3','bps4'];
-    const contents = ['bpc1','bpc2','bpc3','bpc4'];
-    const labels   = ['2 / 7 섹션','4 / 7 섹션','6 / 7 섹션','7 / 7 섹션'];
-    const fills    = ['28%','57%','85%','100%'];
-    let d = 400;
-    sections.forEach((id,i)=>{
-      bpT.push(setTimeout(()=>{
-        document.getElementById(id).classList.add('show');
-        setTimeout(()=>document.getElementById(contents[i]).classList.add('open'),200);
-        document.getElementById('bp-prog').classList.add('show');
-        document.getElementById('bp-prog-txt').textContent = labels[i];
-        document.getElementById('bp-fill').style.width = fills[i];
-        if(i===sections.length-1){
-          setTimeout(()=>document.getElementById('bp-done').classList.add('show'),700);
-        }
-      },d));
-      d += 1800;
-    });
-    bpT.push(setTimeout(()=>{ runBP(); }, d + 2500));
+    // Phase: analyzing → score → issues → feedback
+    bpT.push(setTimeout(()=>{
+      document.getElementById('bps1').classList.add('show');
+      setTimeout(()=>{ document.getElementById('bpc1').classList.add('open'); animBPScore(47); },200);
+    },600));
+    bpT.push(setTimeout(()=>{
+      document.getElementById('bps2').classList.add('show');
+      setTimeout(()=>document.getElementById('bpc2').classList.add('open'),200);
+    },2400));
+    bpT.push(setTimeout(()=>{
+      document.getElementById('bps3').classList.add('show');
+      setTimeout(()=>document.getElementById('bpc3').classList.add('open'),200);
+    },4200));
+    bpT.push(setTimeout(()=>{
+      document.getElementById('bps4').classList.add('show');
+      setTimeout(()=>document.getElementById('bpc4').classList.add('open'),200);
+      document.getElementById('bp-prog').classList.add('show');
+      document.getElementById('bp-fill').style.width='100%';
+      const t=document.getElementById('bp-doc-title'); if(t) t.textContent='✅ 분석 완료 — 3개 항목 개선 필요';
+      setTimeout(()=>document.getElementById('bp-done').classList.add('show'),700);
+    },6000));
+    bpT.push(setTimeout(()=>{ runBP(); }, 11000));
   }
 
   // Start when in view
