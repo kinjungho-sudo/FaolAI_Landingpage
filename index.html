@@ -651,40 +651,76 @@
       padding: 3px 10px; border-radius: 100px; opacity: 0; transition: opacity 0.4s;
     }
     .out-badge-done.show { opacity: 1; }
-    /* Landing page demo content */
-    .lp-body { padding: 22px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+    /* ── LP demo ── */
+    .lp-body { padding: 0; flex: 1; display: flex; flex-direction: column; gap: 0; overflow: hidden; }
     .lp-url-bar {
-      background: #1A2235; border-radius: 7px; padding: 7px 12px;
-      font-size: 11px; color: rgba(255,255,255,0.3); font-family: monospace;
+      background: #1C2235; padding: 6px 12px;
+      font-size: 10px; color: rgba(255,255,255,0.28); font-family: monospace;
+      border-bottom: 1px solid rgba(255,255,255,0.05); flex-shrink: 0;
     }
-    .lp-hero { display: flex; flex-direction: column; gap: 8px; }
+    .lp-sitenav {
+      display: flex; align-items: center; gap: 8px; padding: 7px 14px;
+      background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.04);
+      flex-shrink: 0; opacity: 0; transition: opacity 0.45s;
+    }
+    .lp-sitenav.show { opacity: 1; }
+    .lp-sitenav-logo { font-size: 12px; font-weight: 900; color: #F5C842; flex: 1; }
+    .lp-sitenav-links { display: flex; gap: 10px; }
+    .lp-sitenav-links span { font-size: 9px; color: rgba(255,255,255,0.3); }
+    .lp-sitenav-btn { font-size: 9px; font-weight: 800; background: #6B3CF7; color: #fff; padding: 4px 9px; border-radius: 5px; }
+    .lp-content { flex: 1; padding: 12px 14px 10px; display: flex; flex-direction: column; gap: 9px; }
+    .lp-hero-wrap {
+      background: linear-gradient(135deg, rgba(107,60,247,0.22) 0%, rgba(18,14,38,0.6) 100%);
+      border-radius: 10px; padding: 12px 14px;
+    }
+    .lp-hero-badge {
+      font-size: 9px; font-weight: 800; color: #F5C842;
+      background: rgba(245,200,66,0.1); border: 1px solid rgba(245,200,66,0.2);
+      padding: 3px 9px; border-radius: 100px; width: fit-content; margin-bottom: 7px;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .lp-hero-badge.show { opacity: 1; }
     .lp-h1 {
-      font-size: 18px; font-weight: 900; color: #fff; line-height: 1.3;
+      font-size: 16px; font-weight: 900; color: #fff; line-height: 1.3;
       border-right: 2px solid #F5C842; white-space: nowrap; overflow: hidden; width: 0;
+      margin-bottom: 6px;
     }
-    .lp-h1.typing { animation: lp-type 1.4s steps(20,end) forwards; }
+    .lp-h1.typing { animation: lp-type 1.6s steps(22,end) forwards; }
     @keyframes lp-type { from{width:0} to{width:100%} }
     .lp-sub {
-      font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5;
+      font-size: 10px; color: rgba(255,255,255,0.45); line-height: 1.55;
       opacity: 0; transition: opacity 0.5s;
     }
     .lp-sub.show { opacity: 1; }
-    .lp-cta {
-      display: inline-block; background: #F5C842; color: #111;
-      font-size: 12px; font-weight: 800; padding: 9px 18px; border-radius: 8px;
-      width: fit-content; opacity: 0; transform: translateY(6px); transition: opacity 0.4s, transform 0.4s;
+    .lp-ctas {
+      display: flex; gap: 7px; margin-top: 10px;
+      opacity: 0; transform: translateY(5px); transition: opacity 0.4s, transform 0.4s;
     }
-    .lp-cta.show { opacity: 1; transform: none; }
-    .lp-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
+    .lp-ctas.show { opacity: 1; transform: none; }
+    .lp-cta-a { background: #F5C842; color: #111; font-size: 10px; font-weight: 800; padding: 7px 14px; border-radius: 7px; }
+    .lp-cta-b { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.55); font-size: 10px; padding: 7px 12px; border-radius: 7px; }
+    .lp-stats {
+      display: flex; justify-content: space-around; align-items: center;
+      background: rgba(255,255,255,0.03); border-radius: 8px; padding: 9px 6px;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .lp-stats.show { opacity: 1; }
+    .lp-stat { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+    .lp-stat-n { font-size: 14px; font-weight: 900; color: #F5C842; }
+    .lp-stat-l { font-size: 8px; color: rgba(255,255,255,0.4); }
+    .lp-stat-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.08); }
+    .lp-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
     .lp-card {
-      background: #1A2235; border-radius: 8px; padding: 10px 9px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px; padding: 9px 8px;
       opacity: 0; transform: translateY(5px); transition: opacity 0.35s, transform 0.35s;
     }
     .lp-card.show { opacity: 1; transform: none; }
-    .lp-card-icon { font-size: 14px; margin-bottom: 4px; }
-    .lp-card-t { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); line-height: 1.3; }
-    /* Business plan demo content */
-    .bp-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+    .lp-card-icon { font-size: 13px; margin-bottom: 3px; }
+    .lp-card-t { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.7); line-height: 1.3; }
+    /* ── BP analysis phase ── */
+    .bp-body { padding: 0; flex: 1; display: flex; flex-direction: column; gap: 0; overflow: hidden; position: relative; }
+    #bp-analysis-phase { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; transition: opacity 0.5s; }
     .bp-doc-title {
       font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.5);
       padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.07);
@@ -702,17 +738,33 @@
       overflow: hidden; max-height: 0; transition: max-height 0.8s ease;
     }
     .bp-sec-content.open { max-height: 60px; }
-    .bp-progress {
-      display: flex; align-items: center; gap: 8px; margin-top: 4px;
-      opacity: 0; transition: opacity 0.4s;
-    }
+    .bp-progress { display: flex; align-items: center; gap: 8px; margin-top: 4px; opacity: 0; transition: opacity 0.4s; }
     .bp-progress.show { opacity: 1; }
     .bp-progress-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius:2px; overflow:hidden; }
     .bp-progress-fill { height: 100%; background: #22C55E; border-radius:2px; width: 0; transition: width 1.5s ease; }
     .bp-progress-txt { font-size: 11px; font-weight: 700; color: #22C55E; }
-    @media (max-width: 760px) {
-      .output-demos { grid-template-columns: 1fr; }
+    /* ── BP docs phase ── */
+    #bp-docs-phase {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      opacity: 0; transition: opacity 0.6s; pointer-events: none; background: #fff;
     }
+    .bp-docs-hdr {
+      display: flex; align-items: center; gap: 7px; padding: 7px 12px;
+      background: #f3f4f6; border-bottom: 1px solid #e0e0e0; flex-shrink: 0;
+    }
+    .bp-docs-fn { font-size: 10px; font-weight: 700; color: #333; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .bp-docs-badge { font-size: 9px; font-weight: 800; color: #6B3CF7; background: rgba(107,60,247,0.1); padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
+    .bp-docs-viewport { flex: 1; overflow: hidden; position: relative; }
+    .bp-docs-page { padding: 16px 18px 60px; transition: transform 1.1s cubic-bezier(0.4,0,0.2,1); }
+    .bp-dsec { margin-bottom: 14px; opacity: 0; transition: opacity 0.4s; }
+    .bp-dsec.show { opacity: 1; }
+    .bp-dsec-label { font-size: 11px; font-weight: 900; color: #6B3CF7; margin-bottom: 3px; }
+    .bp-dsec-text {
+      font-size: 10px; color: #444; line-height: 1.7;
+      border-left: 2px solid #DDD6FE; padding-left: 8px; min-height: 14px;
+    }
+    .bp-dsec-text.typing-cur::after { content: '▍'; color: #6B3CF7; animation: blink 0.7s step-end infinite; }
+    @media (max-width: 760px) { .output-demos { grid-template-columns: 1fr; } }
 
     /* ──────── HOW WE'RE DIFFERENT ──────── */
     .diff-section {
@@ -1180,8 +1232,6 @@
 <section class="sim-section">
   <div class="sim-inner">
     <div class="sec-label reveal">AI 평가 & 피드백 시연</div>
-    <h2 class="sec-h2 reveal" style="color:#fff;margin-bottom:14px;">사업계획서를 올리거나<br />인터뷰로 시작하세요</h2>
-    <p class="sec-desc reveal" style="color:rgba(255,255,255,0.45);margin-bottom:52px;">업로드 또는 인터뷰 → 종합 점수 대시보드 → 항목별 피드백 제공</p>
 
     <!-- Phase 1 & 2: Interview window -->
     <div id="demo-interview">
@@ -1243,15 +1293,15 @@
           <div class="demo-nc-icon">🖥</div>
           <div class="demo-nc-badge">옵션 1</div>
           <div class="demo-nc-title">랜딩페이지<br/>자동 제작</div>
-          <p class="demo-nc-desc">실제 고객이 있는지 먼저 확인하고 싶다면. JTBD 기반으로 헤드라인·문제·차별점·CTA를 자동 생성하고 배포 링크를 만듭니다.</p>
-          <ul class="demo-nc-list"><li>JTBD 기반 카피 자동 작성</li><li>퍼르소나 이미지 포함</li><li>배포 링크 즉시 생성</li><li>고객 유입 DB 확보</li></ul>
+          <p class="demo-nc-desc">실제 고객이 있는지 먼저 확인하고 싶다면. 인터뷰 내용을 기반으로 헤드라인·문제·차별점·CTA를 자동 생성하고 배포 링크를 만듭니다.</p>
+          <ul class="demo-nc-list"><li>헤드카피 자동 작성</li><li>문제·차별점 자동 구성</li><li>배포 링크 즉시 생성</li><li>고객 유입 DB 확보</li></ul>
         </div>
         <div class="demo-nc">
           <div class="demo-nc-icon">📄</div>
           <div class="demo-nc-badge">옵션 2</div>
           <div class="demo-nc-title">사업계획서<br/>자동 제작</div>
           <p class="demo-nc-desc">바로 사업계획서를 작성하고 싶다면. 인터뷰에서 발견한 모든 맥락을 AI가 기억하고 섹션별로 함께 완성합니다.</p>
-          <ul class="demo-nc-list"><li>7개 섹션 대화형 작성</li><li>예창패 공식 양식 반영</li><li>악마의 변호인 피드백</li><li>PDF/Word 완성본 출력</li></ul>
+          <ul class="demo-nc-list"><li>7개 섹션 대화형 작성</li><li>예창패 공식 양식 반영</li><li>AI 심사위원 피드백 제공</li><li>PDF/Word 완성본 출력</li></ul>
         </div>
       </div>
     </div>
@@ -1261,7 +1311,7 @@
 <!-- COMPARISON: ChatGPT vs Foal AI -->
 <section class="cmp-section">
   <div class="cmp-inner">
-    <div class="sec-label reveal">지금 이렇게 하고 있지 않나요?</div>
+    <div class="sec-label reveal">지금 이렇게 하고 있지 ���나요?</div>
     <h2 class="sec-h2 reveal reveal-delay-1">ChatGPT와 Foal AI,<br />무엇이 다를까요?</h2>
     <p class="sec-desc reveal reveal-delay-2">같은 아이디어, 다른 방식으로 검증해보세요.</p>
     <div class="cmp-toggle">
@@ -1300,16 +1350,34 @@
             <span class="out-badge-done" id="lp-done">배포 완료 ✓</span>
           </div>
           <div class="lp-body">
-            <div class="lp-url-bar" id="lp-urlbar">foalai.app/preview/nearly-local-ad</div>
-            <div class="lp-hero">
-              <div class="lp-h1" id="lp-h1">반경 500m 단골 고객을 만드는 방법</div>
-              <div class="lp-sub" id="lp-sub">광고비는 그대로, 효과는 3배.<br/>AI가 우리 동네 고객만 정밀 타겟합니다.</div>
-              <div class="lp-cta" id="lp-cta">무료로 시작하기 →</div>
+            <div class="lp-url-bar">🌐&nbsp; foalai.app/preview/nearly-local-ad</div>
+            <div class="lp-sitenav" id="lp-nav">
+              <span class="lp-sitenav-logo">● Nearly</span>
+              <div class="lp-sitenav-links"><span>기능</span><span>사례</span><span>요금제</span></div>
+              <div class="lp-sitenav-btn">무료 시작</div>
             </div>
-            <div class="lp-cards">
-              <div class="lp-card" id="lpc1"><div class="lp-card-icon">📍</div><div class="lp-card-t">하이퍼로컬 타겟팅</div></div>
-              <div class="lp-card" id="lpc2"><div class="lp-card-icon">📊</div><div class="lp-card-t">실시간 ROI 측정</div></div>
-              <div class="lp-card" id="lpc3"><div class="lp-card-icon">🔄</div><div class="lp-card-t">자동 광고 최적화</div></div>
+            <div class="lp-content">
+              <div class="lp-hero-wrap">
+                <div class="lp-hero-badge" id="lp-badge">🏆 소상공인 마케팅 앱 1위</div>
+                <div class="lp-h1" id="lp-h1">반경 500m 단골 고객을 만드는 방법</div>
+                <div class="lp-sub" id="lp-sub">광고비는 그대로, 효과는 3배.<br/>AI가 우리 동네 고객만 정밀 타겟합니다.</div>
+                <div class="lp-ctas" id="lp-ctas">
+                  <div class="lp-cta-a">14일 무료 시작 →</div>
+                  <div class="lp-cta-b">고객 사례 보기</div>
+                </div>
+              </div>
+              <div class="lp-stats" id="lp-proof">
+                <div class="lp-stat"><div class="lp-stat-n">2,400+</div><div class="lp-stat-l">가입 매장</div></div>
+                <div class="lp-stat-sep"></div>
+                <div class="lp-stat"><div class="lp-stat-n">3.2x</div><div class="lp-stat-l">매출 증가</div></div>
+                <div class="lp-stat-sep"></div>
+                <div class="lp-stat"><div class="lp-stat-n">₩0</div><div class="lp-stat-l">초기 비용</div></div>
+              </div>
+              <div class="lp-cards">
+                <div class="lp-card" id="lpc1"><div class="lp-card-icon">📍</div><div class="lp-card-t">로컬 타겟팅</div></div>
+                <div class="lp-card" id="lpc2"><div class="lp-card-icon">📊</div><div class="lp-card-t">ROI 측정</div></div>
+                <div class="lp-card" id="lpc3"><div class="lp-card-icon">🔄</div><div class="lp-card-t">자동 최적화</div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -1325,33 +1393,68 @@
             <span class="out-badge-done" id="bp-done">완성 ✓</span>
           </div>
           <div class="bp-body">
-            <div class="bp-doc-title" id="bp-doc-title">📊 사업계획서 분석 중...</div>
-            <div class="bp-section" id="bps1">
-              <div class="bp-sec-num">종합 점수</div>
-              <div class="bp-sec-title" style="display:flex;align-items:baseline;gap:6px;">
-                <span style="font-size:28px;color:#F5C842;" id="bp-total-score">0</span>
-                <span style="font-size:13px;color:rgba(255,255,255,0.35);">/ 100</span>
+            <!-- Phase 1: Analysis dashboard -->
+            <div id="bp-analysis-phase">
+              <div class="bp-doc-title" id="bp-doc-title">📊 사업계획서 분석 중...</div>
+              <div class="bp-section" id="bps1">
+                <div class="bp-sec-num">종합 점수</div>
+                <div class="bp-sec-title" style="display:flex;align-items:baseline;gap:6px;">
+                  <span style="font-size:28px;color:#F5C842;" id="bp-total-score">0</span>
+                  <span style="font-size:13px;color:rgba(255,255,255,0.35);">/ 100</span>
+                </div>
+                <div class="bp-sec-content" id="bpc1">사업계획서 작성 기준 점수: 예창패 심사 기준 적용</div>
               </div>
-              <div class="bp-sec-content" id="bpc1">사업계획서 작성 기준 점수: 예창패 심사 기준 적용</div>
+              <div class="bp-section" id="bps2">
+                <div class="bp-sec-num">⚠️ 주요 문제점 발견</div>
+                <div class="bp-sec-title">타겟 고객이 불명확합니다</div>
+                <div class="bp-sec-content" id="bpc2">"소상공인 전체"는 타겟이 아닙니다. 업종·규모·지역을 구체화하세요.</div>
+              </div>
+              <div class="bp-section" id="bps3">
+                <div class="bp-sec-num">⚠️ 보완 필요</div>
+                <div class="bp-sec-title">시장 규모 근거가 없습니다</div>
+                <div class="bp-sec-content" id="bpc3">TAM/SAM/SOM 수치에 출처와 산정 근거를 추가하세요.</div>
+              </div>
+              <div class="bp-section" id="bps4">
+                <div class="bp-sec-num">✅ 개선 방향 제시</div>
+                <div class="bp-sec-title">Foal AI가 수정을 도와드립니다</div>
+                <div class="bp-sec-content" id="bpc4">위 항목을 AI와 함께 대화하며 보완하면 점수가 61점 이상으로 올라갑니다.</div>
+              </div>
+              <div class="bp-progress" id="bp-prog">
+                <div class="bp-progress-bar"><div class="bp-progress-fill" id="bp-fill"></div></div>
+                <span class="bp-progress-txt" id="bp-prog-txt">분석 완료</span>
+              </div>
             </div>
-            <div class="bp-section" id="bps2">
-              <div class="bp-sec-num">⚠️ 주요 문제점 발견</div>
-              <div class="bp-sec-title">타겟 고객이 불명확합니다</div>
-              <div class="bp-sec-content" id="bpc2">"소상공인 전체"는 타겟이 아닙니다. 업종·규모·지역을 구체화하세요.</div>
-            </div>
-            <div class="bp-section" id="bps3">
-              <div class="bp-sec-num">⚠️ 보완 필요</div>
-              <div class="bp-sec-title">시장 규모 근거가 없습니다</div>
-              <div class="bp-sec-content" id="bpc3">TAM/SAM/SOM 수치에 출처와 산정 근거를 추가하세요.</div>
-            </div>
-            <div class="bp-section" id="bps4">
-              <div class="bp-sec-num">✅ 개선 방향 제시</div>
-              <div class="bp-sec-title">Foal AI가 수정을 도와드립니다</div>
-              <div class="bp-sec-content" id="bpc4">위 항목을 AI와 함께 대화하며 보완하면 점수가 61점 이상으로 올라갑니다.</div>
-            </div>
-            <div class="bp-progress" id="bp-prog">
-              <div class="bp-progress-bar"><div class="bp-progress-fill" id="bp-fill"></div></div>
-              <span class="bp-progress-txt" id="bp-prog-txt">분석 완료</span>
+            <!-- Phase 2: Docs writing -->
+            <div id="bp-docs-phase">
+              <div class="bp-docs-hdr">
+                <span>📄</span>
+                <span class="bp-docs-fn">니어리(Nearly) — 예비창업패키지 사업계획서.docx</span>
+                <span class="bp-docs-badge" id="bp-write-badge">✍️ AI 작성 중...</span>
+              </div>
+              <div class="bp-docs-viewport">
+                <div class="bp-docs-page" id="bp-docs-page">
+                  <div class="bp-dsec" id="bpd1">
+                    <div class="bp-dsec-label">1. 문제 정의</div>
+                    <div class="bp-dsec-text" id="bpdt1"></div>
+                  </div>
+                  <div class="bp-dsec" id="bpd2">
+                    <div class="bp-dsec-label">2. 타겟 고객</div>
+                    <div class="bp-dsec-text" id="bpdt2"></div>
+                  </div>
+                  <div class="bp-dsec" id="bpd3">
+                    <div class="bp-dsec-label">3. 시장 규모 (TAM/SAM/SOM)</div>
+                    <div class="bp-dsec-text" id="bpdt3"></div>
+                  </div>
+                  <div class="bp-dsec" id="bpd4">
+                    <div class="bp-dsec-label">4. 비즈니스 모델</div>
+                    <div class="bp-dsec-text" id="bpdt4"></div>
+                  </div>
+                  <div class="bp-dsec" id="bpd5">
+                    <div class="bp-dsec-label">5. 실행 계획</div>
+                    <div class="bp-dsec-text" id="bpdt5"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1375,12 +1478,12 @@
       <div class="d-card">
         <div class="d-card-num">해결하는 문제</div>
         <div class="d-card-title">검증 없이 쓰는<br/>사업계획서</div>
-        <p class="d-card-body">Foal AI는 AI 인터뷰로 아이디어를 검증한 뒤, <strong>랜딩페이지를 자동 제작</strong>하여 실제 고객 DB를 미리 확보합니다. 사업계획서를 쓰기 전에, 진짜 고객이 있는지 먼저 증명합니다.</p>
+        <p class="d-card-body">Foal AI는 AI 인터뷰로 아이디어를 검증한 뒤, <strong>랜딩페���지를 자동 제작</strong>하여 실제 고객 DB를 미리 확보합니다. 사업계획서를 쓰기 전에, 진짜 고객이 있는지 먼저 증명합니다.</p>
       </div>
       <div class="d-card">
         <div class="d-card-num">기존 방식의 한계</div>
-        <div class="d-card-title">전문 AI 에이전트의<br/>차이</div>
-        <p class="d-card-body">일반 AI와 달리 Foal AI는 <strong>사업계획서 작성을 위해 설계된 전문 AI 에이전트</strong>입니다. 답을 주기 전에 핵심 질문을 먼저 던져 창업자 스스로 검증하게 합니다.</p>
+        <div class="d-card-title">ChatGPT·일반 앱과<br/>무엇이 다를까요?</div>
+        <p class="d-card-body">ChatGPT는 시키는 대로만 씁니다. 일반 사업계획서 앱은 템플릿만 채웁니다. Foal AI는 <strong>핵심 질문을 먼저 던져</strong> 창업자가 스스로 검증하게 하고, 그 맥락을 바탕으로 사업계획서를 완성합니다.</p>
       </div>
     </div>
   </div>
@@ -1641,15 +1744,22 @@
 
 // ─── OUTPUT DEMOS ───
 (function(){
+  let bpTypingCancelled = false;
+
   function resetLP(){
-    const ids = ['lp-h1','lp-sub','lp-cta','lpc1','lpc2','lpc3','lp-done'];
-    document.getElementById('lp-h1').classList.remove('typing');
+    const h1 = document.getElementById('lp-h1');
+    h1.classList.remove('typing'); void h1.offsetWidth;
+    document.getElementById('lp-nav').classList.remove('show');
+    document.getElementById('lp-badge').classList.remove('show');
     document.getElementById('lp-sub').classList.remove('show');
-    document.getElementById('lp-cta').classList.remove('show');
+    document.getElementById('lp-ctas').classList.remove('show');
+    document.getElementById('lp-proof').classList.remove('show');
     ['lpc1','lpc2','lpc3'].forEach(id=>document.getElementById(id).classList.remove('show'));
     document.getElementById('lp-done').classList.remove('show');
   }
+
   function resetBP(){
+    bpTypingCancelled = true;
     ['bps1','bps2','bps3','bps4'].forEach(id=>document.getElementById(id).classList.remove('show'));
     ['bpc1','bpc2','bpc3','bpc4'].forEach(id=>document.getElementById(id).classList.remove('open'));
     document.getElementById('bp-prog').classList.remove('show');
@@ -1658,6 +1768,15 @@
     document.getElementById('bp-done').classList.remove('show');
     const sc=document.getElementById('bp-total-score'); if(sc) sc.textContent='0';
     const t=document.getElementById('bp-doc-title'); if(t) t.textContent='📊 사업계획서 분석 중...';
+    // Reset phases
+    const ap=document.getElementById('bp-analysis-phase');
+    const dp=document.getElementById('bp-docs-phase');
+    if(ap){ ap.style.opacity='1'; ap.style.pointerEvents=''; }
+    if(dp){ dp.style.opacity='0'; dp.style.pointerEvents='none'; }
+    ['bpd1','bpd2','bpd3','bpd4','bpd5'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('show'); });
+    ['bpdt1','bpdt2','bpdt3','bpdt4','bpdt5'].forEach(id=>{ const el=document.getElementById(id); if(el){ el.textContent=''; el.classList.remove('typing-cur'); } });
+    const page=document.getElementById('bp-docs-page'); if(page) page.style.transform='';
+    const badge=document.getElementById('bp-write-badge'); if(badge) badge.textContent='✍️ AI 작성 중...';
   }
 
   let lpT=[], bpT=[];
@@ -1666,14 +1785,33 @@
 
   function runLP(){
     clrLP(); resetLP();
-    lpT.push(setTimeout(()=>{ document.getElementById('lp-h1').classList.add('typing'); },300));
-    lpT.push(setTimeout(()=>{ document.getElementById('lp-sub').classList.add('show'); },1900));
-    lpT.push(setTimeout(()=>{ document.getElementById('lp-cta').classList.add('show'); },2700));
-    lpT.push(setTimeout(()=>{ document.getElementById('lpc1').classList.add('show'); },3400));
-    lpT.push(setTimeout(()=>{ document.getElementById('lpc2').classList.add('show'); },3750));
-    lpT.push(setTimeout(()=>{ document.getElementById('lpc3').classList.add('show'); },4100));
-    lpT.push(setTimeout(()=>{ document.getElementById('lp-done').classList.add('show'); },4800));
-    lpT.push(setTimeout(()=>{ runLP(); },8500));
+    lpT.push(setTimeout(()=>document.getElementById('lp-nav').classList.add('show'), 150));
+    lpT.push(setTimeout(()=>document.getElementById('lp-badge').classList.add('show'), 550));
+    lpT.push(setTimeout(()=>document.getElementById('lp-h1').classList.add('typing'), 1000));
+    lpT.push(setTimeout(()=>document.getElementById('lp-sub').classList.add('show'), 2900));
+    lpT.push(setTimeout(()=>document.getElementById('lp-ctas').classList.add('show'), 3600));
+    lpT.push(setTimeout(()=>document.getElementById('lp-proof').classList.add('show'), 4400));
+    lpT.push(setTimeout(()=>document.getElementById('lpc1').classList.add('show'), 5100));
+    lpT.push(setTimeout(()=>document.getElementById('lpc2').classList.add('show'), 5450));
+    lpT.push(setTimeout(()=>document.getElementById('lpc3').classList.add('show'), 5800));
+    lpT.push(setTimeout(()=>document.getElementById('lp-done').classList.add('show'), 6500));
+    lpT.push(setTimeout(()=>runLP(), 10500));
+  }
+
+  function bpTypeText(el, text, done){
+    let i = 0;
+    el.classList.add('typing-cur');
+    (function tick(){
+      if(bpTypingCancelled){ el.classList.remove('typing-cur'); return; }
+      if(i < text.length){
+        el.textContent += text[i++];
+        const tid = setTimeout(tick, 38 + Math.random()*18);
+        bpT.push(tid);
+      } else {
+        el.classList.remove('typing-cur');
+        if(done) done();
+      }
+    })();
   }
 
   function animBPScore(to){
@@ -1685,9 +1823,49 @@
       if(p<1) requestAnimationFrame(step);
     })(performance.now());
   }
+
+  function runBPDocs(){
+    const ap=document.getElementById('bp-analysis-phase');
+    const dp=document.getElementById('bp-docs-phase');
+    if(ap) ap.style.opacity='0';
+    bpT.push(setTimeout(()=>{
+      if(ap) ap.style.pointerEvents='none';
+      if(dp){ dp.style.pointerEvents=''; void dp.offsetWidth; dp.style.opacity='1'; }
+
+      const secs = [
+        { id:'bpd1', tid:'bpdt1', text:'소상공인의 디지털 마케팅 효과 측정 불가 및 광고비 낭비 문제를 AI로 해결합니다.' },
+        { id:'bpd2', tid:'bpdt2', text:'서울·수도권 반경 500m 마케팅이 필요한 카페·음식점 소상공인 (20~30만 매장)' },
+        { id:'bpd3', tid:'bpdt3', text:'TAM ₩2.1조 → SAM ₩3,200억 → SOM ₩48억 (초기 2년 기준)' },
+        { id:'bpd4', tid:'bpdt4', text:'월 구독 ₩29,000 + 성과 기반 수수료 3% + 기업 맞춤 패키지' },
+        { id:'bpd5', tid:'bpdt5', text:'2026 Q1 MVP 출시 → 파일럿 100개 매장 → 서울 전역 확장' },
+      ];
+
+      let delay = 300;
+      const scrollStep = 74;
+      secs.forEach((sec, idx)=>{
+        const d = delay;
+        bpT.push(setTimeout(()=>{
+          const el=document.getElementById(sec.id); if(el) el.classList.add('show');
+          bpT.push(setTimeout(()=>{
+            const tel=document.getElementById(sec.tid);
+            if(tel) bpTypeText(tel, sec.text, idx===secs.length-1 ? ()=>{
+              const badge=document.getElementById('bp-write-badge'); if(badge) badge.textContent='✅ 작성 완료';
+              document.getElementById('bp-done').classList.add('show');
+            } : null);
+            if(idx >= 1){
+              const page=document.getElementById('bp-docs-page');
+              if(page) page.style.transform=`translateY(-${idx * scrollStep}px)`;
+            }
+          }, 200));
+        }, d));
+        delay += 2300;
+      });
+    }, 600));
+  }
+
   function runBP(){
     clrBP(); resetBP();
-    // Phase: analyzing → score → issues → feedback
+    bpTypingCancelled = false;
     bpT.push(setTimeout(()=>{
       document.getElementById('bps1').classList.add('show');
       setTimeout(()=>{ document.getElementById('bpc1').classList.add('open'); animBPScore(47); },200);
@@ -1706,9 +1884,9 @@
       document.getElementById('bp-prog').classList.add('show');
       document.getElementById('bp-fill').style.width='100%';
       const t=document.getElementById('bp-doc-title'); if(t) t.textContent='✅ 분석 완료 — 3개 항목 개선 필요';
-      setTimeout(()=>document.getElementById('bp-done').classList.add('show'),700);
     },6000));
-    bpT.push(setTimeout(()=>{ runBP(); }, 11000));
+    bpT.push(setTimeout(()=>runBPDocs(), 8000));
+    bpT.push(setTimeout(()=>runBP(), 22000));
   }
 
   // Start when in view
