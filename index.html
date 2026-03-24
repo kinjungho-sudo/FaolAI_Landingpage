@@ -41,7 +41,11 @@
       max-width: 1200px; width: 100%; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { font-size: 22px; font-weight: 900; letter-spacing: -0.05em; }
+    .logo { font-size: 22px; font-weight: 900; letter-spacing: -0.05em; display:flex; align-items:center; gap:8px; }
+    .logo-img { height: 32px; width: auto; display:block; }
+    .nav-links { display:flex; gap:20px; }
+    .nav-link { font-size:14px; font-weight:700; color:#555; text-decoration:none; transition:color 0.2s; }
+    .nav-link:hover { color:#6B3CF7; }
     .logo span { color: #6B3CF7; }
     .nav-btn {
       padding: 9px 22px; background: #6B3CF7; color: #fff;
@@ -754,16 +758,35 @@
     }
     .bp-docs-fn { font-size: 10px; font-weight: 700; color: #333; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .bp-docs-badge { font-size: 9px; font-weight: 800; color: #6B3CF7; background: rgba(107,60,247,0.1); padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
-    .bp-docs-viewport { flex: 1; overflow: hidden; position: relative; }
-    .bp-docs-page { padding: 16px 18px 60px; transition: transform 1.1s cubic-bezier(0.4,0,0.2,1); }
-    .bp-dsec { margin-bottom: 14px; opacity: 0; transition: opacity 0.4s; }
+    .bp-docs-viewport { flex: 1; overflow-y: auto; position: relative; scrollbar-width: none; -ms-overflow-style: none; }
+    .bp-docs-viewport::-webkit-scrollbar { display: none; }
+    .bp-docs-page { padding: 14px 16px 24px; }
+    .bp-dsec { margin-bottom: 12px; opacity: 0; transition: opacity 0.45s; }
     .bp-dsec.show { opacity: 1; }
-    .bp-dsec-label { font-size: 11px; font-weight: 900; color: #6B3CF7; margin-bottom: 3px; }
+    .bp-dsec-label { font-size: 10px; font-weight: 900; color: #6B3CF7; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
     .bp-dsec-text {
-      font-size: 10px; color: #444; line-height: 1.7;
+      font-size: 10px; color: #444; line-height: 1.65;
       border-left: 2px solid #DDD6FE; padding-left: 8px; min-height: 14px;
     }
     .bp-dsec-text.typing-cur::after { content: '▍'; color: #6B3CF7; animation: blink 0.7s step-end infinite; }
+    /* BP chart */
+    .bp-chart { margin-top: 9px; display: flex; flex-direction: column; gap: 5px; opacity: 0; transition: opacity 0.5s; }
+    .bp-chart.show { opacity: 1; }
+    .bp-chart-row { display: flex; align-items: center; gap: 6px; }
+    .bp-chart-lbl { font-size: 9px; font-weight: 800; color: #6B3CF7; width: 28px; flex-shrink: 0; }
+    .bp-chart-track { flex: 1; height: 9px; background: #F0EDFB; border-radius: 100px; overflow: hidden; }
+    .bp-chart-bar { height: 100%; width: 0; border-radius: 100px; transition: width 1.3s ease; }
+    .bp-chart-bar.grow { width: var(--w); }
+    .bp-chart-val { font-size: 9px; font-weight: 700; color: #333; width: 44px; text-align: right; flex-shrink: 0; }
+    /* BP timeline */
+    .bp-timeline { margin-top: 9px; display: flex; flex-direction: column; gap: 0; opacity: 0; transition: opacity 0.5s; }
+    .bp-timeline.show { opacity: 1; }
+    .bp-tl-item { display: flex; gap: 8px; align-items: flex-start; opacity: 0; transition: opacity 0.4s; }
+    .bp-tl-item.show { opacity: 1; }
+    .bp-tl-dot { width: 7px; height: 7px; border-radius: 50%; background: #6B3CF7; flex-shrink: 0; margin-top: 3px; }
+    .bp-tl-body { border-left: 1px solid #DDD6FE; padding: 0 0 8px 8px; flex: 1; }
+    .bp-tl-period { font-size: 9px; font-weight: 800; color: #6B3CF7; margin-bottom: 1px; }
+    .bp-tl-desc { font-size: 10px; color: #333; }
     @media (max-width: 760px) { .output-demos { grid-template-columns: 1fr; } }
 
     /* ──────── HOW WE'RE DIFFERENT ──────── */
@@ -1098,7 +1121,8 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <div class="logo">Foal<span>AI</span></div>
+    <div class="logo"><img src="images/logo.png" alt="Foal AI" class="logo-img" onerror="this.style.display='none'">Foal<span>AI</span></div>
+    <div class="nav-links"><a href="announcements.html" class="nav-link">공고마당</a></div>
     <button class="nav-btn" onclick="openModal()">관심 등록하기</button>
   </div>
 </nav>
@@ -1431,7 +1455,7 @@
                 <span class="bp-docs-fn">니어리(Nearly) — 예비창업패키지 사업계획서.docx</span>
                 <span class="bp-docs-badge" id="bp-write-badge">✍️ AI 작성 중...</span>
               </div>
-              <div class="bp-docs-viewport">
+              <div class="bp-docs-viewport" id="bp-docs-vp">
                 <div class="bp-docs-page" id="bp-docs-page">
                   <div class="bp-dsec" id="bpd1">
                     <div class="bp-dsec-label">1. 문제 정의</div>
@@ -1442,16 +1466,26 @@
                     <div class="bp-dsec-text" id="bpdt2"></div>
                   </div>
                   <div class="bp-dsec" id="bpd3">
-                    <div class="bp-dsec-label">3. 시장 규모 (TAM/SAM/SOM)</div>
+                    <div class="bp-dsec-label">3. 시장 규모</div>
                     <div class="bp-dsec-text" id="bpdt3"></div>
+                    <div class="bp-chart" id="bp-chart">
+                      <div class="bp-chart-row"><div class="bp-chart-lbl">TAM</div><div class="bp-chart-track"><div class="bp-chart-bar" id="bpcbar1" style="--w:100%;background:#6B3CF7;"></div></div><div class="bp-chart-val">₩2.1조</div></div>
+                      <div class="bp-chart-row"><div class="bp-chart-lbl">SAM</div><div class="bp-chart-track"><div class="bp-chart-bar" id="bpcbar2" style="--w:52%;background:#A78BFF;"></div></div><div class="bp-chart-val">₩3,200억</div></div>
+                      <div class="bp-chart-row"><div class="bp-chart-lbl">SOM</div><div class="bp-chart-track"><div class="bp-chart-bar" id="bpcbar3" style="--w:7%;background:#F5C842;"></div></div><div class="bp-chart-val">₩48억</div></div>
+                    </div>
                   </div>
                   <div class="bp-dsec" id="bpd4">
                     <div class="bp-dsec-label">4. 비즈니스 모델</div>
                     <div class="bp-dsec-text" id="bpdt4"></div>
                   </div>
                   <div class="bp-dsec" id="bpd5">
-                    <div class="bp-dsec-label">5. 실행 계획</div>
+                    <div class="bp-dsec-label">5. 실행 로드맵</div>
                     <div class="bp-dsec-text" id="bpdt5"></div>
+                    <div class="bp-timeline" id="bp-timeline">
+                      <div class="bp-tl-item" id="bptl1"><div class="bp-tl-dot"></div><div class="bp-tl-body"><div class="bp-tl-period">2026 Q1</div><div class="bp-tl-desc">MVP 출시</div></div></div>
+                      <div class="bp-tl-item" id="bptl2"><div class="bp-tl-dot"></div><div class="bp-tl-body"><div class="bp-tl-period">2026 Q2</div><div class="bp-tl-desc">파일럿 100개 매장</div></div></div>
+                      <div class="bp-tl-item" id="bptl3"><div class="bp-tl-dot"></div><div class="bp-tl-body"><div class="bp-tl-period">2026 Q4</div><div class="bp-tl-desc">서울 전역 확장</div></div></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1478,7 +1512,7 @@
       <div class="d-card">
         <div class="d-card-num">해결하는 문제</div>
         <div class="d-card-title">검증 없이 쓰는<br/>사업계획서</div>
-        <p class="d-card-body">Foal AI는 AI 인터뷰로 아이디어를 검증한 뒤, <strong>랜딩페���지를 자동 제작</strong>하여 실제 고객 DB를 미리 확보합니다. 사업계획서를 쓰기 전에, 진짜 고객이 있는지 먼저 증명합니다.</p>
+        <p class="d-card-body">Foal AI는 AI 인터뷰로 아이디어를 검증한 뒤, <strong>랜딩페이지를 자동 제작</strong>하여 실제 고객 DB를 미리 확보합니다. 사업계획서를 쓰기 전에, 진짜 고객이 있는지 먼저 증명합니다.</p>
       </div>
       <div class="d-card">
         <div class="d-card-num">기존 방식의 한계</div>
@@ -1505,7 +1539,8 @@
         </div>
         <p class="review-quote">
           "한번도 해본 적 없던 사업계획서를 써야 해서 막막했는데,<br />
-          <strong>이게 출시 된다면 빨리 써보고 싶네요.</strong>"
+          이 서비스가 나온다면 자신감이 생길것 같아요.<br />
+          <strong>출시되면 빨리 써보고 싶네요.</strong>"
         </p>
         <div class="review-author">
           <div class="review-avatar">정</div>
@@ -1775,7 +1810,11 @@
     if(dp){ dp.style.opacity='0'; dp.style.pointerEvents='none'; }
     ['bpd1','bpd2','bpd3','bpd4','bpd5'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('show'); });
     ['bpdt1','bpdt2','bpdt3','bpdt4','bpdt5'].forEach(id=>{ const el=document.getElementById(id); if(el){ el.textContent=''; el.classList.remove('typing-cur'); } });
-    const page=document.getElementById('bp-docs-page'); if(page) page.style.transform='';
+    const vp2=document.getElementById('bp-docs-vp'); if(vp2) vp2.scrollTop=0;
+    const chart=document.getElementById('bp-chart'); if(chart) chart.classList.remove('show');
+    ['bpcbar1','bpcbar2','bpcbar3'].forEach(id=>{ const b=document.getElementById(id); if(b) b.classList.remove('grow'); });
+    const tl=document.getElementById('bp-timeline'); if(tl) tl.classList.remove('show');
+    ['bptl1','bptl2','bptl3'].forEach(id=>{ const e=document.getElementById(id); if(e) e.classList.remove('show'); });
     const badge=document.getElementById('bp-write-badge'); if(badge) badge.textContent='✍️ AI 작성 중...';
   }
 
@@ -1832,33 +1871,48 @@
       if(ap) ap.style.pointerEvents='none';
       if(dp){ dp.style.pointerEvents=''; void dp.offsetWidth; dp.style.opacity='1'; }
 
+      const vp = document.getElementById('bp-docs-vp');
+      function scrollBot(){ if(vp) bpT.push(setTimeout(()=>{ vp.scrollTop = vp.scrollHeight; }, 120)); }
+
       const secs = [
         { id:'bpd1', tid:'bpdt1', text:'소상공인의 디지털 마케팅 효과 측정 불가 및 광고비 낭비 문제를 AI로 해결합니다.' },
         { id:'bpd2', tid:'bpdt2', text:'서울·수도권 반경 500m 마케팅이 필요한 카페·음식점 소상공인 (20~30만 매장)' },
-        { id:'bpd3', tid:'bpdt3', text:'TAM ₩2.1조 → SAM ₩3,200억 → SOM ₩48억 (초기 2년 기준)' },
+        { id:'bpd3', tid:'bpdt3', text:'TAM/SAM/SOM 시장 규모 기준으로 초기 2년 내 SOM ₩48억 달성이 목표입니다.' },
         { id:'bpd4', tid:'bpdt4', text:'월 구독 ₩29,000 + 성과 기반 수수료 3% + 기업 맞춤 패키지' },
-        { id:'bpd5', tid:'bpdt5', text:'2026 Q1 MVP 출시 → 파일럿 100개 매장 → 서울 전역 확장' },
+        { id:'bpd5', tid:'bpdt5', text:'단계별 확장 전략으로 2026 Q1 MVP부터 서울 전역 진출까지 실행합니다.' },
       ];
 
       let delay = 300;
-      const scrollStep = 74;
       secs.forEach((sec, idx)=>{
         const d = delay;
         bpT.push(setTimeout(()=>{
           const el=document.getElementById(sec.id); if(el) el.classList.add('show');
+          scrollBot();
           bpT.push(setTimeout(()=>{
             const tel=document.getElementById(sec.tid);
-            if(tel) bpTypeText(tel, sec.text, idx===secs.length-1 ? ()=>{
-              const badge=document.getElementById('bp-write-badge'); if(badge) badge.textContent='✅ 작성 완료';
-              document.getElementById('bp-done').classList.add('show');
-            } : null);
-            if(idx >= 1){
-              const page=document.getElementById('bp-docs-page');
-              if(page) page.style.transform=`translateY(-${idx * scrollStep}px)`;
-            }
+            if(tel) bpTypeText(tel, sec.text, ()=>{
+              if(idx===2){
+                const chart=document.getElementById('bp-chart'); if(chart) chart.classList.add('show');
+                bpT.push(setTimeout(()=>{
+                  ['bpcbar1','bpcbar2','bpcbar3'].forEach(id=>{ const b=document.getElementById(id); if(b) b.classList.add('grow'); });
+                  scrollBot();
+                }, 200));
+              }
+              if(idx===4){
+                const tl=document.getElementById('bp-timeline'); if(tl) tl.classList.add('show');
+                ['bptl1','bptl2','bptl3'].forEach((id,i)=>{
+                  bpT.push(setTimeout(()=>{ const e2=document.getElementById(id); if(e2) e2.classList.add('show'); scrollBot(); }, 300+i*450));
+                });
+                bpT.push(setTimeout(()=>{
+                  const badge=document.getElementById('bp-write-badge'); if(badge) badge.textContent='✅ 작성 완료';
+                  document.getElementById('bp-done').classList.add('show');
+                }, 1900));
+              }
+            });
+            scrollBot();
           }, 200));
         }, d));
-        delay += 2300;
+        delay += 2400;
       });
     }, 600));
   }
