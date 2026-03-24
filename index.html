@@ -758,9 +758,16 @@
     }
     .bp-docs-fn { font-size: 10px; font-weight: 700; color: #333; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .bp-docs-badge { font-size: 9px; font-weight: 800; color: #6B3CF7; background: rgba(107,60,247,0.1); padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
-    .bp-docs-viewport { flex: 1; overflow-y: auto; position: relative; scrollbar-width: none; -ms-overflow-style: none; }
-    .bp-docs-viewport::-webkit-scrollbar { display: none; }
-    .bp-docs-page { padding: 14px 16px 24px; }
+    .bp-docs-viewport { flex: 1; overflow-y: hidden; position: relative; background: #e8e8e8; }
+    .bp-docs-scroll { display: flex; flex-direction: column; }
+    .bp-page-img { width: 100%; display: block; border-bottom: 2px solid #e0e0e0; }
+    .bp-ai-cursor {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, #6B3CF7 40%, #A78BFF 60%, transparent);
+      box-shadow: 0 0 10px rgba(107,60,247,0.7), 0 0 24px rgba(107,60,247,0.3);
+      opacity: 0; pointer-events: none; transition: opacity 0.4s;
+    }
+    .bp-ai-cursor.active { opacity: 1; }
     .bp-dsec { margin-bottom: 12px; opacity: 0; transition: opacity 0.45s; }
     .bp-dsec.show { opacity: 1; }
     .bp-dsec-label { font-size: 10px; font-weight: 900; color: #6B3CF7; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -968,9 +975,11 @@
     }
     .philosophy-inner { max-width: 720px; margin: 0 auto; position: relative; }
     .philosophy-foal-icon {
-      font-size: 52px; margin-bottom: 28px; display: block;
+      margin-bottom: 28px; display: block;
       animation: gentleRise 3s ease-in-out infinite;
     }
+    .philosophy-foal-icon img { height: 72px; width: auto; }
+    .philosophy-foal-icon .fallback-emoji { font-size: 52px; }
     @keyframes gentleRise {
       0%,100%{ transform: translateY(0); }
       50%{ transform: translateY(-8px); }
@@ -1335,7 +1344,7 @@
 <!-- COMPARISON: ChatGPT vs Foal AI -->
 <section class="cmp-section">
   <div class="cmp-inner">
-    <div class="sec-label reveal">지금 이렇게 하고 있지 ���나요?</div>
+    <div class="sec-label reveal">지금 이렇게 하고 있지 않나요?</div>
     <h2 class="sec-h2 reveal reveal-delay-1">ChatGPT와 Foal AI,<br />무엇이 다를까요?</h2>
     <p class="sec-desc reveal reveal-delay-2">같은 아이디어, 다른 방식으로 검증해보세요.</p>
     <div class="cmp-toggle">
@@ -1456,38 +1465,17 @@
                 <span class="bp-docs-badge" id="bp-write-badge">✍️ AI 작성 중...</span>
               </div>
               <div class="bp-docs-viewport" id="bp-docs-vp">
-                <div class="bp-docs-page" id="bp-docs-page">
-                  <div class="bp-dsec" id="bpd1">
-                    <div class="bp-dsec-label">1. 문제 정의</div>
-                    <div class="bp-dsec-text" id="bpdt1"></div>
-                  </div>
-                  <div class="bp-dsec" id="bpd2">
-                    <div class="bp-dsec-label">2. 타겟 고객</div>
-                    <div class="bp-dsec-text" id="bpdt2"></div>
-                  </div>
-                  <div class="bp-dsec" id="bpd3">
-                    <div class="bp-dsec-label">3. 시장 규모</div>
-                    <div class="bp-dsec-text" id="bpdt3"></div>
-                    <div class="bp-chart" id="bp-chart">
-                      <div class="bp-chart-row"><div class="bp-chart-lbl">TAM</div><div class="bp-chart-track"><div class="bp-chart-bar" id="bpcbar1" style="--w:100%;background:#6B3CF7;"></div></div><div class="bp-chart-val">₩2.1조</div></div>
-                      <div class="bp-chart-row"><div class="bp-chart-lbl">SAM</div><div class="bp-chart-track"><div class="bp-chart-bar" id="bpcbar2" style="--w:52%;background:#A78BFF;"></div></div><div class="bp-chart-val">₩3,200억</div></div>
-                      <div class="bp-chart-row"><div class="bp-chart-lbl">SOM</div><div class="bp-chart-track"><div class="bp-chart-bar" id="bpcbar3" style="--w:7%;background:#F5C842;"></div></div><div class="bp-chart-val">₩48억</div></div>
-                    </div>
-                  </div>
-                  <div class="bp-dsec" id="bpd4">
-                    <div class="bp-dsec-label">4. 비즈니스 모델</div>
-                    <div class="bp-dsec-text" id="bpdt4"></div>
-                  </div>
-                  <div class="bp-dsec" id="bpd5">
-                    <div class="bp-dsec-label">5. 실행 로드맵</div>
-                    <div class="bp-dsec-text" id="bpdt5"></div>
-                    <div class="bp-timeline" id="bp-timeline">
-                      <div class="bp-tl-item" id="bptl1"><div class="bp-tl-dot"></div><div class="bp-tl-body"><div class="bp-tl-period">2026 Q1</div><div class="bp-tl-desc">MVP 출시</div></div></div>
-                      <div class="bp-tl-item" id="bptl2"><div class="bp-tl-dot"></div><div class="bp-tl-body"><div class="bp-tl-period">2026 Q2</div><div class="bp-tl-desc">파일럿 100개 매장</div></div></div>
-                      <div class="bp-tl-item" id="bptl3"><div class="bp-tl-dot"></div><div class="bp-tl-body"><div class="bp-tl-period">2026 Q4</div><div class="bp-tl-desc">서울 전역 확장</div></div></div>
-                    </div>
-                  </div>
+                <div class="bp-docs-scroll">
+                  <img src="images/사업계획서-1.png" class="bp-page-img" />
+                  <img src="images/사업계획서-2.png" class="bp-page-img" />
+                  <img src="images/사업계획서-3.png" class="bp-page-img" />
+                  <img src="images/사업계획서-4.png" class="bp-page-img" />
+                  <img src="images/사업계획서-5.png" class="bp-page-img" />
+                  <img src="images/사업계획서-6.png" class="bp-page-img" />
+                  <img src="images/사업계획서-7.png" class="bp-page-img" />
+                  <img src="images/사업계획서-8.png" class="bp-page-img" />
                 </div>
+                <div class="bp-ai-cursor" id="bp-ai-cursor"></div>
               </div>
             </div>
           </div>
@@ -1589,7 +1577,10 @@
 <!-- FOAL PHILOSOPHY -->
 <section class="philosophy-section">
   <div class="philosophy-inner reveal">
-    <span class="philosophy-foal-icon">🐴</span>
+    <span class="philosophy-foal-icon">
+      <img src="images/Logo.png" alt="Foal AI" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="fallback-emoji" style="display:none">🐴</span>
+    </span>
     <div class="philosophy-word">F · O · A · L</div>
     <div class="philosophy-meaning">
       <div class="pm-item">
@@ -1811,7 +1802,7 @@
     ['bpd1','bpd2','bpd3','bpd4','bpd5'].forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('show'); });
     ['bpdt1','bpdt2','bpdt3','bpdt4','bpdt5'].forEach(id=>{ const el=document.getElementById(id); if(el){ el.textContent=''; el.classList.remove('typing-cur'); } });
     const vp2=document.getElementById('bp-docs-vp'); if(vp2) vp2.scrollTop=0;
-    const chart=document.getElementById('bp-chart'); if(chart) chart.classList.remove('show');
+    const cur=document.getElementById('bp-ai-cursor'); if(cur) cur.classList.remove('active');
     ['bpcbar1','bpcbar2','bpcbar3'].forEach(id=>{ const b=document.getElementById(id); if(b) b.classList.remove('grow'); });
     const tl=document.getElementById('bp-timeline'); if(tl) tl.classList.remove('show');
     ['bptl1','bptl2','bptl3'].forEach(id=>{ const e=document.getElementById(id); if(e) e.classList.remove('show'); });
@@ -1872,48 +1863,31 @@
       if(dp){ dp.style.pointerEvents=''; void dp.offsetWidth; dp.style.opacity='1'; }
 
       const vp = document.getElementById('bp-docs-vp');
-      function scrollBot(){ if(vp) bpT.push(setTimeout(()=>{ vp.scrollTop = vp.scrollHeight; }, 120)); }
+      const cursor = document.getElementById('bp-ai-cursor');
+      if(vp) vp.scrollTop = 0;
+      if(cursor) cursor.classList.add('active');
 
-      const secs = [
-        { id:'bpd1', tid:'bpdt1', text:'소상공인의 디지털 마케팅 효과 측정 불가 및 광고비 낭비 문제를 AI로 해결합니다.' },
-        { id:'bpd2', tid:'bpdt2', text:'서울·수도권 반경 500m 마케팅이 필요한 카페·음식점 소상공인 (20~30만 매장)' },
-        { id:'bpd3', tid:'bpdt3', text:'TAM/SAM/SOM 시장 규모 기준으로 초기 2년 내 SOM ₩48억 달성이 목표입니다.' },
-        { id:'bpd4', tid:'bpdt4', text:'월 구독 ₩29,000 + 성과 기반 수수료 3% + 기업 맞춤 패키지' },
-        { id:'bpd5', tid:'bpdt5', text:'단계별 확장 전략으로 2026 Q1 MVP부터 서울 전역 진출까지 실행합니다.' },
-      ];
+      const DURATION = 14000; // 14s to scroll all 8 pages
+      const startT = performance.now();
 
-      let delay = 300;
-      secs.forEach((sec, idx)=>{
-        const d = delay;
-        bpT.push(setTimeout(()=>{
-          const el=document.getElementById(sec.id); if(el) el.classList.add('show');
-          scrollBot();
-          bpT.push(setTimeout(()=>{
-            const tel=document.getElementById(sec.tid);
-            if(tel) bpTypeText(tel, sec.text, ()=>{
-              if(idx===2){
-                const chart=document.getElementById('bp-chart'); if(chart) chart.classList.add('show');
-                bpT.push(setTimeout(()=>{
-                  ['bpcbar1','bpcbar2','bpcbar3'].forEach(id=>{ const b=document.getElementById(id); if(b) b.classList.add('grow'); });
-                  scrollBot();
-                }, 200));
-              }
-              if(idx===4){
-                const tl=document.getElementById('bp-timeline'); if(tl) tl.classList.add('show');
-                ['bptl1','bptl2','bptl3'].forEach((id,i)=>{
-                  bpT.push(setTimeout(()=>{ const e2=document.getElementById(id); if(e2) e2.classList.add('show'); scrollBot(); }, 300+i*450));
-                });
-                bpT.push(setTimeout(()=>{
-                  const badge=document.getElementById('bp-write-badge'); if(badge) badge.textContent='✅ 작성 완료';
-                  document.getElementById('bp-done').classList.add('show');
-                }, 1900));
-              }
-            });
-            scrollBot();
-          }, 200));
-        }, d));
-        delay += 2400;
-      });
+      function step(now){
+        if(bpTypingCancelled){ if(cursor) cursor.classList.remove('active'); return; }
+        const p = Math.min((now - startT) / DURATION, 1);
+        // ease: slow start and end, steady middle
+        const e = p < 0.08 ? 6*p*p
+                : p > 0.92 ? 1 - 6*(1-p)*(1-p)
+                : 0.0384 + (p - 0.08) * (0.923 / 0.84);
+        const max = vp.scrollHeight - vp.clientHeight;
+        if(vp) vp.scrollTop = max * e;
+        if(p < 1){
+          requestAnimationFrame(step);
+        } else {
+          if(cursor) cursor.classList.remove('active');
+          const badge=document.getElementById('bp-write-badge'); if(badge) badge.textContent='✅ 작성 완료';
+          document.getElementById('bp-done').classList.add('show');
+        }
+      }
+      bpT.push(setTimeout(()=>requestAnimationFrame(step), 400));
     }, 600));
   }
 
@@ -1940,7 +1914,7 @@
       const t=document.getElementById('bp-doc-title'); if(t) t.textContent='✅ 분석 완료 — 3개 항목 개선 필요';
     },6000));
     bpT.push(setTimeout(()=>runBPDocs(), 8000));
-    bpT.push(setTimeout(()=>runBP(), 22000));
+    bpT.push(setTimeout(()=>runBP(), 26000));
   }
 
   // Start when in view
