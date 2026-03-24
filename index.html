@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body {
       font-family: 'Noto Sans KR', sans-serif;
       background: #fff; color: #111;
@@ -239,18 +239,18 @@
     .p-panel-overlay {
       position: absolute; inset: 0;
       display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 20px;
+      justify-content: flex-end; padding: 20px 22px 30%;
     }
     .p-panel-bottom {
-      color: #fff;
+      color: #fff; text-align: center;
     }
     .p-panel-bottom .p-title {
-      font-size: 18px; font-weight: 900;
-      color: #fff; margin-bottom: 6px; line-height: 1.3;
+      font-size: 22px; font-weight: 900;
+      color: #fff; margin-bottom: 8px; line-height: 1.3;
     }
     .p-panel-bottom .p-sub {
-      font-size: 14px; color: rgba(255,255,255,0.75);
-      line-height: 1.6;
+      font-size: 15px; color: rgba(255,255,255,0.8);
+      line-height: 1.65;
     }
     /* Real photo inside each panel */
     .p-panel-img {
@@ -797,37 +797,8 @@
       </div>
     </div>
     <div class="hero-img-wrap">
-      <!-- images/예비창업자.jpg 저장 시 CSS 패널 대신 실제 이미지 표시 -->
       <img src="images/예비창업자.jpg" alt="예비창업자 페인포인트"
-           style="display:none;"
-           onload="this.style.display='block';this.nextElementSibling.style.display='none';"
            onerror="this.style.display='none';" />
-      <div class="four-panel">
-        <div class="fp fp-1">
-          <div class="fp-crumple"></div><div class="fp-crumple"></div><div class="fp-crumple"></div>
-          <div class="fp-label">아이디어 정리 불가</div>
-          <div class="fp-title">머릿속에서 뒤엉킨<br/>아이디어들</div>
-        </div>
-        <div class="fp fp-2">
-          <div class="fp-clock">4:15 AM</div>
-          <div class="fp-label">밤새 작성 중</div>
-          <div class="fp-title">정부 지원사업 신청서<br/>첫 페이지에서 멈춤</div>
-        </div>
-        <div class="fp fp-3">
-          <div class="fp-scribbles">
-            <span class="fp-scribble">고객?</span><span class="fp-scribble">시장?</span>
-            <span class="fp-scribble">해결책?</span><span class="fp-scribble">수익모델?</span>
-            <span class="fp-scribble">차별성?</span><span class="fp-scribble">타겟?</span>
-          </div>
-          <div class="fp-label">노트 가득 채워도</div>
-          <div class="fp-title">정리가 안 되는<br/>메모들</div>
-        </div>
-        <div class="fp fp-4">
-          <div class="fp-person">😞</div>
-          <div class="fp-label">처음부터 다시</div>
-          <div class="fp-title">사업계획서<br/>또 탈락</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -962,44 +933,42 @@
 <section class="review-section">
   <div class="review-inner">
     <div class="review-header">
-      <div class="review-label">사전 테스터 사용 후기</div>
-      <h2 class="review-h2">먼저 써본 분들의<br />솔직한 이야기</h2>
+      <div class="review-label">관심 등록해주신분들</div>
+      <h2 class="review-h2">관심 등록해주신<br />분들의 이야기</h2>
     </div>
     <div class="review-grid">
 
       <div class="review-card">
-        <div class="review-badge">✓ 사전 테스터 인증</div>
+        <div class="review-badge">✓ 관심 등록</div>
         <div class="review-stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
         <p class="review-quote">
           "한번도 해본 적 없던 사업계획서를 써야 해서 막막했는데,<br />
-          <strong>Foal AI를 쓰고 나니 내가 뭘 써야 하는지, 어디서 시작해야 하는지가 보이기 시작했어요.</strong>
-          AI가 질문을 던져줄 때마다 내 생각이 정리되는 느낌이었습니다."
+          <strong>이게 출시 된다면 빨리 써보고 싶네요.</strong>"
         </p>
         <div class="review-author">
-          <div class="review-avatar">홍</div>
+          <div class="review-avatar">정</div>
           <div>
-            <div class="review-name">홍재의 님</div>
-            <div class="review-role">예비창업자 · 사전 테스터</div>
+            <div class="review-name">정민지 님</div>
+            <div class="review-role">예비창업자</div>
           </div>
         </div>
       </div>
 
       <div class="review-card">
-        <div class="review-badge">✓ 사전 테스터 인증</div>
+        <div class="review-badge">✓ 관심 등록</div>
         <div class="review-stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
         <p class="review-quote">
-          "이게 정식 출시되면 <strong>저처럼 창업을 희망하는 사람들이 이용하기 딱 좋은 서비스</strong>인 것 같아요.
-          ChatGPT랑은 다르게 방향을 잡아주는 느낌이 확실히 있었어요. 추천합니다."
+          "이게 정식 출시되면 <strong>저처럼 창업을 희망하는 사람들이 이용하기 딱 좋은 서비스</strong>인 것 같아요."
         </p>
         <div class="review-author">
           <div class="review-avatar">정</div>
           <div>
             <div class="review-name">정하늘 님</div>
-            <div class="review-role">OZ코딩스쿨 수강생 · 사전 테스터</div>
+            <div class="review-role">OZ코딩스쿨 수강생</div>
           </div>
         </div>
       </div>
