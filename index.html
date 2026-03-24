@@ -351,26 +351,69 @@
     }
     .stress-center {
       text-align: center; color: #fff; position: relative;
-    }
-    .stress-person-emoji { font-size: 64px; margin-bottom: 16px; display: block; }
-    .stress-desk {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px; padding: 16px 24px;
-      display: flex; gap: 10px; align-items: center;
-    }
-    .stress-desk-item {
-      width: 40px; height: 28px; border-radius: 4px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .stress-chatgpt {
-      background: rgba(25,195,125,0.15);
-      border-color: rgba(25,195,125,0.3);
-      font-size: 8px; font-weight: 700; color: #19C37D;
       display: flex; align-items: center; justify-content: center;
-      padding: 0 6px; width: auto;
     }
+    /* chaos stack */
+    .stress-chaos-stack {
+      position: relative; width: 210px; height: 170px;
+    }
+    .stress-chaos-card {
+      position: absolute;
+      background: #161c2e;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      padding: 10px 14px;
+      width: 190px;
+    }
+    .scc-back {
+      top: 0; left: 10px;
+      transform: rotate(-7deg);
+      opacity: 0.45;
+    }
+    .scc-mid {
+      top: 18px; left: 4px;
+      transform: rotate(3deg);
+      opacity: 0.65;
+    }
+    .scc-front {
+      top: 34px; left: 10px;
+      transform: rotate(-1deg);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.5);
+      border-color: rgba(255,255,255,0.14);
+    }
+    .scc-top {
+      display: flex; align-items: center; gap: 5px; margin-bottom: 8px;
+    }
+    .scc-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+    }
+    .scc-title {
+      font-size: 10px; font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      margin-left: 4px; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; max-width: 130px;
+    }
+    .scc-line {
+      height: 6px; border-radius: 3px;
+      background: rgba(255,255,255,0.07);
+      margin-bottom: 5px;
+    }
+    .scc-line.accent { background: rgba(107,60,247,0.25); }
+    .scc-blank-text {
+      text-align: center; padding: 6px 0;
+      color: rgba(255,255,255,0.18); font-size: 11px;
+      font-style: italic;
+    }
+    .scc-search {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px; padding: 5px 8px; margin-bottom: 8px;
+    }
+    .scc-search-icon { font-size: 10px; }
+    .scc-search-text { font-size: 10px; color: rgba(255,255,255,0.45); }
+    .scc-result-title { font-size: 11px; color: rgba(245,200,66,0.7); margin-bottom: 2px; }
+    .scc-result-url { font-size: 9px; color: rgba(255,255,255,0.25); }
     @media(max-width:700px){
       .stress-fallback{ grid-template-columns:1fr; padding:40px 24px; }
       .stress-left-tags,.stress-right-tags{ flex-direction:row; flex-wrap:wrap; justify-content:center; align-items:center; }
@@ -1482,11 +1525,36 @@
         <div class="stress-tag-box">아이디어 검증</div>
       </div>
       <div class="stress-center">
-        <span class="stress-person-emoji">😩</span>
-        <div class="stress-desk">
-          <div class="stress-desk-item stress-chatgpt">ChatGPT</div>
-          <div class="stress-desk-item"></div>
-          <div class="stress-desk-item"></div>
+        <div class="stress-chaos-stack">
+          <!-- 뒤: ChatGPT 창 -->
+          <div class="stress-chaos-card scc-back">
+            <div class="scc-top">
+              <span class="scc-dot" style="background:#FF5F57"></span>
+              <span class="scc-dot" style="background:#FEBC2E"></span>
+              <span class="scc-dot" style="background:#28C840"></span>
+              <span class="scc-title">ChatGPT</span>
+            </div>
+            <div class="scc-line accent" style="width:90%"></div>
+            <div class="scc-line" style="width:78%"></div>
+            <div class="scc-line" style="width:85%"></div>
+          </div>
+          <!-- 중간: 빈 문서 -->
+          <div class="stress-chaos-card scc-mid">
+            <div class="scc-top">
+              <span class="scc-title">📄 사업계획서_초안.docx</span>
+            </div>
+            <div class="scc-blank-text">어디서부터 써야 하지...</div>
+            <div class="scc-line" style="width:60%"></div>
+          </div>
+          <!-- 앞: 구글 검색 창 -->
+          <div class="stress-chaos-card scc-front">
+            <div class="scc-search">
+              <span class="scc-search-icon">🔍</span>
+              <span class="scc-search-text">예창패 사업계획서 작성법</span>
+            </div>
+            <div class="scc-result-title">2019년 합격 후기 블로그</div>
+            <div class="scc-result-url">blog.naver.com/startup_tips/...</div>
+          </div>
         </div>
       </div>
       <div class="stress-right-tags">
