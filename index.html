@@ -599,6 +599,99 @@
     .t-dot:nth-child(2){animation-delay:.2s;} .t-dot:nth-child(3){animation-delay:.4s;}
     @keyframes bounce { 0%,60%,100%{transform:translateY(0);opacity:.4;} 30%{transform:translateY(-6px);opacity:1;} }
 
+    /* ──────── OUTPUT DEMOS ──────── */
+    .output-section { padding: 80px 32px; background: #0B0D14; }
+    .output-section .sec-h2 { color: #fff; }
+    .output-section .sec-label { color: #A78BFF; }
+    .output-section .sec-desc { color: rgba(255,255,255,0.45); }
+    .output-demos {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px;
+    }
+    .output-demo-label {
+      font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #F5C842; margin-bottom: 14px;
+    }
+    /* Shared window shell */
+    .out-win {
+      background: #131720; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      min-height: 340px; display: flex; flex-direction: column;
+    }
+    .out-win-bar {
+      background: #1C2130; padding: 10px 16px;
+      display: flex; align-items: center; gap: 7px;
+      border-bottom: 1px solid rgba(255,255,255,0.05); flex-shrink: 0;
+    }
+    .out-win-bar-title { font-size: 11px; color: rgba(255,255,255,0.35); margin-left: 8px; flex: 1; }
+    .out-badge-done {
+      font-size: 10px; font-weight: 800; background: #22C55E; color: #fff;
+      padding: 3px 10px; border-radius: 100px; opacity: 0; transition: opacity 0.4s;
+    }
+    .out-badge-done.show { opacity: 1; }
+    /* Landing page demo content */
+    .lp-body { padding: 22px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+    .lp-url-bar {
+      background: #1A2235; border-radius: 7px; padding: 7px 12px;
+      font-size: 11px; color: rgba(255,255,255,0.3); font-family: monospace;
+    }
+    .lp-hero { display: flex; flex-direction: column; gap: 8px; }
+    .lp-h1 {
+      font-size: 18px; font-weight: 900; color: #fff; line-height: 1.3;
+      border-right: 2px solid #F5C842; white-space: nowrap; overflow: hidden; width: 0;
+    }
+    .lp-h1.typing { animation: lp-type 1.4s steps(20,end) forwards; }
+    @keyframes lp-type { from{width:0} to{width:100%} }
+    .lp-sub {
+      font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5;
+      opacity: 0; transition: opacity 0.5s;
+    }
+    .lp-sub.show { opacity: 1; }
+    .lp-cta {
+      display: inline-block; background: #F5C842; color: #111;
+      font-size: 12px; font-weight: 800; padding: 9px 18px; border-radius: 8px;
+      width: fit-content; opacity: 0; transform: translateY(6px); transition: opacity 0.4s, transform 0.4s;
+    }
+    .lp-cta.show { opacity: 1; transform: none; }
+    .lp-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
+    .lp-card {
+      background: #1A2235; border-radius: 8px; padding: 10px 9px;
+      opacity: 0; transform: translateY(5px); transition: opacity 0.35s, transform 0.35s;
+    }
+    .lp-card.show { opacity: 1; transform: none; }
+    .lp-card-icon { font-size: 14px; margin-bottom: 4px; }
+    .lp-card-t { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); line-height: 1.3; }
+    /* Business plan demo content */
+    .bp-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+    .bp-doc-title {
+      font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.5);
+      padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 2px;
+    }
+    .bp-section {
+      background: #1A2235; border-radius: 9px; padding: 11px 13px;
+      opacity: 0; transform: translateY(5px); transition: opacity 0.4s, transform 0.4s;
+    }
+    .bp-section.show { opacity: 1; transform: none; }
+    .bp-sec-num { font-size: 10px; font-weight: 800; color: #F5C842; margin-bottom: 3px; }
+    .bp-sec-title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .bp-sec-content {
+      font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5;
+      overflow: hidden; max-height: 0; transition: max-height 0.8s ease;
+    }
+    .bp-sec-content.open { max-height: 60px; }
+    .bp-progress {
+      display: flex; align-items: center; gap: 8px; margin-top: 4px;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .bp-progress.show { opacity: 1; }
+    .bp-progress-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius:2px; overflow:hidden; }
+    .bp-progress-fill { height: 100%; background: #22C55E; border-radius:2px; width: 0; transition: width 1.5s ease; }
+    .bp-progress-txt { font-size: 11px; font-weight: 700; color: #22C55E; }
+    @media (max-width: 760px) {
+      .output-demos { grid-template-columns: 1fr; }
+    }
+
     /* ──────── HOW WE'RE DIFFERENT ──────── */
     .diff-section {
       padding: 80px 32px;
@@ -1166,6 +1259,82 @@
   </div>
 </section>
 
+<!-- OUTPUT DEMOS -->
+<section class="output-section">
+  <div class="sec-inner">
+    <div class="sec-label reveal">검증 완료 후</div>
+    <h2 class="sec-h2 reveal reveal-delay-1">바로 이렇게 만들어집니다</h2>
+    <p class="sec-desc reveal reveal-delay-2">인터뷰에서 발견한 내용을 기반으로 즉시 자동 생성됩니다.</p>
+    <div class="output-demos">
+
+      <!-- 랜딩페이지 데모 -->
+      <div>
+        <div class="output-demo-label">랜딩페이지 자동 제작</div>
+        <div class="out-win" id="lp-win">
+          <div class="out-win-bar">
+            <div class="s-dot r"></div><div class="s-dot y"></div><div class="s-dot g"></div>
+            <span class="out-win-bar-title" id="lp-url">foalai.app/preview/...</span>
+            <span class="out-badge-done" id="lp-done">배포 완료 ✓</span>
+          </div>
+          <div class="lp-body">
+            <div class="lp-url-bar" id="lp-urlbar">foalai.app/preview/nearly-local-ad</div>
+            <div class="lp-hero">
+              <div class="lp-h1" id="lp-h1">반경 500m 단골 고객을 만드는 방법</div>
+              <div class="lp-sub" id="lp-sub">광고비는 그대로, 효과는 3배.<br/>AI가 우리 동네 고객만 정밀 타겟합니다.</div>
+              <div class="lp-cta" id="lp-cta">무료로 시작하기 →</div>
+            </div>
+            <div class="lp-cards">
+              <div class="lp-card" id="lpc1"><div class="lp-card-icon">📍</div><div class="lp-card-t">하이퍼로컬 타겟팅</div></div>
+              <div class="lp-card" id="lpc2"><div class="lp-card-icon">📊</div><div class="lp-card-t">실시간 ROI 측정</div></div>
+              <div class="lp-card" id="lpc3"><div class="lp-card-icon">🔄</div><div class="lp-card-t">자동 광고 최적화</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 사업계획서 데모 -->
+      <div>
+        <div class="output-demo-label">사업계획서 자동 제작</div>
+        <div class="out-win" id="bp-win">
+          <div class="out-win-bar">
+            <div class="s-dot r"></div><div class="s-dot y"></div><div class="s-dot g"></div>
+            <span class="out-win-bar-title">예비창업자 사업계획서 — 니어리(Nearly)</span>
+            <span class="out-badge-done" id="bp-done">완성 ✓</span>
+          </div>
+          <div class="bp-body">
+            <div class="bp-doc-title">📄 사업계획서 자동 작성 중...</div>
+            <div class="bp-section" id="bps1">
+              <div class="bp-sec-num">1-1 창업 아이템명</div>
+              <div class="bp-sec-title">AI 기반 하이퍼로컬 소상공인 광고 최적화 플랫폼 '니어리(Nearly)'</div>
+              <div class="bp-sec-content" id="bpc1">반경 1km 내 잠재 고객 행동 패턴을 실시간 분석하여 소상공인의 광고 효율을 극대화하는 AI 플랫폼</div>
+            </div>
+            <div class="bp-section" id="bps2">
+              <div class="bp-sec-num">1-4 시장 분석</div>
+              <div class="bp-sec-title">국내 소상공인 광고 시장 14조원 (TAM)</div>
+              <div class="bp-sec-content" id="bpc2">디지털 전환 소상공인 580억 (SAM) → 초기 목표 수도권 5억 (SOM). 연 15% 성장 중.</div>
+            </div>
+            <div class="bp-section" id="bps3">
+              <div class="bp-sec-num">2-1 차별점</div>
+              <div class="bp-sec-title">전국 타겟 → 반경 1km 정밀 타겟</div>
+              <div class="bp-sec-content" id="bpc3">광고 효과 블랙박스 → 매출 연동 ROI 실시간 측정. 기존 대행사 대비 비용 80% 절감.</div>
+            </div>
+            <div class="bp-section" id="bps4">
+              <div class="bp-sec-num">3-1 수익모델</div>
+              <div class="bp-sec-title">월 구독 9.9만원 + 성과 기반 수수료</div>
+              <div class="bp-sec-content" id="bpc4">초기 100개 점포 파일럿, 6개월 내 BEP 달성 목표. LTV 3년 기준 350만원.</div>
+            </div>
+            <div class="bp-progress" id="bp-prog">
+              <div class="bp-progress-bar"><div class="bp-progress-fill" id="bp-fill"></div></div>
+              <span class="bp-progress-txt" id="bp-prog-txt">0 / 7 섹션</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- WHAT WE DO -->
 <section class="diff-section">
   <div class="sec-inner">
@@ -1444,6 +1613,74 @@
   }
 })();
 
+// ─── OUTPUT DEMOS ───
+(function(){
+  function resetLP(){
+    const ids = ['lp-h1','lp-sub','lp-cta','lpc1','lpc2','lpc3','lp-done'];
+    document.getElementById('lp-h1').classList.remove('typing');
+    document.getElementById('lp-sub').classList.remove('show');
+    document.getElementById('lp-cta').classList.remove('show');
+    ['lpc1','lpc2','lpc3'].forEach(id=>document.getElementById(id).classList.remove('show'));
+    document.getElementById('lp-done').classList.remove('show');
+  }
+  function resetBP(){
+    ['bps1','bps2','bps3','bps4'].forEach(id=>document.getElementById(id).classList.remove('show'));
+    ['bpc1','bpc2','bpc3','bpc4'].forEach(id=>document.getElementById(id).classList.remove('open'));
+    document.getElementById('bp-prog').classList.remove('show');
+    document.getElementById('bp-fill').style.width='0';
+    document.getElementById('bp-prog-txt').textContent='0 / 7 섹션';
+    document.getElementById('bp-done').classList.remove('show');
+  }
+
+  let lpT=[], bpT=[];
+  function clrLP(){ lpT.forEach(clearTimeout); lpT=[]; }
+  function clrBP(){ bpT.forEach(clearTimeout); bpT=[]; }
+
+  function runLP(){
+    clrLP(); resetLP();
+    lpT.push(setTimeout(()=>{ document.getElementById('lp-h1').classList.add('typing'); },300));
+    lpT.push(setTimeout(()=>{ document.getElementById('lp-sub').classList.add('show'); },1900));
+    lpT.push(setTimeout(()=>{ document.getElementById('lp-cta').classList.add('show'); },2700));
+    lpT.push(setTimeout(()=>{ document.getElementById('lpc1').classList.add('show'); },3400));
+    lpT.push(setTimeout(()=>{ document.getElementById('lpc2').classList.add('show'); },3750));
+    lpT.push(setTimeout(()=>{ document.getElementById('lpc3').classList.add('show'); },4100));
+    lpT.push(setTimeout(()=>{ document.getElementById('lp-done').classList.add('show'); },4800));
+    lpT.push(setTimeout(()=>{ runLP(); },8500));
+  }
+
+  function runBP(){
+    clrBP(); resetBP();
+    const sections = ['bps1','bps2','bps3','bps4'];
+    const contents = ['bpc1','bpc2','bpc3','bpc4'];
+    const labels   = ['2 / 7 섹션','4 / 7 섹션','6 / 7 섹션','7 / 7 섹션'];
+    const fills    = ['28%','57%','85%','100%'];
+    let d = 400;
+    sections.forEach((id,i)=>{
+      bpT.push(setTimeout(()=>{
+        document.getElementById(id).classList.add('show');
+        setTimeout(()=>document.getElementById(contents[i]).classList.add('open'),200);
+        document.getElementById('bp-prog').classList.add('show');
+        document.getElementById('bp-prog-txt').textContent = labels[i];
+        document.getElementById('bp-fill').style.width = fills[i];
+        if(i===sections.length-1){
+          setTimeout(()=>document.getElementById('bp-done').classList.add('show'),700);
+        }
+      },d));
+      d += 1800;
+    });
+    bpT.push(setTimeout(()=>{ runBP(); }, d + 2500));
+  }
+
+  // Start when in view
+  const section = document.querySelector('.output-section');
+  if(section){
+    const obs = new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting){ obs.disconnect(); runLP(); runBP(); }
+    },{threshold:0.2});
+    obs.observe(section);
+  }
+})();
+
 // ─── COMPARISON SIM ───
 const CMP_MSG = {
   gpt: [
@@ -1465,7 +1702,7 @@ const CMP_MSG = {
     { type:'foal', text:'그분이 지금 이 문제를 어떻게 해결하고 있나요? 누군가에게 돈 내고 맡기고 있나요, 아니면 그냥 포기하고 있나요?' },
     { type:'user', text:'그냥 가끔 네이버 블로그 올리거나 아예 안 하는 것 같아요. 대행사는 너무 비싸서요.' },
     { type:'typing' },
-    { type:'win', text:'✅ 핵심 발견: "해야 하는 건 알지만 못 하고 있는" 상태입니다. 현재 해결책(포기 또는 가끔 블로그)과 원하는 상태(효과적인 홍보) 사이의 Gap이 확인됐어요. 진짜 검증의 시작입니다.' },
+    { type:'win', text:'✅ 핵심 발견: "해야 하는 건 알지만 못 하고 있는" 상태입니다. 현재 해결책(포기 또는 가끔 블로그)과 원하는 상태(효과적인 홍보) 사이의 Gap이 확인됐어요. 진짜 검증의 시작입���다.' },
   ],
 };
 let cmpTimers = [];
