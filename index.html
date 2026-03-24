@@ -599,8 +599,8 @@
       </div>
     </div>
     <div class="hero-img-wrap">
-      <!-- 실제 이미지 파일을 images/hero.png 로 저장하면 자동 표시됩니다 -->
-      <img src="images/hero.png" alt="예비창업자 일러스트"
+      <!-- images/4panel.jpg 에 4분할 이미지를 저장하면 자동 표시됩니다 -->
+      <img src="images/4panel.jpg" alt="예비창업자 페인포인트"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
       <div class="hero-illustration" style="display:none;">
         <div class="sticky-note">제목?</div>
@@ -637,8 +637,8 @@
     <h2 class="sec-h2">혼자서는 이렇게<br />하고 있지 않나요?</h2>
     <p class="sec-desc">실질적인 검증 없이 사업계획서를 쓰기 시작하는 게 진짜 문제입니다.</p>
     <div class="problem-img-container">
-      <!-- images/problems.png 에 3-panel 이미지를 저장하면 자동 표시됩니다 -->
-      <img src="images/problems.png" alt="창업 문제 3가지"
+      <!-- images/3panel.jpg 에 3분할 이미지를 저장하면 자동 표시됩니다 -->
+      <img src="images/3panel.jpg" alt="창업 문제 3가지"
            onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
       <div class="problem-panels" style="display:none;">
         <div class="p-panel">
@@ -682,8 +682,8 @@
 <!-- STRESS / FLOATING TAGS -->
 <section class="stress-section">
   <div class="stress-img-wrap">
-    <!-- images/stress.png 에 스트레스 이미지를 저장하면 자동 표시됩니다 -->
-    <img src="images/stress.png" alt="창업 스트레스"
+    <!-- images/stress.jpg 에 스트레스 이미지를 저장하면 자동 표시됩니다 -->
+    <img src="images/stress.jpg" alt="창업 스트레스"
          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
     <div class="stress-fallback" style="display:none;">
       <h3>모르는 게 너무 많아서<br />어디서부터 시작해야 할지 모른다</h3>
@@ -794,25 +794,25 @@
 // ─── SIMULATION ───
 const MSG = {
   gpt: [
-    { type:'user', text:'저 AI 기반 예비창업자 멘토링 서비스 아이디어가 있는데, 어때요?' },
+    { type:'user', text:'동네 카페 사장님들한테 SNS 마케팅 대행 서비스 아이디어가 있는데, 어때요?' },
     { type:'typing' },
-    { type:'gpt', text:'좋은 아이디어입니다! AI 멘토링 서비스는 시장 잠재력이 있어 보입니다. 예비창업자들의 수요가 많고 AI 기술 발전으로 충분히 구현 가능한 서비스라고 생각합니다.' },
-    { type:'user', text:'근데 진짜 고객이 쓸까요?' },
+    { type:'gpt', text:'흥미로운 아이디어입니다! 소상공인들의 디지털 마케팅 수요가 높아지고 있어서 충분히 가능성 있어 보입니다. 차별화된 서비스를 제공하면 성공할 수 있을 것 같아요.' },
+    { type:'user', text:'근데 진짜 카페 사장님들이 돈 낼까요?' },
     { type:'typing' },
-    { type:'gpt', text:'충분히 가능성이 있습니다! 창업을 준비하는 분들은 항상 멘토링이 필요하고, AI 솔루션에 대한 수요도 늘고 있으니까요. 마케팅을 잘 하면 고객을 확보할 수 있을 것 같습니다 😊' },
-    { type:'warn', text:'⚠️ "좋아 보입니다"는 검증이 아닙니다. 진짜 고객이 쓸지는 여전히 모릅니다.' },
+    { type:'gpt', text:'충분히 가능합니다! SNS 광고 효과를 체감한 소상공인이 늘고 있고, 합리적인 가격을 책정하면 수요가 있을 것 같습니다. 주변 카페에 먼저 제안해보시는 건 어떨까요? 😊' },
+    { type:'warn', text:'⚠️ "가능성 있어 보입니다"는 검증이 아닙니다. 진짜 돈을 낼지는 여전히 모릅니다.' },
   ],
   foal: [
-    { type:'foal', text:'안녕하세요! 지금 해결하고 싶은 문제가 뭔가요? 편하게 말씀해주세요.' },
-    { type:'user', text:'예비창업자들이 아이디어 검증을 제대로 못하고 사업계획서를 쓰기 시작하는 것 같아요.' },
+    { type:'foal', text:'어떤 문제를 해결하고 싶으신가요? 편하게 말씀해주세요.' },
+    { type:'user', text:'소상공인들이 SNS 마케팅이 필요한 건 아는데 어떻게 해야 할지 모르는 것 같아요.' },
     { type:'typing' },
-    { type:'foal', text:'그 문제를 가장 심하게 겪는 사람은 누구일까요? 나이, 직업, 구체적인 상황을 그려봐주세요.' },
-    { type:'user', text:'퇴직 후 AI 부트캠프 수료한 30대 초반 남성인 것 같아요.' },
+    { type:'foal', text:'그 문제를 가장 심하게 겪는 사람은 어떤 분일까요? 업종, 나이, 상황을 구체적으로 그려봐주세요.' },
+    { type:'user', text:'동네 카페 3년차 40대 여성 사장님인 것 같아요. 블로그 글 쓸 시간도 없고 방법도 모르는 분들이요.' },
     { type:'typing' },
-    { type:'foal', text:'그 사람이 지금 이 문제를 어떻게 해결하고 있나요? 돈 내면서 해결하고 있나요, 그냥 참고 있나요?' },
-    { type:'user', text:'ChatGPT에 물어보거나 지인한테 카톡 보내는 수준이에요.' },
+    { type:'foal', text:'그분이 지금 이 문제를 어떻게 해결하고 있나요? 누군가에게 돈 내고 맡기고 있나요, 아니면 그냥 포기하고 있나요?' },
+    { type:'user', text:'그냥 가끔 네이버 블로그 올리거나 아예 안 하는 것 같아요. 대행사는 너무 비싸서요.' },
     { type:'typing' },
-    { type:'win', text:'✅ 핵심 발견: 기존 방식(ChatGPT + 지인 카톡)으로 "검증을 마쳤다"고 생각하지만, 실제론 검증이 안 된 상태입니다. 여기에 명확한 기회가 있어요.' },
+    { type:'win', text:'✅ 핵심 발견: "해야 하는 건 알지만 못 하고 있는" 상태입니다. 현재 해결책(포기 또는 가끔 블로그)과 원하는 상태(효과적인 홍보) 사이의 Gap이 확인됐어요. 진짜 검증의 시작입니다.' },
   ],
 };
 
