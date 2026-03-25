@@ -344,6 +344,48 @@
       .iq-form-card { position: static; }
       .iq-nav-links { display: none; }
     }
+
+    /* -- Replies -- */
+    .iq-card-footer { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .iq-reply-toggle {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3);
+      cursor: pointer; user-select: none; transition: color 0.2s; border: none; background: none; font-family: inherit;
+    }
+    .iq-reply-toggle:hover { color: rgba(167,139,255,0.8); }
+    .iq-reply-toggle.open { color: #A78BFF; }
+    .iq-replies { margin-top: 12px; }
+    .iq-reply-item {
+      border-left: 2px solid rgba(107,60,247,0.4);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px; margin-bottom: 8px;
+      background: rgba(107,60,247,0.05);
+    }
+    .iq-reply-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+    .iq-reply-nick { font-size: 12px; font-weight: 800; color: #A78BFF; }
+    .iq-reply-date { font-size: 10px; color: rgba(255,255,255,0.25); }
+    .iq-reply-body { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; word-break: break-word; }
+    .iq-reply-form { margin-top: 10px; display: flex; flex-direction: column; gap: 7px; }
+    .iq-reply-nick-in {
+      width: 130px; padding: 9px 11px; border-radius: 8px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px; font-family: inherit; color: #fff; outline: none;
+    }
+    .iq-reply-nick-in:focus { border-color: rgba(107,60,247,0.5); }
+    .iq-reply-content-in {
+      width: 100%; min-height: 68px; resize: none;
+      padding: 9px 11px; border-radius: 8px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px; font-family: inherit; color: #fff; outline: none; line-height: 1.55;
+    }
+    .iq-reply-content-in:focus { border-color: rgba(107,60,247,0.5); }
+    .iq-reply-submit-btn {
+      align-self: flex-end; padding: 7px 16px; border-radius: 8px;
+      background: rgba(107,60,247,0.2); border: 1px solid rgba(107,60,247,0.35);
+      font-size: 12px; font-weight: 800; color: #A78BFF;
+      cursor: pointer; font-family: inherit; transition: background 0.2s;
+    }
+    .iq-reply-submit-btn:hover { background: rgba(107,60,247,0.4); }
   </style>
 </head>
 <body>
@@ -415,178 +457,160 @@
 <footer class="iq-footer">© 2026 CoMindWorks · Foal AI</footer>
 
 <script>
-  const SB_KEY = 'foalai_sb_config';
-  const LOCAL_KEY = 'foalai_inquiries';
+  var SB_KEY='foalai_sb_config', LOCAL_KEY='foalai_inquiries', REPLY_KEY='foalai_replies';
 
-  /* ── Supabase helpers ── */
-  function getSB() {
-    return JSON.parse(localStorage.getItem(SB_KEY) || 'null');
+  function getSB(){ return JSON.parse(localStorage.getItem(SB_KEY)||'null'); }
+
+  async function sbReq(path, opts){
+    opts=opts||{};
+    var cfg=getSB(); if(!cfg) return null;
+    var hdrs=Object.assign({'apikey':cfg.key,'Authorization':'Bearer '+cfg.key,'Content-Type':'application/json'},opts.headers||{});
+    var r=await fetch(cfg.url+'/rest/v1'+path,Object.assign({},opts,{headers:hdrs}));
+    if(!r.ok) throw new Error(r.status); return r;
   }
 
-  async function sbReq(path, opts = {}) {
-    const cfg = getSB();
-    if (!cfg) return null;
-    const r = await fetch(cfg.url + '/rest/v1' + path, {
-      ...opts,
-      headers: {
-        'apikey': cfg.key,
-        'Authorization': 'Bearer ' + cfg.key,
-        'Content-Type': 'application/json',
-        ...(opts.headers || {})
-      }
-    });
-    if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
-    return r;
+  function getLocalReplies(id){
+    var all=JSON.parse(localStorage.getItem(REPLY_KEY)||'{}');
+    return all[String(id)]||[];
+  }
+  function saveLocalReply(id,nick,body){
+    var all=JSON.parse(localStorage.getItem(REPLY_KEY)||'{}'), key=String(id);
+    if(!all[key]) all[key]=[];
+    all[key].push({id:Date.now(),nickname:nick,content:body,created_at:new Date().toISOString()});
+    localStorage.setItem(REPLY_KEY,JSON.stringify(all));
+    return all[key];
   }
 
-  /* ── Load board ── */
-  async function loadBoard() {
-    const list = document.getElementById('iq-board-list');
-    const countEl = document.getElementById('iq-count');
-    // localStorage를 기본으로, Supabase 성공 시 덮어씀
-    let items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-    const cfg = getSB();
-    if (cfg) {
-      try {
-        const r = await sbReq('/inquiries?select=*&order=created_at.desc', {
-          headers: { Accept: 'application/json' }
-        });
-        if (r) items = await r.json();
-      } catch (e) {
-        console.warn('Supabase fetch failed, using localStorage:', e);
-      }
+  function fmtDate(iso){
+    if(!iso) return '';
+    var d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/1000);
+    if(diff<60) return '방금 전';
+    if(diff<3600) return Math.floor(diff/60)+'분 전';
+    if(diff<86400) return Math.floor(diff/3600)+'시간 전';
+    if(diff<604800) return Math.floor(diff/86400)+'일 전';
+    return d.toLocaleDateString('ko-KR',{month:'short',day:'numeric'});
+  }
+
+  function replyItemHtml(r){
+    return '<div class="iq-reply-item">'
+      +'<div class="iq-reply-meta"><span class="iq-reply-nick">'+esc(r.nickname)+'</span>'
+      +'<span class="iq-reply-date">'+fmtDate(r.created_at)+'</span></div>'
+      +'<div class="iq-reply-body">'+esc(r.content)+'</div></div>';
+  }
+
+  function cardHtml(item){
+    var nick=item.nickname||item.nick||'익명', initial=nick.charAt(0).toUpperCase();
+    var title=item.title||'제목 없음', body=item.content||'';
+    var id=String(item.id), date=fmtDate(item.created_at||item.date);
+    var replies=getLocalReplies(id), rHtml=replies.map(replyItemHtml).join('');
+    return '<div class="iq-card" data-id="'+esc(id)+'">'
+      +'<div onclick="toggleCard(this.closest(\'.iq-card\'))" style="cursor:pointer">'
+      +'<div class="iq-card-top">'
+      +'<div class="iq-card-nick">'+esc(initial)+'</div>'
+      +'<div class="iq-card-meta">'
+      +'<div class="iq-card-title-row"><div class="iq-card-title">'+esc(title)+'</div></div>'
+      +'<div class="iq-card-info"><span class="iq-card-nick-name">'+esc(nick)+'</span><span> · </span><span>'+date+'</span></div>'
+      +'</div>'
+      +'<svg class="iq-card-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      +'</div>'
+      +'<div class="iq-card-preview">'+esc(body)+'</div>'
+      +'<div class="iq-card-content">'+esc(body)+'</div>'
+      +'</div>'
+      +'<div class="iq-card-footer">'
+      +'<button class="iq-reply-toggle" id="rtog-'+esc(id)+'" onclick="toggleReplies(\'' +esc(id)+ '\')">'
+      +'&#128172; 답글 <span id="rcnt-'+esc(id)+'">'+replies.length+'</span>개</button>'
+      +'<div class="iq-replies" id="rbox-'+esc(id)+'" style="display:none">'
+      +'<div id="rlist-'+esc(id)+'">'+rHtml+'</div>'
+      +'<div class="iq-reply-form">'
+      +'<input class="iq-reply-nick-in" id="rnick-'+esc(id)+'" placeholder="닉네임" maxlength="20"/>'
+      +'<textarea class="iq-reply-content-in" id="rcontent-'+esc(id)+'" placeholder="답글을 작성해주세요..." maxlength="500"></textarea>'
+      +'<button class="iq-reply-submit-btn" onclick="submitReply(\'' +esc(id)+ '\')">답글 등록 &rarr;</button>'
+      +'</div></div></div></div>';
+  }
+
+  async function loadBoard(){
+    var list=document.getElementById('iq-board-list'), countEl=document.getElementById('iq-count');
+    var items=JSON.parse(localStorage.getItem(LOCAL_KEY)||'[]'), cfg=getSB();
+    if(cfg){
+      try{ var r=await sbReq('/inquiries?select=*&order=created_at.desc',{headers:{Accept:'application/json'}}); if(r) items=await r.json(); }
+      catch(e){ console.warn('SB fetch failed:',e); }
     }
-
-    countEl.textContent = '총 ' + items.length + '개';
-
-    if (items.length === 0) {
-      list.innerHTML = '<div class="iq-empty"><div class="iq-empty-icon">💬</div><div class="iq-empty-text">아직 문의가 없어요.<br/>첫 번째 문의를 남겨보세요!</div></div>';
+    countEl.textContent='총 '+items.length+'개';
+    if(!items.length){
+      list.innerHTML='<div class="iq-empty"><div class="iq-empty-icon">&#128172;</div><div class="iq-empty-text">아직 문의가 없어요.<br/>첫 번째 문의를 남겨보세요!</div></div>';
       return;
     }
-
-    list.innerHTML = items.map((item, i) => {
-      const nick = item.nickname || item.nick || '익명';
-      const initial = nick.charAt(0).toUpperCase();
-      const title = item.title || '제목 없음';
-      const content = item.content || '';
-      const date = formatDate(item.created_at || item.date);
-      return `
-        <div class="iq-card" onclick="toggleCard(this)">
-          <div class="iq-card-top">
-            <div class="iq-card-nick">${escHtml(initial)}</div>
-            <div class="iq-card-meta">
-              <div class="iq-card-title-row">
-                <div class="iq-card-title">${escHtml(title)}</div>
-              </div>
-              <div class="iq-card-info">
-                <span class="iq-card-nick-name">${escHtml(nick)}</span>
-                <span>·</span>
-                <span>${date}</span>
-              </div>
-            </div>
-            <svg class="iq-card-chevron" viewBox="0 0 20 20" fill="none">
-              <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="iq-card-preview">${escHtml(content)}</div>
-          <div class="iq-card-content">${escHtml(content)}</div>
-        </div>`;
-    }).join('');
+    list.innerHTML=items.map(cardHtml).join('');
   }
 
-  function toggleCard(el) {
-    el.classList.toggle('open');
+  function toggleCard(el){ el.classList.toggle('open'); }
+
+  function toggleReplies(id){
+    var box=document.getElementById('rbox-'+id), tog=document.getElementById('rtog-'+id);
+    var hidden=box.style.display==='none';
+    box.style.display=hidden?'block':'none';
+    tog.classList.toggle('open',hidden);
   }
 
-  /* ── Submit ── */
-  async function submitInquiry() {
-    const nick = document.getElementById('iq-nick').value.trim();
-    const title = document.getElementById('iq-title').value.trim();
-    const content = document.getElementById('iq-content').value.trim();
-    const btn = document.getElementById('iq-submit-btn');
-
-    // Validate
-    let valid = true;
-    ['iq-nick', 'iq-title', 'iq-content'].forEach(id => {
-      document.getElementById(id).classList.remove('error');
-    });
-    if (!nick) { document.getElementById('iq-nick').classList.add('error'); valid = false; }
-    if (!title) { document.getElementById('iq-title').classList.add('error'); valid = false; }
-    if (!content) { document.getElementById('iq-content').classList.add('error'); valid = false; }
-    if (!valid) { showToast('모든 항목을 입력해주세요.', 'error'); return; }
-
-    btn.disabled = true;
-    btn.textContent = '등록 중...';
-
-    try {
-      // 1. localStorage에 항상 먼저 저장 (즉시 반영)
-      const items = JSON.parse(localStorage.getItem(LOCAL_KEY) || '[]');
-      items.unshift({ id: Date.now(), nickname: nick, title, content, created_at: new Date().toISOString() });
-      localStorage.setItem(LOCAL_KEY, JSON.stringify(items));
-
-      // 2. Supabase는 백그라운드로 시도 (실패해도 무시)
-      const cfg = getSB();
-      if (cfg) {
-        sbReq('/inquiries', {
-          method: 'POST',
-          headers: { Prefer: 'return=minimal' },
-          body: JSON.stringify({ nickname: nick, title, content })
-        }).catch(e => console.warn('Supabase save failed, stored locally:', e));
-      }
-
-      // 3. 항상 성공 처리
-      document.getElementById('iq-nick').value = '';
-      document.getElementById('iq-title').value = '';
-      document.getElementById('iq-content').value = '';
-      showToast('✅ 문의가 등록되었습니다!', 'success');
-      loadBoard();
-    } catch (e) {
-      console.error(e);
-      showToast('등록 중 오류가 발생했습니다.', 'error');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = '문의 남기기 →';
+  function submitReply(id){
+    var ne=document.getElementById('rnick-'+id), ce=document.getElementById('rcontent-'+id);
+    var nick=ne.value.trim(), body=ce.value.trim();
+    if(!nick){ ne.style.borderColor='#f87171'; ne.focus(); return; }
+    if(!body){ ce.style.borderColor='#f87171'; ce.focus(); return; }
+    ne.style.borderColor=''; ce.style.borderColor='';
+    var replies=saveLocalReply(id,nick,body);
+    var cfg=getSB();
+    if(cfg){
+      sbReq('/replies',{method:'POST',headers:{Prefer:'return=minimal'},
+        body:JSON.stringify({inquiry_id:isNaN(id)?id:Number(id),nickname:nick,content:body})
+      }).catch(function(e){ console.warn('Reply SB failed:',e); });
     }
+    ne.value=''; ce.value='';
+    document.getElementById('rlist-'+id).insertAdjacentHTML('beforeend',replyItemHtml(replies[replies.length-1]));
+    document.getElementById('rcnt-'+id).textContent=replies.length;
+    showToast('답글이 등록되었습니다.','success');
   }
 
-  /* ── Toast ── */
-  function showToast(msg, type = '') {
-    const t = document.getElementById('iq-toast');
-    t.textContent = msg;
-    t.className = 'iq-toast ' + type;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3000);
+  async function submitInquiry(){
+    var nick=document.getElementById('iq-nick').value.trim();
+    var title=document.getElementById('iq-title').value.trim();
+    var body=document.getElementById('iq-content').value.trim();
+    var btn=document.getElementById('iq-submit-btn'), valid=true;
+    ['iq-nick','iq-title','iq-content'].forEach(function(x){ document.getElementById(x).classList.remove('error'); });
+    if(!nick){document.getElementById('iq-nick').classList.add('error');valid=false;}
+    if(!title){document.getElementById('iq-title').classList.add('error');valid=false;}
+    if(!body){document.getElementById('iq-content').classList.add('error');valid=false;}
+    if(!valid){ showToast('모든 항목을 입력해주세요.','error'); return; }
+    btn.disabled=true; btn.textContent='등록 중...';
+    try{
+      var items=JSON.parse(localStorage.getItem(LOCAL_KEY)||'[]');
+      items.unshift({id:Date.now(),nickname:nick,title:title,content:body,created_at:new Date().toISOString()});
+      localStorage.setItem(LOCAL_KEY,JSON.stringify(items));
+      var cfg=getSB();
+      if(cfg){
+        sbReq('/inquiries',{method:'POST',headers:{Prefer:'return=minimal'},
+          body:JSON.stringify({nickname:nick,title:title,content:body})
+        }).catch(function(e){ console.warn('SB save failed:',e); });
+      }
+      document.getElementById('iq-nick').value='';
+      document.getElementById('iq-title').value='';
+      document.getElementById('iq-content').value='';
+      showToast('문의가 등록되었습니다!','success');
+      loadBoard();
+    }catch(e){ console.error(e); showToast('오류가 발생했습니다.','error'); }
+    finally{ btn.disabled=false; btn.textContent='문의 남기기 \u2192'; }
   }
 
-  /* ── Helpers ── */
-  function formatDate(iso) {
-    if (!iso) return '';
-    const d = new Date(iso);
-    const now = new Date();
-    const diff = Math.floor((now - d) / 1000);
-    if (diff < 60) return '방금 전';
-    if (diff < 3600) return Math.floor(diff / 60) + '분 전';
-    if (diff < 86400) return Math.floor(diff / 3600) + '시간 전';
-    if (diff < 604800) return Math.floor(diff / 86400) + '일 전';
-    return d.toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' });
+  function showToast(msg,type){
+    type=type||'';
+    var t=document.getElementById('iq-toast');
+    t.textContent=msg; t.className='iq-toast '+type; t.classList.add('show');
+    setTimeout(function(){ t.classList.remove('show'); },3000);
   }
 
-  function escHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  /* ── Enter key submit ── */
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) submitInquiry();
-  });
-
-  /* ── Init ── */
+  document.addEventListener('keydown',function(e){ if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)) submitInquiry(); });
   loadBoard();
 </script>
 </body>
-</html>
