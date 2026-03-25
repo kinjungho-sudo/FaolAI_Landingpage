@@ -350,13 +350,15 @@ async function tryProxy(proxyFn) {
   return parseXml(xml);
 }
 
+// ※ 아래는 RSS 연결 실패 시 표시되는 참고용 샘플 공고입니다.
+// 실제 공고는 bizinfo.go.kr 및 k-startup.go.kr에서 확인하세요.
 const FALLBACK = [
-  { id:'f1', title:'2026년 예비창업패키지 모집 공고', org:'중소벤처기업부 · 창업진흥원', category:['예비창업'], amount:'최대 1,000만원', deadline:'2026.06.30', deadlineDate:'2026-06-30', description:'사업화 역량을 갖춘 예비창업자를 대상으로 창업 준비부터 사업화까지 종합 지원하는 프로그램입니다. 교육, 멘토링, 사업화 자금이 포함됩니다.', url:'https://www.k-startup.go.kr' },
-  { id:'f2', title:'초기창업패키지 3기 모집', org:'중소벤처기업부 · 창업진흥원', category:['초기창업'], amount:'최대 1억원', deadline:'2026.05.15', deadlineDate:'2026-05-15', description:'업력 3년 이내 초기창업기업을 대상으로 사업화 자금 및 전문 멘토링을 지원합니다.', url:'https://www.k-startup.go.kr' },
-  { id:'f3', title:'청년창업사관학교 입교생 모집', org:'중소벤처기업부 · 중소기업진흥공단', category:['예비창업','청년'], amount:'최대 1억원', deadline:'2026.04.30', deadlineDate:'2026-04-30', description:'만 39세 이하 예비창업자를 대상으로 교육·멘토링·사업화 자금을 원스톱으로 지원합니다.', url:'https://www.sbc.or.kr' },
-  { id:'f4', title:'소상공인 재도전 지원 사업', org:'소상공인시장진흥공단', category:['재도전'], amount:'최대 500만원', deadline:'2026.07.31', deadlineDate:'2026-07-31', description:'폐업 후 재창업을 준비 중인 소상공인을 위한 교육, 컨설팅, 자금 지원 프로그램입니다.', url:'https://www.semas.or.kr' },
-  { id:'f5', title:'TIPS 프로그램 창업팀 모집', org:'중소벤처기업부 · TIPS운영사', category:['기술창업'], amount:'최대 5억원', deadline:'2026.12.31', deadlineDate:'2026-12-31', description:'민간 투자 주도형 기술창업 지원으로 R&D 자금(최대 5억)과 글로벌 네트워크를 지원합니다.', url:'https://www.jointips.or.kr' },
-  { id:'f6', title:'지역창업 활성화 지원사업', org:'중소벤처기업부 · 창업진흥원', category:['예비창업','초기창업'], amount:'최대 3,000만원', deadline:'2026.08.31', deadlineDate:'2026-08-31', description:'비수도권 지역 창업 생태계 조성을 위한 예비·초기 창업자 대상 지원 프로그램입니다.', url:'https://www.k-startup.go.kr' },
+  { id:'f1', title:'2026년 예비창업패키지 모집 공고 (마감)', org:'중소벤처기업부 · 창업진흥원', category:['예비창업'], amount:'최대 1,000만원', deadline:'2026.03.24', deadlineDate:'2026-03-24', description:'2026년도 예비창업패키지는 3월 24일 접수 마감되었습니다. 다음 공고를 위해 k-startup.go.kr을 즐겨찾기 해두세요.', url:'https://www.k-startup.go.kr' },
+  { id:'f2', title:'2026 초기창업패키지 모집 (접수 예정)', org:'중소벤처기업부 · 창업진흥원', category:['초기창업'], amount:'최대 1억원', deadline:'2026.05.예정', deadlineDate:'2026-05-31', description:'업력 3년 이내 초기창업기업 대상. 정확한 모집 일정은 k-startup.go.kr 공지를 확인해주세요.', url:'https://www.k-startup.go.kr' },
+  { id:'f3', title:'2026 청년창업사관학교 입교생 모집 (예정)', org:'중소벤처기업부 · 중소기업진흥공단', category:['예비창업','청년'], amount:'최대 1억원', deadline:'2026.04.예정', deadlineDate:'2026-04-30', description:'만 39세 이하 예비창업자 대상. 정확한 일정은 sbc.or.kr에서 확인하세요.', url:'https://www.sbc.or.kr' },
+  { id:'f4', title:'TIPS 프로그램 창업팀 모집 (상시)', org:'중소벤처기업부 · TIPS운영사', category:['기술창업'], amount:'최대 5억원', deadline:'2026.12.31', deadlineDate:'2026-12-31', description:'민간 투자 주도형 기술창업 지원. R&D 자금 최대 5억 + 글로벌 네트워크. 상시 접수.', url:'https://www.jointips.or.kr' },
+  { id:'f5', title:'모두의 창업 1기 모집 공고 (접수 예정)', org:'중소벤처기업부 · 창업진흥원', category:['예비창업'], amount:'최대 700만원', deadline:'2026.04.예정', deadlineDate:'2026-04-30', description:'2026년 신설 사업. 약 4,000명 규모 예비창업자 지원 프로그램. 정확한 일정 확인 필요.', url:'https://www.k-startup.go.kr' },
+  { id:'f6', title:'소상공인 재도전 지원 사업 (상시)', org:'소상공인시장진흥공단', category:['재도전'], amount:'최대 500만원', deadline:'2026.12.31', deadlineDate:'2026-12-31', description:'폐업 후 재창업을 준비 중인 소상공인을 위한 교육, 컨설팅, 자금 지원. 상시 접수.', url:'https://www.semas.or.kr' },
 ];
 
 async function load() {
