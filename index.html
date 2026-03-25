@@ -54,6 +54,37 @@
       transition: background 0.2s;
     }
     .nav-btn:hover { background: #5428E0; }
+    /* Hamburger */
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 6px 4px; flex-shrink: 0;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: #333; border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-menu {
+      display: none; position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(12px);
+      border-bottom: 1px solid #F0EFF8; flex-direction: column;
+      padding: 8px 20px 16px; z-index: 49;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu .nav-link {
+      padding: 13px 0; font-size: 15px; font-weight: 700;
+      border-bottom: 1px solid #F5F4F8; display: block;
+    }
+    .nav-mobile-menu .nav-link:last-child { border-bottom: none; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { font-size: 13px; padding: 8px 16px; }
+    }
 
     /* ──────── HERO ──────── */
     .hero {
@@ -1318,6 +1349,16 @@
       .p-panel { aspect-ratio: 16/7; }
       .cards-3 { grid-template-columns: 1fr; }
     }
+    @media (max-width: 640px) {
+      .cmp-section, .foal-diff-section, .output-section, .review-section, .stats-section { padding-left: 20px; padding-right: 20px; }
+      .cmp-toggle { flex-wrap: wrap; gap: 6px; }
+      .cmp-btn { flex: 1; min-width: 0; font-size: 12px; padding: 8px 10px; text-align: center; }
+      .foal-diff-desc { font-size: 16px; }
+      .hero-actions { flex-wrap: wrap; gap: 10px; }
+      .sec-desc { font-size: 15px; }
+      .review-section { padding: 60px 20px; }
+      .output-section { padding: 60px 20px; }
+    }
     /* ── BPCO section ── */
     .bpco-section { padding: 80px 32px; background: #080B12; }
     .bpco-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -1404,7 +1445,15 @@
       <a href="guide.html" class="nav-link">사업계획서 작성가이드</a>
       <a href="inquiry.html" class="nav-link">문의하기</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleNav()" aria-label="메뉴">
+      <span></span><span></span><span></span>
+    </button>
     <button class="nav-btn" onclick="openModal()">관심 등록하기</button>
+  </div>
+  <div class="nav-mobile-menu" id="nav-mobile-menu">
+    <a href="announcements.html" class="nav-link">공고마당</a>
+    <a href="guide.html" class="nav-link">사업계획서 작성가이드</a>
+    <a href="inquiry.html" class="nav-link">문의하기</a>
   </div>
 </nav>
 
@@ -2631,6 +2680,29 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
     obs.observe(section);
   }
 })();
+</script>
+<script>
+function toggleNav(){
+  var btn=document.getElementById('nav-hamburger');
+  var menu=document.getElementById('nav-mobile-menu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+document.querySelectorAll('#nav-mobile-menu .nav-link').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('nav-hamburger').classList.remove('open');
+    document.getElementById('nav-mobile-menu').classList.remove('open');
+  });
+});
+// Close mobile menu when clicking outside
+document.addEventListener('click',function(e){
+  var menu=document.getElementById('nav-mobile-menu');
+  var btn=document.getElementById('nav-hamburger');
+  if(menu && menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)){
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+  }
+});
 </script>
 </body>
 </html>
