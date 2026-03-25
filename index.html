@@ -1346,8 +1346,18 @@
       .hero-inner { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
       .hero-img-wrap { order: -1; max-width: 480px; margin: 0 auto; width: 100%; }
       .problem-panels { grid-template-columns: 1fr; }
-      .p-panel { aspect-ratio: 16/7; }
+      .p-panel { aspect-ratio: 4/3; }
+      .p-panel .p-panel-img { object-position: center 20%; }
+      .p-panel-overlay { padding: 20px 22px 18%; }
+      .p-panel-bottom .p-title { font-size: 18px; }
+      .p-panel-bottom .p-sub { font-size: 14px; }
       .cards-3 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .p-panel { aspect-ratio: 3/2; }
+      .p-panel-overlay { padding: 16px 18px 12%; }
+      .p-panel-bottom .p-title { font-size: 16px; }
+      .p-panel-bottom .p-sub { font-size: 13px; }
     }
     @media (max-width: 640px) {
       .cmp-section, .foal-diff-section, .output-section, .review-section, .stats-section { padding-left: 20px; padding-right: 20px; }
