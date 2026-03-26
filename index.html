@@ -44,6 +44,35 @@
       clip: rect(0,0,0,0); white-space: nowrap; border: 0;
     }
 
+
+    /* 이메일 유효성 에러 메시지 */
+    .cta-email-error {
+      font-size: 12px; color: rgba(255,120,120,0.9);
+      min-height: 16px; margin-top: -8px; margin-bottom: 4px;
+      text-align: left; padding-left: 4px; width: 100%;
+    }
+    .m-email-error {
+      font-size: 12px; color: #e55; min-height: 14px;
+      margin: 4px 0 8px; text-align: left; width: 100%;
+    }
+    /* 등록 완료 후 이메일 수정 버튼 (N3) */
+    .cta-undo-btn {
+      background: none; border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 12px; text-decoration: underline;
+      cursor: pointer; margin-left: 8px; padding: 0;
+    }
+    .cta-undo-btn:hover { color: rgba(255,255,255,0.85); }
+    /* 캐러셀 우측 페이드 (G4 폐합) */
+    .review-wrap { position: relative; overflow: hidden; }
+    .review-wrap::after {
+      content: ''; pointer-events: none;
+      position: absolute; right: 0; top: 0;
+      width: 80px; height: 100%;
+      background: linear-gradient(to right, transparent, #0C0A1E);
+      z-index: 2;
+    }
+
     /* 섹션 진입 fade-up 애니메이션 */
     .reveal {
       opacity: 0; transform: translateY(40px);
@@ -1474,13 +1503,18 @@
 </head>
 <body>
 
+<!-- 스크린리더 건너뛰기 링크 -->
+<a href="#main-content" class="sr-only">본문으로 바로가기</a>
+
 <!-- NAV -->
+<header role="banner">
 <nav class="nav">
   <div class="nav-inner">
     <div class="logo"><img src="images/Logo.png" alt="Foal AI" class="logo-img" onerror="this.style.display='none'">Foal<span>AI</span></div>
     <div class="nav-links">
+      <a href="#sec-problem" class="nav-link">서비스 소개</a>
       <a href="announcements.html" class="nav-link">공고마당</a>
-      <a href="guide.html" class="nav-link">사업계획서 작성가이드</a>
+      <a href="guide.html" class="nav-link">가이드</a>
       <a href="inquiry.html" class="nav-link">문의하기</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" onclick="toggleNav()" aria-label="메뉴">
@@ -1494,6 +1528,7 @@
     <a href="inquiry.html" class="nav-link">문의하기</a>
   </div>
 </nav>
+</header>
 
 <main id="main-content">
 <!-- HERO -->
@@ -1546,7 +1581,7 @@
 </section>
 
 <!-- PROBLEM SECTION -->
-<section class="problem-section">
+<section class="problem-section" id="sec-problem">
   <div class="sec-inner">
     <div class="sec-label reveal">문제 인식</div>
     <h2 class="sec-h2 reveal reveal-delay-1">혼자서는 이렇게<br />하고 있지 않나요?</h2>
@@ -1627,7 +1662,7 @@
 })();
 </script>
 <!-- SIMULATION -->
-<section class="sim-section">
+<section class="sim-section" id="sec-howitworks">
   <div class="sim-inner">
     <div class="bpco-step-badge" style="justify-content:center; margin-bottom:22px;">
       <span class="bpco-step-pill">STEP 1</span>
@@ -1948,7 +1983,7 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="review-section">
+<section class="review-section" id="sec-reviews">
   <div class="review-inner">
     <div class="review-header">
       <div>
@@ -1960,6 +1995,7 @@
         <button class="review-nav-btn" onclick="scrollReviews(1)">&#8594;</button>
       </div>
     </div>
+    <div class="review-wrap">
     <div class="review-track" id="review-track">
 
       <div class="review-card">
@@ -1989,7 +2025,8 @@
         </div>
       </div>
 
-    </div>
+    </div><!-- /review-track -->
+    </div><!-- /review-wrap -->
   </div>
 </section>
 
@@ -2092,10 +2129,11 @@ function scrollReviews(dir){
     <p class="cta-sub">아직 준비 중이에요. 이메일을 남겨주시면<br />Foal AI가 출시될 때 가장 먼저 알려드릴게요.</p>
     <div id="cta-form" class="cta-form">
       <label for="cta-email" class="sr-only">이메일 주소</label>
-      <input class="cta-input" id="cta-email" type="email" placeholder="이메일 주소 입력" aria-label="이메일 주소 입력" />
+      <input class="cta-input" id="cta-email" type="email" placeholder="이메일 주소 입력" aria-label="이메일 주소 입력" aria-describedby="cta-email-error" />
       <button class="cta-submit" id="cta-submit-btn" onclick="submitCTA()">관심 등록</button>
     </div>
-    <div id="cta-ok" class="cta-success">✅ 등록 완료! 출시 소식을 가장 먼저 알려드릴게요.</div>
+    <p id="cta-email-error" class="cta-email-error" role="alert" aria-live="polite"></p>
+    <div id="cta-ok" class="cta-success">✅ 등록 완료! 출시 소식을 가장 먼저 알려드릴게요. <button class="cta-undo-btn" onclick="undoCTA()">이메일 수정</button></div>
     <p class="cta-fine">스팸 없음 · 언제든 취소 가능</p>
   </div>
 </section>
@@ -2155,7 +2193,8 @@ function scrollReviews(dir){
       <div class="m-h3">출시 알림 받기</div>
       <p class="m-p">이메일을 남겨주시면 Foal AI 출시 때<br />가장 먼저 연락드릴게요.</p>
       <label for="m-email" class="sr-only">이메일 주소</label>
-      <input class="m-input" id="m-email" type="email" placeholder="이메일 주소 입력" aria-label="이메일 주소 입력" />
+      <input class="m-input" id="m-email" type="email" placeholder="이메일 주소 입력" aria-label="이메일 주소 입력" aria-describedby="m-email-error" />
+      <p id="m-email-error" class="m-email-error" role="alert" aria-live="polite"></p>
       <button class="m-sub" id="m-submit-btn" onclick="submitModal()">알림 신청하기</button>
       <button class="m-close-btn" onclick="closeModal()">닫기</button>
     </div>
@@ -2627,8 +2666,17 @@ function saveReg(email, src){
   }
 }
 function submitModal(){
-  const v=document.getElementById('m-email').value;
-  if(!v||!v.includes('@')){ document.getElementById('m-email').style.borderColor='#F44'; return; }
+  const raw=document.getElementById('m-email').value;
+  const v=raw.trim().toLowerCase();
+  const errEl=document.getElementById('m-email-error');
+  const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  if(!emailOk){
+    document.getElementById('m-email').style.borderColor='#F44';
+    if(errEl) errEl.textContent='올바른 이메일 형식을 입력해주세요.';
+    return;
+  }
+  if(errEl) errEl.textContent='';
+  document.getElementById('m-email').value=v;
   const btn=document.getElementById('m-submit-btn');
   if(btn){ btn.textContent='등록 중...'; btn.disabled=true; }
   saveReg(v,'팝업 모달');
@@ -2639,11 +2687,17 @@ function submitModal(){
   }, 400);
 }
 function submitCTA(){
-  const v=document.getElementById('cta-email').value;
-  if(!v||!v.includes('@')){
+  const raw=document.getElementById('cta-email').value;
+  const v=raw.trim().toLowerCase();
+  const errEl=document.getElementById('cta-email-error');
+  const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  if(!emailOk){
     document.getElementById('cta-email').style.borderColor='rgba(255,100,100,0.8)';
+    if(errEl) errEl.textContent='올바른 이메일 형식을 입력해주세요. (예: hello@email.com)';
     return;
   }
+  if(errEl) errEl.textContent='';
+  document.getElementById('cta-email').value=v;
   const btn=document.getElementById('cta-submit-btn');
   if(btn){ btn.textContent='등록 중...'; btn.disabled=true; }
   saveReg(v,'하단 CTA');
@@ -2652,7 +2706,35 @@ function submitCTA(){
     document.getElementById('cta-ok').style.display='block';
   }, 400);
 }
+function undoCTA(){
+  document.getElementById('cta-form').style.display='flex';
+  document.getElementById('cta-ok').style.display='none';
+  const btn=document.getElementById('cta-submit-btn');
+  if(btn){ btn.textContent='관심 등록'; btn.disabled=false; }
+  document.getElementById('cta-email').value='';
+  document.getElementById('cta-email').style.borderColor='';
+  document.getElementById('cta-email').focus();
+}
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+// 실시간 이메일 유효성 검사 (N5 오류방지 + N9 인라인 에러)
+(function(){
+  function attachValidation(inputId, errorId){
+    var input=document.getElementById(inputId);
+    var err=document.getElementById(errorId);
+    if(!input) return;
+    input.addEventListener('input',function(){
+      var v=this.value.trim();
+      if(!v){ this.style.borderColor=''; if(err) err.textContent=''; return; }
+      var ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      this.style.borderColor=ok?'rgba(34,197,94,0.7)':'rgba(255,100,100,0.7)';
+      if(err) err.textContent=ok?'':'올바른 이메일 형식을 입력해주세요. (예: hello@email.com)';
+    });
+  }
+  attachValidation('cta-email','cta-email-error');
+  attachValidation('m-email','m-email-error');
+})();
+
 
 // ─── BPCO SECTION ANIMATION ───
 (function(){
