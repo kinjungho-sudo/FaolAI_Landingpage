@@ -16,6 +16,34 @@
       -webkit-font-smoothing: antialiased;
       padding-bottom: 72px;
     }
+
+    /* ──────── DESIGN TOKENS ──────── */
+    :root {
+      --color-primary:       #6B3CF7;
+      --color-primary-hover: #5428E0;
+      --color-accent:        #F5C842;
+      --color-light-purple:  #A78BFF;
+      --color-dark-bg:       #080c18;
+      --color-dark-bg2:      #0B0D14;
+      --color-light-bg:      #ffffff;
+      --color-light-bg2:     #F6F4FF;
+      --color-border-light:  #EDEAF8;
+      --color-text-body:     #666666;
+      --color-text-dark-sub: rgba(255,255,255,0.55);
+      --font-main:           'Noto Sans KR', 'Pretendard', sans-serif;
+      --radius-card:         18px;
+      --radius-btn:          10px;
+      --section-pad:         80px 32px;
+    }
+
+
+    /* 스크린리더 전용 (접근성) */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
     /* 섹션 진입 fade-up 애니메이션 */
     .reveal {
       opacity: 0; transform: translateY(40px);
@@ -1467,6 +1495,7 @@
   </div>
 </nav>
 
+<main id="main-content">
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
@@ -2062,8 +2091,9 @@ function scrollReviews(dir){
     <h2 class="cta-h2">출시 소식을<br />가장 먼저 받아보세요</h2>
     <p class="cta-sub">아직 준비 중이에요. 이메일을 남겨주시면<br />Foal AI가 출시될 때 가장 먼저 알려드릴게요.</p>
     <div id="cta-form" class="cta-form">
-      <input class="cta-input" id="cta-email" type="email" placeholder="이메일 주소 입력" />
-      <button class="cta-submit" onclick="submitCTA()">관심 등록</button>
+      <label for="cta-email" class="sr-only">이메일 주소</label>
+      <input class="cta-input" id="cta-email" type="email" placeholder="이메일 주소 입력" aria-label="이메일 주소 입력" />
+      <button class="cta-submit" id="cta-submit-btn" onclick="submitCTA()">관심 등록</button>
     </div>
     <div id="cta-ok" class="cta-success">✅ 등록 완료! 출시 소식을 가장 먼저 알려드릴게요.</div>
     <p class="cta-fine">스팸 없음 · 언제든 취소 가능</p>
@@ -2116,14 +2146,17 @@ function scrollReviews(dir){
   <button class="sticky-cta" onclick="openModal()">관심 등록하기 →</button>
 </div>
 
+</main>
+
 <!-- MODAL -->
 <div class="m-bg" id="m-bg" onclick="bgClick(event)">
   <div class="m-box">
     <div id="m-form">
       <div class="m-h3">출시 알림 받기</div>
       <p class="m-p">이메일을 남겨주시면 Foal AI 출시 때<br />가장 먼저 연락드릴게요.</p>
-      <input class="m-input" id="m-email" type="email" placeholder="이메일 주소 입력" />
-      <button class="m-sub" onclick="submitModal()">알림 신청하기</button>
+      <label for="m-email" class="sr-only">이메일 주소</label>
+      <input class="m-input" id="m-email" type="email" placeholder="이메일 주소 입력" aria-label="이메일 주소 입력" />
+      <button class="m-sub" id="m-submit-btn" onclick="submitModal()">알림 신청하기</button>
       <button class="m-close-btn" onclick="closeModal()">닫기</button>
     </div>
     <div class="m-done" id="m-done">
@@ -2596,17 +2629,28 @@ function saveReg(email, src){
 function submitModal(){
   const v=document.getElementById('m-email').value;
   if(!v||!v.includes('@')){ document.getElementById('m-email').style.borderColor='#F44'; return; }
+  const btn=document.getElementById('m-submit-btn');
+  if(btn){ btn.textContent='등록 중...'; btn.disabled=true; }
   saveReg(v,'팝업 모달');
-  document.getElementById('m-form').style.display='none';
-  document.getElementById('m-done').style.display='block';
-  setTimeout(closeModal,2600);
+  setTimeout(function(){
+    document.getElementById('m-form').style.display='none';
+    document.getElementById('m-done').style.display='block';
+    setTimeout(closeModal,2600);
+  }, 400);
 }
 function submitCTA(){
   const v=document.getElementById('cta-email').value;
-  if(!v||!v.includes('@')) return;
+  if(!v||!v.includes('@')){
+    document.getElementById('cta-email').style.borderColor='rgba(255,100,100,0.8)';
+    return;
+  }
+  const btn=document.getElementById('cta-submit-btn');
+  if(btn){ btn.textContent='등록 중...'; btn.disabled=true; }
   saveReg(v,'하단 CTA');
-  document.getElementById('cta-form').style.display='none';
-  document.getElementById('cta-ok').style.display='block';
+  setTimeout(function(){
+    document.getElementById('cta-form').style.display='none';
+    document.getElementById('cta-ok').style.display='block';
+  }, 400);
 }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
 
