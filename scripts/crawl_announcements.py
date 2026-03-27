@@ -52,7 +52,7 @@ def make_session():
 
 def infer_category(text: str) -> list:
     cats = []
-    if re.search(r"예비\s*창업|창업\s*준비", text):
+    if re.search(r"예비\s*창업|창업\s*준비|모두의\s*창업", text):
         cats.append("예비창업")
     if re.search(r"초기\s*창업|업력\s*[1-5]년|창업\s*[1-5]년", text):
         cats.append("초기창업")
