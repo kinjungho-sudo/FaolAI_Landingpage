@@ -1,6 +1,987 @@
 {
-  "updated_at": "2026-03-27T00:00:00Z",
-  "updated_at_kst": "2026-03-27 09:00 KST",
-  "count": 0,
-  "items": []
+  "updated_at": "2026-03-27T13:25:15Z",
+  "updated_at_kst": "2026-03-27 13:25 KST",
+  "count": 75,
+  "sources": [
+    "mss.go.kr",
+    "k-startup.go.kr",
+    "bizinfo.go.kr"
+  ],
+  "items": [
+    {
+      "id": "mss_723058",
+      "title": "올해의 K-스타트업 2026 부처 통합 창업경진대회 공고",
+      "org": "중소벤처기업부 · 신산업기술창업과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.03.27",
+      "deadlineDate": "2026-03-27",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066726&parentSeq=1066726"
+    },
+    {
+      "id": "mss_988544",
+      "title": "2026년 백년소상공인 모집(재지정) 공고(추가)",
+      "org": "중소벤처기업부 · 소공인성장촉진단",
+      "category": [
+        "소상공인"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.03.31",
+      "deadlineDate": "2026-03-31",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066559&parentSeq=1066559"
+    },
+    {
+      "id": "kst_012660",
+      "title": "2026 시흥시 청년 창업가 육성 프로그램 참여자 모집",
+      "org": "2026 시흥시 청년 창업가 육성 프로그램 참여자 모집 주식회사뉴키즈인베스트먼트",
+      "category": [
+        "청년"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.03.31",
+      "deadlineDate": "2026-03-31",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176819"
+    },
+    {
+      "id": "kst_701836",
+      "title": "2026년 글로벌 시장 진출(유럽) Viva Technology 전시회 참여기업 모집",
+      "org": "2026년 글로벌 시장 진출(유럽) Viva Technology 전시회 참여기업 모집 서울대학교산학협력단(서울 AI 허브)",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.01",
+      "deadlineDate": "2026-04-01",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176845"
+    },
+    {
+      "id": "kst_712949",
+      "title": "2026년 서울 관광·MICE기업 지원센터  전문역량 엑셀러레이팅 프로그램 참여기업 모집 공고",
+      "org": "2026년 서울 관광·MICE기업 지원센터",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.03",
+      "deadlineDate": "2026-04-03",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176857"
+    },
+    {
+      "id": "kst_695302",
+      "title": "글로벌 SDGs 비즈니스 랩(AI 임팩트 프로페셔널) 교육생 모집",
+      "org": "글로벌 SDGs 비즈니스 랩(AI 임팩트 프로페셔널) 교육생 모집 한서대학교산학협력단",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.03",
+      "deadlineDate": "2026-04-03",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176751"
+    },
+    {
+      "id": "mss_456950",
+      "title": "「2026 벤처창업진흥 유공」 포상 신청 공고(연장)",
+      "org": "중소벤처기업부 · 벤처정책과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.06",
+      "deadlineDate": "2026-04-06",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066639&parentSeq=1066639"
+    },
+    {
+      "id": "kst_029365",
+      "title": "[도봉구 청년창업센터] 제2차 스케일업 아카데미 : AI 워커스 - 리디자인, AI 시대  일잘러를 향하여",
+      "org": "[도봉구 청년창업센터] 제2차 스케일업 아카데미 : AI 워커스 - 리디자인, AI 시대",
+      "category": [
+        "청년"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.06",
+      "deadlineDate": "2026-04-06",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176893"
+    },
+    {
+      "id": "kst_529705",
+      "title": "2026년 제1차 고양 창업 브릿지(중장년) 신규 입주자 모집",
+      "org": "고양 중장년 기술창업센터 운영 고양산업진흥원",
+      "category": [
+        "기술창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.06",
+      "deadlineDate": "2026-04-06",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176812"
+    },
+    {
+      "id": "kst_079768",
+      "title": "[강동구 청년해냄센터] 전문분야 창업멘토링 4월 참가자 모집",
+      "org": "[강동구 청년해냄센터] 전문분야 창업멘토링 4월 참가자 모집 강동구 청년해냄센터",
+      "category": [
+        "청년"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.06",
+      "deadlineDate": "2026-04-06",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176851"
+    },
+    {
+      "id": "kst_297505",
+      "title": "「2026년 성북 산업 스마트화 창업챌린지 」모집 공고",
+      "org": "산업스마트화공모사업 성북구청",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.06",
+      "deadlineDate": "2026-04-06",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176854"
+    },
+    {
+      "id": "kst_146172",
+      "title": "경북콘텐츠기업지원센터 콘텐츠 기업 국내·외 판로개척 지원사업 참여기업 모집공고",
+      "org": "경북콘텐츠기업지원센터 콘텐츠 기업 국내‧외 판로개척 지원사업 경북문화재단 콘텐츠진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.07",
+      "deadlineDate": "2026-04-07",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176852"
+    },
+    {
+      "id": "kst_712115",
+      "title": "2026년 과천시 무상임대공간(일반기업) 신규 입주기업 모집",
+      "org": "과천시 무상임대공간 신규 모집 과천시 창업지원센터",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176904"
+    },
+    {
+      "id": "kst_813108",
+      "title": "2026년 과천시 무상임대공간(푸드테크기업) 신규 입주기업 모집",
+      "org": "과천시 무상임대공간 신규 모집 과천시 창업지원센터",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176905"
+    },
+    {
+      "id": "kst_394374",
+      "title": "청년 창업의 꿈, 『성동청년 창업이룸센터』 입주자 모집 공고【7차】",
+      "org": "청년 창업의 꿈, 『성동청년 창업이룸센터』 입주자 모집 공고【7차】 (재)성동벤처밸리",
+      "category": [
+        "청년"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176891"
+    },
+    {
+      "id": "kst_947626",
+      "title": "2026 콘텐츠 오픈이노베이션 지원사업 스타트업 모집 공고",
+      "org": "2026 콘텐츠 오픈이노베이션 지원사업 스타트업 모집 공고 한국콘텐츠진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176841"
+    },
+    {
+      "id": "kst_971603",
+      "title": "2026년 동남아(쇼피) 온라인 시장 진출 지원사업 참여기업 모집",
+      "org": "2026년 동남아(쇼피) 온라인 시장 진출 지원사업 참여기업 모집 서울경제진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176860"
+    },
+    {
+      "id": "kst_981033",
+      "title": "2026년 북미/동남아(틱톡샵) 온라인 시장 진출 지원사업 참여기업 모집",
+      "org": "2026년 북미/동남아(틱톡샵) 온라인 시장 진출 지원사업 참여기업 모집 서울경제진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176867"
+    },
+    {
+      "id": "kst_744179",
+      "title": "2026년 일본(큐텐재팬) 진출 지원사업 참여기업 모집",
+      "org": "2026년 일본(큐텐재팬) 진출 지원사업 참여기업 모집 서울경제진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176871"
+    },
+    {
+      "id": "kst_161438",
+      "title": "2026년 일본(라쿠텐) 온라인 시장 진출 지원사업 참여기업 모집",
+      "org": "2026년 일본(라쿠텐) 온라인 시장 진출 지원사업 참여기업 모집 서울경제진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176874"
+    },
+    {
+      "id": "kst_334535",
+      "title": "2026년 중국(샤오홍슈) 온라인 시장 진출 지원사업 참여기업 모집",
+      "org": "2026년 중국(샤오홍슈) 온라인 시장 진출 지원사업 참여기업 모집 서울경제진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176875"
+    },
+    {
+      "id": "kst_546609",
+      "title": "2026년 칠레(메르카도리브레) 온라인 시장 진출 지원사업 참여기업 모집",
+      "org": "2026년 칠레(메르카도리브레) 온라인 시장 진출 지원사업 참여기업 모집 서울경제진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176877"
+    },
+    {
+      "id": "kst_670711",
+      "title": "2026년 북미(아마존) 온라인 시장 진출 지원사업 참여기업 모집",
+      "org": "2026년 북미(아마존) 온라인 시장 진출 지원사업 참여기업 모집 서울경제진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176878"
+    },
+    {
+      "id": "kst_419207",
+      "title": "2026년 중동(아마존) 온라인 시장 진출 지원사업 참여기업 모집",
+      "org": "2026년 중동(아마존) 온라인 시장 진출 지원사업 참여기업 모집 서울경제진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.08",
+      "deadlineDate": "2026-04-08",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176879"
+    },
+    {
+      "id": "kst_179657",
+      "title": "「2026년 농식품 기술창업 액셀러레이터 육성지원 사업」그린 유니콘 G-Corn(Green-Unicorn) 프로그램 참여기업 모집 공고",
+      "org": "농식품 기술창업 액셀러레이터 육성지원 와이앤아처(주)",
+      "category": [
+        "기술창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.10",
+      "deadlineDate": "2026-04-10",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176883"
+    },
+    {
+      "id": "kst_760840",
+      "title": "이차전지 스타트업 런치패드 2026 참여기업 모집 공고",
+      "org": "이차전지 스타트업 육성 플랫폼 구축 사업 충북창조경제혁신센터",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.10",
+      "deadlineDate": "2026-04-10",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176895"
+    },
+    {
+      "id": "kst_593923",
+      "title": "「2026 농식품 기술창업 액셀러레이터 육성지원사업」 ‘애그리넥서스(Agri-Nexus)’ 프로그램 참여기업 모집",
+      "org": "농식품 기술창업 액셀러레이터 육성지원 탭엔젤파트너스",
+      "category": [
+        "기술창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.10",
+      "deadlineDate": "2026-04-10",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176835"
+    },
+    {
+      "id": "kst_280759",
+      "title": "2026년 군포산업진흥원 창업보육센터 제2차 입주기업 모집공고",
+      "org": "창업보육센터 지원 군포산업진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.10",
+      "deadlineDate": "2026-04-10",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176863"
+    },
+    {
+      "id": "kst_510315",
+      "title": "2026년 서울 바이오-AI-의료데이터 융복합 지원 사업 수요기업 모집 공고",
+      "org": "2026년 서울 바이오-AI-의료데이터 융복합 지원 사업 수요기업 모집 공고 서울바이오허브",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.13",
+      "deadlineDate": "2026-04-13",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176890"
+    },
+    {
+      "id": "kst_803098",
+      "title": "[모집공고] 2026년 여성창업 글로벌 액셀러레이팅 참여기업 모집공고(3.23.~4.13.)",
+      "org": "여성창업 액셀러레이팅 (재)여성기업종합지원센터",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.13",
+      "deadlineDate": "2026-04-13",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176894"
+    },
+    {
+      "id": "mss_013690",
+      "title": "2026년도 기술개발제품 공공기관 실증지원 사업 수정 공고",
+      "org": "중소벤처기업부 · 판로정책과",
+      "category": [
+        "기술창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.15",
+      "deadlineDate": "2026-04-15",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066715&parentSeq=1066715"
+    },
+    {
+      "id": "kst_825573",
+      "title": "⌜2026년 AICT 표준기술 개발 지원사업⌟ 참여기업 모집공고",
+      "org": "⌜2026년 AICT 표준기술 개발 지원사업⌟ 참여기업 모집공고 (재)천안과학산업진흥원",
+      "category": [
+        "기술창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.15",
+      "deadlineDate": "2026-04-15",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176853"
+    },
+    {
+      "id": "kst_437628",
+      "title": "2026 서울-바젤 스타트업 허브 액셀러레이션 프로그램 참여기업 모집공고",
+      "org": "2026 서울-바젤 스타트업 허브 액셀러레이션 프로그램",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.15",
+      "deadlineDate": "2026-04-15",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176840"
+    },
+    {
+      "id": "kst_854479",
+      "title": "스타트업·시민 매칭 실증 프로그램 『솔루션리빙랩』 참가기업 모집",
+      "org": "스타트업·시민 매칭 실증 프로그램 『솔루션리빙랩』 참가기업 모집 부산창조경제혁신센터",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.16",
+      "deadlineDate": "2026-04-16",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176907"
+    },
+    {
+      "id": "mss_954877",
+      "title": "2026년 K-스카우터 모집공고",
+      "org": "중소벤처기업부 · 글로벌창업팀",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.17",
+      "deadlineDate": "2026-04-17",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066647&parentSeq=1066647"
+    },
+    {
+      "id": "mss_312339",
+      "title": "2026년도 지역특화발전특구 컨설팅 지원사업 계획 공고",
+      "org": "중소벤처기업부 · 특구운영과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.17",
+      "deadlineDate": "2026-04-17",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066557&parentSeq=1066557"
+    },
+    {
+      "id": "kst_852115",
+      "title": "2026년 광주 IP(지식재산)디딤돌 IP창업존 60기(26년 2기) 모집 공고",
+      "org": "IP 디딤돌 프로그램 한국발명진흥회 광주지부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.17",
+      "deadlineDate": "2026-04-17",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176897"
+    },
+    {
+      "id": "kst_123698",
+      "title": "2026년 XR 기술개발 지원사업 참여기업 모집",
+      "org": "2026년 XR 기술개발 지원사업 참여기업 모집 서울경제진흥원",
+      "category": [
+        "기술창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.17",
+      "deadlineDate": "2026-04-17",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176850"
+    },
+    {
+      "id": "kst_986584",
+      "title": "2026년 세종지식재산센터 IP창업존 28기 교육생 모집",
+      "org": "IP 디딤돌 프로그램 한국발명진흥회 세종지부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.19",
+      "deadlineDate": "2026-04-19",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176882"
+    },
+    {
+      "id": "kst_866796",
+      "title": "2026년 G-Space  예비초기 창업기업 지원사업 창업기업 모집공고",
+      "org": "2026년 G-Space",
+      "category": [
+        "초기창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.21",
+      "deadlineDate": "2026-04-21",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176868"
+    },
+    {
+      "id": "mss_430270",
+      "title": "2026년 명문장수기업 모집 공고",
+      "org": "중소벤처기업부 · 중소기업제도과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.24",
+      "deadlineDate": "2026-04-24",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066669&parentSeq=1066669"
+    },
+    {
+      "id": "mss_578037",
+      "title": "2026년 전통시장 육성사업(백년시장) 모집 수정 공고",
+      "org": "중소벤처기업부 · 전통시장과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.24",
+      "deadlineDate": "2026-04-24",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066641&parentSeq=1066641"
+    },
+    {
+      "id": "mss_811129",
+      "title": "2026년 전통시장 육성사업(백년시장) 모집공고",
+      "org": "중소벤처기업부 · 전통시장과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.24",
+      "deadlineDate": "2026-04-24",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066606&parentSeq=1066606"
+    },
+    {
+      "id": "mss_284191",
+      "title": "2026년 글로벌협력형 R&D 1차 공고",
+      "org": "중소벤처기업부 · 기술혁신정책과",
+      "category": [
+        "기술창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.24",
+      "deadlineDate": "2026-04-24",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066511&parentSeq=1066511"
+    },
+    {
+      "id": "kst_496888",
+      "title": "2026 관광기업 육성 및 창업 지원사업 참가자 모집 공고",
+      "org": "2026 관광기업 육성 및 창업 지원사업 참가자 모집 공고 (재)전라남도관광재단",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.24",
+      "deadlineDate": "2026-04-24",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176888"
+    },
+    {
+      "id": "kst_514515",
+      "title": "2026년 체육인 직업안정 사업(창업지원) 창업보육과정(새싹) 참가자 모집",
+      "org": "2026년 체육인 직업안정 사업(창업지원) 와이앤아처(주)",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.26",
+      "deadlineDate": "2026-04-26",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176880"
+    },
+    {
+      "id": "mss_275159",
+      "title": "2026년도 창업성장기술개발사업(디딤돌) 제3차 시행계획 공고_도약과제",
+      "org": "중소벤처기업부 · 기술개발과",
+      "category": [
+        "기술창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.04.29",
+      "deadlineDate": "2026-04-29",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066673&parentSeq=1066673"
+    },
+    {
+      "id": "kst_974627",
+      "title": "2026 스마트건설 창업 아이디어 공모전",
+      "org": "2026 스마트건설 창업 아이디어 공모전 씨엔티테크(주)",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.05.01",
+      "deadlineDate": "2026-05-01",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176849"
+    },
+    {
+      "id": "kst_673376",
+      "title": "2026년 체육인 직업안정 사업(창업지원) 창업점검과정(열매) 참가자 모집",
+      "org": "2026년 체육인 직업안정 사업(창업지원) 와이앤아처(주)",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.05.10",
+      "deadlineDate": "2026-05-10",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176881"
+    },
+    {
+      "id": "mss_761882",
+      "title": "「모두의 창업 프로젝트」 통합 모집공고",
+      "org": "중소벤처기업부 · 청년정책과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.05.15",
+      "deadlineDate": "2026-05-15",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066642&parentSeq=1066642"
+    },
+    {
+      "id": "kst_696998",
+      "title": "『올해의 K-스타트업 2026 (舊 도전! K-스타트업)』 부처 통합 창업경진대회 공고",
+      "org": "올해의 K-스타트업(舊. 도전! K-스타트업) 창업진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.08.31",
+      "deadlineDate": "2026-08-31",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176910"
+    },
+    {
+      "id": "kst_818706",
+      "title": "2026년 체육인 직업안정 사업(창업지원) 창업교육과정(씨앗) 참가자 모집",
+      "org": "2026년 체육인 직업안정 사업(창업지원) 창업교육과정(씨앗) 와이앤아처(주)",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.09.30",
+      "deadlineDate": "2026-09-30",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176858"
+    },
+    {
+      "id": "kst_591149",
+      "title": "2026년 판교테크노밸리 입주기업 임대보증금 지원사업",
+      "org": "2026년 판교테크노밸리 입주기업 임대보증금 지원사업 (재)경기도경제과학진흥원",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.12.31",
+      "deadlineDate": "2026-12-31",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176855"
+    },
+    {
+      "id": "kst_561726",
+      "title": "[종로여성인력개발센터] 2026년 청년일자리도약장려금 참여기업 모집 공고",
+      "org": "정부 인건비 지원사업 공고 종로여성인력개발센터",
+      "category": [
+        "청년"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.12.31",
+      "deadlineDate": "2026-12-31",
+      "description": "K-Startup 공고입니다. 자세한 내용은 k-startup.go.kr에서 확인하세요.",
+      "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=176856"
+    },
+    {
+      "id": "biz_605599",
+      "title": "[충남] 천안시 2026년 스타트업 글로벌 진출 지원사업 선진지 벤치마킹(일본) 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120020"
+    },
+    {
+      "id": "biz_275703",
+      "title": "[경북] 포항시 2026년 경북형(포항) 스마트공장(기초단계) 구축지원사업 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120019"
+    },
+    {
+      "id": "biz_241769",
+      "title": "[전북] 바이오 지역산업 역량강화 지원사업 국제 공동연구 (호라이즌 유럽) 과제기획 지원 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120018"
+    },
+    {
+      "id": "biz_144029",
+      "title": "2026년 남아공 요하네스버그 의료기기 전시회(WHX Johannesburg 2026) 한국관 참가기업 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120017"
+    },
+    {
+      "id": "biz_196324",
+      "title": "2026년 이탈리아 밀라노 세계 의약품 전시회(CPHI Milan 2026) 한국관 참가기업 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120016"
+    },
+    {
+      "id": "biz_845097",
+      "title": "[경북] 2026년 자동차부품 기업혁신 동반성장 지원사업 참여기업 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120015"
+    },
+    {
+      "id": "biz_982306",
+      "title": "2026년 철강산업AI융합실증허브구축사업 시행계획 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120014"
+    },
+    {
+      "id": "biz_445297",
+      "title": "2026년 환경업종 사업다각화 컨설팅 지원사업 참여기업 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120013"
+    },
+    {
+      "id": "biz_255645",
+      "title": "[경기] 2026년 공동활용 연구장비 사용료 지원 기업 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120012"
+    },
+    {
+      "id": "biz_000495",
+      "title": "[경기] 안양시 2026년 유망기업 브랜드 음원 제작 지원사업 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120011"
+    },
+    {
+      "id": "biz_646295",
+      "title": "2026년 식품안심업소 기술지원 사업 참여 업소 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120010"
+    },
+    {
+      "id": "biz_076578",
+      "title": "[광주] 2026년 가족친화경영 컨설팅 참여 기업(관) 모집 공고(가족친화인증 지원 및 가족친화경영문화 확산)",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120009"
+    },
+    {
+      "id": "biz_562700",
+      "title": "[경기] 부천시 2026년 원종중앙시장 상가 리모델링 지원사업 대상자 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120008"
+    },
+    {
+      "id": "biz_445139",
+      "title": "2026년 디스플레이 및 가전 분야 신규 지원대상 연구개발과제 재공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120007"
+    },
+    {
+      "id": "biz_263706",
+      "title": "[서울] 2026년 노동환경개선컨설팅 사업 대상 모집 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "상시",
+      "deadlineDate": "9999-12-31",
+      "description": "bizinfo.go.kr 공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120006"
+    },
+    {
+      "id": "mss_381723",
+      "title": "2026년 소상공인(법인사업자) 비즈플러스카드 지원사업 시행 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "소상공인"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.03.20",
+      "deadlineDate": "2026-03-20",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066505&parentSeq=1066505"
+    },
+    {
+      "id": "mss_426908",
+      "title": "2026년 소상공인(개인사업자) 비즈플러스카드 지원사업 시행 공고",
+      "org": "중소벤처기업부",
+      "category": [
+        "소상공인"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.03.20",
+      "deadlineDate": "2026-03-20",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066504&parentSeq=1066504"
+    },
+    {
+      "id": "mss_978403",
+      "title": "2026년 중소기업 기술혁신 지원사업(KOSBIR) 통합 안내",
+      "org": "중소벤처기업부 · 기술혁신정책과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.03.20",
+      "deadlineDate": "2026-03-20",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066478&parentSeq=1066478"
+    },
+    {
+      "id": "mss_065989",
+      "title": "2026년도 창업중심대학 대학발 (예비)창업기업 모집 수정공고",
+      "org": "중소벤처기업부 · 청년정책과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.03.24",
+      "deadlineDate": "2026-03-24",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066599&parentSeq=1066599"
+    },
+    {
+      "id": "mss_571097",
+      "title": "2026년도 창업중심대학 지역기반 (예비)창업기업 모집 수정공고",
+      "org": "중소벤처기업부 · 청년정책과",
+      "category": [
+        "창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.03.24",
+      "deadlineDate": "2026-03-24",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066598&parentSeq=1066598"
+    },
+    {
+      "id": "mss_948221",
+      "title": "2026년 예비창업패키지 예비창업자 모집 수정 공고(2차)",
+      "org": "중소벤처기업부 · 신산업기술창업과",
+      "category": [
+        "예비창업"
+      ],
+      "amount": "공고 확인",
+      "deadline": "2026.03.24",
+      "deadlineDate": "2026-03-24",
+      "description": "중소벤처기업부 사업공고입니다. 자세한 내용은 공식 사이트에서 확인하세요.",
+      "url": "https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=310&bcIdx=1066579&parentSeq=1066579"
+    }
+  ]
 }
