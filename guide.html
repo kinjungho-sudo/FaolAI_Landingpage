@@ -83,6 +83,16 @@
     .color-amber .sub-code { background: #fffbeb; border-color: #fde68a; color: #b45309; }
     .color-amber .sub-dot  { background: #f59e0b; }
 
+    /* ── Download Section ── */
+    .download-section { background: linear-gradient(135deg, #f5f1ff 0%, #faf8ff 100%); padding: 40px 32px; text-align: center; border-bottom: 1px solid #ece8ff; }
+    .download-section-inner { max-width: 600px; margin: 0 auto; }
+    .download-label { font-size: 12px; font-weight: 800; color: #6B3CF7; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    .download-title { font-size: 24px; font-weight: 900; color: #111; margin-bottom: 12px; }
+    .download-desc { font-size: 15px; color: #666; margin-bottom: 24px; line-height: 1.6; }
+    .download-btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 32px; background: #6B3CF7; color: #fff; border: none; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+    .download-btn:hover { background: #5428E0; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(107, 60, 247, 0.3); }
+    .download-icon { font-size: 20px; }
+
     /* ── Footer ── */
     footer { text-align: center; padding: 28px; font-size: 13px; color: #aaa; border-top: 1px solid #ece8ff; }
 
@@ -91,6 +101,9 @@
       .nav-links { display: none; }
       .page-hero { padding: 44px 20px 36px; }
       .hero-h1 { font-size: 26px; }
+      .download-section { padding: 32px 20px; }
+      .download-title { font-size: 20px; }
+      .download-btn { font-size: 15px; padding: 11px 28px; }
       .main { padding: 28px 16px 60px; }
       .criteria-desc { display: none; }
       .acc-trigger { padding: 16px 18px; }
@@ -117,6 +130,18 @@
   <div class="hero-label">Business Plan Template</div>
   <h1 class="hero-h1">예비창업패키지<br/>사업계획서 작성 가이드</h1>
   <p class="hero-sub">심사위원이 보는 공식 양식을 섹션별로 분석하고, 각 항목을 어떻게 작성해야 하는지 팁과 함께 제공합니다.</p>
+</div>
+
+<div class="download-section">
+  <div class="download-section-inner">
+    <div class="download-label">📄 자료 다운로드</div>
+    <h2 class="download-title">사업계획서 작성 가이드</h2>
+    <p class="download-desc">심사 기준별 작성 방법과 실전 팁이 담긴 완전한 가이드 문서를 지금 다운로드하세요. 무료입니다.</p>
+    <button class="download-btn" onclick="window.open('https://drive.google.com/uc?export=download&id=19o88gE2Dfoa30_afxNkGz-l8JP4Resxv', '_blank')">
+      <span class="download-icon">⬇️</span>
+      <span>가이드 다운로드</span>
+    </button>
+  </div>
 </div>
 
 <main class="main">
